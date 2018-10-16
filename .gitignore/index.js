@@ -71,75 +71,51 @@ bot.on('message', message => {
         .setImage(oui)
         message.channel.send(bien_embed)
     };
-});
-
-bot.on('message', message=> {
+    
     if (message.content.startsWith('Bonjour le bot !')){
         message.reply('Salut mec, ça va tu passes une bonne journée ?')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'Ca va et toi ?'){
         message.reply('Bah tranquille')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === '12'){
         message.channel.send('E-GREC !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'y'){
         message.channel.send('12 !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'Y'){
         message.channel.send('12 !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'e-grec'){
         message.channel.send('12 !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'E-grec'){
         message.channel.send('12 !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'E-GREC'){
         message.channel.send('12 !!!')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'oui'){
         message.channel.send('fi')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'OUI'){
         message.channel.send('FI')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content === 'Oui'){
         message.channel.send('Fi')
-    }
-});
-
-bot.on('message', message=> {
+    };
+    
     if (message.content.includes('zinzolé')){
         var verbes = [
             "Accueillir",
@@ -257,24 +233,18 @@ bot.on('message', message=> {
         var ok = verbes[Math.floor(Math.random() * verbes.length)];
         message.channel.send("Ici le verbe zinzoler = " + ok)
     };
-});    
-
-bot.on('message', message => {
+    
     if (message.content === 'Dommage'){
         message.channel.send("A ça !")
-    }
-});
-
-bot.on('message', message => {
+    };
+    
     if (message.content==='Ah !'){
         var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
         var ah_embed = new Discord.RichEmbed()
         .setImage(ah)
         message.channel.send(ah_embed)
-    }
-});
-
-bot.on('message', message => {
+    };
+    
     if (message.content.startsWhith('help')){
         message.channel.send('Voilà les différentes commandes :\n - TA MERE ! \n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
     }
