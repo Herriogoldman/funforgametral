@@ -238,14 +238,10 @@ bot.on('message', message => {
         message.channel.send("A ça !")
     };
     
-    if (message.content==='Ah !'){
+    if (message.content === 'Ah !'){
         var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
         var ah_embed = new Discord.RichEmbed()
         .setImage(ah)
         message.channel.send(ah_embed)
-    };
-    
-    if (message.content.startsWhith('aide')){
-        message.channel.send('Voilà les différentes commandes :\n - TA MERE ! \n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
     };
 });
