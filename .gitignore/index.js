@@ -258,3 +258,9 @@ bot.on('message', message=> {
         message.channel.send("Ici le verbe zinzoler = " + ok)
     };
 });    
+
+bot.on('message', message =>{
+    if (message.content.includes("di" + length)){
+        message.channel.send(length)
+    }
+})
