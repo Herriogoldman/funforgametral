@@ -265,3 +265,9 @@ bot.on('message', message => {
       message.channel.sendMessage(str)
     }
 });
+
+bot.on('message', message => {
+    if (message.content === 'Dommage'){
+        message.channel.send("A ça !")
+    }
+});
