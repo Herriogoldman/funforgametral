@@ -264,3 +264,10 @@ bot.on('message', message => {
         message.channel.send("A ça !")
     }
 });
+
+bot.on('message', message => {
+    if (message.content==='Ah !'){
+        var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
+        message.channel.send(ah)
+    }
+});
