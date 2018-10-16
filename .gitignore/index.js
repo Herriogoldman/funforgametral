@@ -255,6 +255,6 @@ bot.on('message', message=> {
             "Lecher"       
         ];       
         var ok = verbes[Math.floor(Math.random() * verbes.length)];
-        message.channel.send(ok)
+        message.channel.send("Ici le verbe zinzoler = " ok)
     };
 });    
