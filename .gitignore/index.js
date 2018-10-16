@@ -246,6 +246,6 @@ bot.on('message', message => {
     };
     
     if (message.content.startsWhith('aide')){
-        message.channel.send('Voilà les différentes commandes :' \n '- TA MERE !' \n '- Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
+        message.channel.sendMessage('Voilà les différentes commandes :\n - TA MERE !\n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
     };
 });
