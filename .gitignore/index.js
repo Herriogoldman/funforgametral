@@ -72,3 +72,33 @@ bot.on('message', message=> {
         message.channel.send('12 !!!')
     }
 });
+
+bot.on('message', message=> {
+    if (message.content === 'E-grec'){
+        message.channel.send('12 !!!')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'E-GREC'){
+        message.channel.send('12 !!!')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'oui'){
+        message.channel.send('fi')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'OUI'){
+        message.channel.send('FI')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'Oui'){
+        message.channel.send('Fi')
+    }
+});
