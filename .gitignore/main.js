@@ -6,7 +6,7 @@ bot.on('ready', () => {
     console.log("Bot Ready !");
 });
 
-bot.login('NTAxNDUzMTE0OTUyMzg0NTQy.DqZo6A.HEo3xZTTFxg2J28h6QxtDoYOyiQ');
+bot.login(process.env.TOKEN);
 
 bot.on('message', message => {  
     if (message.content.startsWith ("stp")){
