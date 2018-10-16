@@ -260,13 +260,6 @@ bot.on('message', message=> {
 });    
 
 bot.on('message', message => {
-    if (message.content.includes('di')) {
-      const str = message.content.substring('di'.length)
-      message.channel.sendMessage(str)
-    }
-});
-
-bot.on('message', message => {
     if (message.content === 'Dommage'){
         message.channel.send("A ça !")
     }
