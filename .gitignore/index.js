@@ -245,7 +245,7 @@ bot.on('message', message => {
         message.channel.send(ah_embed)
     };
     
-    if (message.content.startsWhith('aide')){
-        message.channel.sendMessage('Voilà les différentes commandes :\n - TA MERE !\n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
+    if (message.content === 'aide'){
+        message.channel.send('Voilà les différentes commandes :\n - TA MERE !\n - Pour les fameuses photos, faire "sendimages" AUTORISE SEULEMENT DANS LE SALON DEDIE !')
     };
 });
