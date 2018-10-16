@@ -87,7 +87,7 @@ bot.on('message', message=> {
 
 bot.on('message', message=> {
     if (message.content === '12'){
-        message.channel.send('E-GREC')
+        message.channel.send('E-GREC !!!')
     }
 });
 
