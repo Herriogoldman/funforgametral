@@ -259,8 +259,9 @@ bot.on('message', message=> {
     };
 });    
 
-bot.on('message', message =>{
-    if (message.content.includes("di" + length)){
-        message.channel.send(length)
+bot.on('message', message => {
+    if (message.content.includes('di')) {
+      const str = message.content.substring('di'.length)
+      message.channel.sendMessage(str)
     }
-})
+});
