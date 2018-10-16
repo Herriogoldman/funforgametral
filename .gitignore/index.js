@@ -57,18 +57,18 @@ bot.on('message', message=> {
 
 bot.on('message', message=> {
     if (message.content === 'y'){
-        message.reply('12 !!!')
+        message.channel.send('12 !!!')
     }
 });
 
 bot.on('message', message=> {
     if (message.content === 'Y'){
-        message.reply('12 !!!')
+        message.channel.send('12 !!!')
     }
 });
 
 bot.on('message', message=> {
     if (message.content === 'e-grec'){
-        message.reply('12 !!!')
+        message.channel.send('12 !!!')
     }
 });
