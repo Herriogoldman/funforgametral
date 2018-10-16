@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 
 var bot = new Discord.Client();
-var prefix = "!"
 
 bot.on('ready', () => {
     console.log("Bot Ready !");
@@ -10,7 +9,7 @@ bot.on('ready', () => {
 bot.login(process.env.TOKEN);
 
 bot.on('message', message => {
-    if (message.content.startsWhith(prefix + 'help')){
+    if (message.content.startsWhith('help')){
         message.channel.send('Voilà les différentes commandes :\n - TA MERE !')
     }
 });
