@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 
 var bot = new Discord.Client();
+var prefix = "!"
 
 bot.on('ready', () => {
     console.log("Bot Ready !");
@@ -8,8 +9,14 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
+bot.on('message', message => {
+    if (message.content.startsWhith(prefix + 'help')){
+        message.channel.send('Voilà les différentes commandes :\n - TA MERE !')
+    }
+});
+
 bot.on('message', message => {  
-    if (message.content.startsWith ("stp")){
+    if (message.content.startsWith ("sendimages")){
         var bien = [
             
             "http://img.over-blog-kiwi.com/0/62/06/01/20140701/ob_03acc5_les-plus-belles-femmes-nues-de-l-ete-4.jpg",
@@ -268,6 +275,8 @@ bot.on('message', message => {
 bot.on('message', message => {
     if (message.content==='Ah !'){
         var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
-        message.channel.send(ah)
+        var ah_embed = new Discord.RichEmbed()
+        .setImage(ah)
+        message.channel.send(ah_embed)
     }
 });
