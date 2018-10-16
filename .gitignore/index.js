@@ -8,6 +8,12 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
+bot.on('message', message => {
+    if (message.content.startsWhith('help')){
+        message.channel.send('Voilà les différentes commandes :\n - TA MERE ! \n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE !)')
+    }
+});
+
 bot.on('message', message => {  
     if (message.content.startsWith ("sendimages")){
         var bien = [
