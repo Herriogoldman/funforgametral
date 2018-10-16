@@ -48,3 +48,27 @@ bot.on('message', message=> {
         message.reply('Bah tranquille')
     }
 });
+
+bot.on('message', message=> {
+    if (message.content === '12'){
+        message.channel.send('E-GREC')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'y'){
+        message.reply('12 !!!')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'Y'){
+        message.reply('12 !!!')
+    }
+});
+
+bot.on('message', message=> {
+    if (message.content === 'e-grec'){
+        message.reply('12 !!!')
+    }
+});
