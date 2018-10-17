@@ -180,7 +180,8 @@ bot.on('message', message => {
             "http://www.bustyteengallery.com/images/10n1q/pussy-wide-open-for-photos.jpg",
             "http://xxxlibz.com/wp-content/uploads/2017/06/12101011-8299-xxxlibz.com.jpg",
             "https://www.thehearingstop.com/images/alabama-hot-kn.jpg",
-            "http://ftop.ru/images/201210/ftop.ru_41569.jpg"
+            "http://ftop.ru/images/201210/ftop.ru_41569.jpg",
+            "https://i.ytimg.com/vi/pD9fAHo2wSw/maxresdefault.jpg"
             
         ];
 
@@ -352,8 +353,8 @@ bot.on('message', message => {
         message.channel.send('Thommage !')
     };
     
-    if (message.content.includes('Ludovic')){
-        message.channel.send('LudoBITE')
+    if (message.content.includes('Ludo')){
+        message.channel.send('VIC')
     };
     
     if (message.content === 'Chibre'){
