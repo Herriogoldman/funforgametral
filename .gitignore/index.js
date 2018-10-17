@@ -324,11 +324,11 @@ bot.on('message', message => {
     };
     
     if (message.content.includes('Ce qui veut dire ?')){
-        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, JTE RETROUVE ET JE TE NIQUE TA MERE !')
+        message.channel.send("La prochaine fois que tu me demandes ce qui veut dire, J'TE RETROUVE ET JE TE NIQUE TA MERE !")
     };
     
     if (message.content.includes('ce qui veut dire ?')){
-        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, JTE RETROUVE ET JE TE NIQUE TA MERE !')
+        message.channel.send("La prochaine fois que tu me demandes ce qui veut dire, J'TE RETROUVE ET JE TE NIQUE TA MERE !")
     };
     
     if (message.content.startsWith('mdr')){
@@ -336,11 +336,26 @@ bot.on('message', message => {
     };
     
     if (message.content.includes('Albin')){
-        message.channel.send('Abdeux, Abtrois, Abquattre, Abcinq')
-        message.channel.send('Abscisses !')        
+        message.channel.send("Albdeux, Albtrois, Albquattre, Albcinq, Albsix")
+        message.channel.send('Ordonnées !')        
     };
     
     if (message.content.includes('Loïc')){
         message.channel.send('Loic pas logique, ya pas de g !')
+    };
+    
+    if (message.content === 'Chibre'){
+        var chibre = [
+            "250 kg de chibre, ça te fait pas peur ?",
+            "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
+            "Le matin je pense au chibre, le midi c'est chibre, le soir chibre, même la nuit quand je dors,c'est chibre",
+            "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
+            "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
+            "Parfois j'pense à rien, parfois j'pense au chibre",
+            "Attend une seconde... chibre"
+        ];
+        
+        var chibre2 = chibre[Math.floor(Math.random() * chibre.length)];
+        message.channel.send(chibre2)
     };
 });
