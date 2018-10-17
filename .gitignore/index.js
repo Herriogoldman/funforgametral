@@ -358,4 +358,8 @@ bot.on('message', message => {
         var chibre2 = chibre[Math.floor(Math.random() * chibre.length)];
         message.channel.send(chibre2)
     };
+    
+    if (message.content.includes === 'TA MERE'){
+        message.reply('Elle a quoi ma mère batard ?')
+    };
 });
