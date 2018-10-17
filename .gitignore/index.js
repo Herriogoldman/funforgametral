@@ -324,6 +324,23 @@ bot.on('message', message => {
     };
     
     if (message.content.includes('Ce qui veut dire ?')){
-        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, jte retrouve ET JE TE NIQUE TA MERE !')
+        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, JTE RETROUVE ET JE TE NIQUE TA MERE !')
+    };
+    
+    if (message.content.includes('ce qui veut dire ?')){
+        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, JTE RETROUVE ET JE TE NIQUE TA MERE !')
+    };
+    
+    if (message.content.startsWith('mdr')){
+        message.channel.send('Trop drôle !')
+    };
+    
+    if (message.content.includes('Albin')){
+        message.channel.send('Abdeux, Abtrois, Abquattre, Abcinq')
+        message.channel.send('Abscisses !')        
+    };
+    
+    if (message.content.includes('Loïc')){
+        message.channel.send('Loïc pas logique, ya pas de g !')
     };
 });
