@@ -359,7 +359,7 @@ bot.on('message', message => {
         message.channel.send(chibre2)
     };
     
-    if (message.content.includes === 'TA MERE'){
+    if (message.content.includes('TA MERE')){
         message.reply('Elle a quoi ma mère batard ?')
     };
 });
