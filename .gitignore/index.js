@@ -169,7 +169,18 @@ bot.on('message', message => {
             "http://www.tribute-to.com/playboy/2015/01/meghan-leopard-model-month-january-2015-nude/h/meghan-leopard-model-month-january-2015-nude03.jpg",
             "https://i.pinimg.com/236x/c4/f6/ab/c4f6ab12b379b6140d159e5489101efd--playboy-girls-sexy-women.jpg",
             "https://www.tribute-to.com/playboy/2014/07/maggie-may-miss-august-2014-nude/h/maggie-may-miss-august-2014-nude12.jpg",
-            
+            "http://www.teenageslut.net/lesbians/hot-teen-lesbian-sex/teen-lesbian-sex-16.jpg",
+            "http://qpornx.com/xxx/lesbian-sex-fingering-orgasm.jpg",
+            "https://lamacchinadeltempo.info/imgs/6b33606b801497b4046d0689359ab562.jpg",
+            "http://dm.damcdn.net/pics/wp-content/uploads/2014/03/naked-girls-lesbian-sex.jpg",
+            "https://www.nakedgirls.mobi/contents/videos_screenshots/1000/1422/preview.mp4.jpg",
+            "https://www.celebjihad.com/celeb-jihad/images/selena_gomez_lesbian_sex.jpg",
+            "http://ftop.ru/large/201502/141110.jpg",
+            "http://images.nubilefilms.com/films/impeccable_with_sophie_lynx/screenshots/9.jpg",
+            "http://www.bustyteengallery.com/images/10n1q/pussy-wide-open-for-photos.jpg",
+            "http://xxxlibz.com/wp-content/uploads/2017/06/12101011-8299-xxxlibz.com.jpg",
+            "https://www.thehearingstop.com/images/alabama-hot-kn.jpg",
+            "http://ftop.ru/images/201210/ftop.ru_41569.jpg"
             
         ];
 
