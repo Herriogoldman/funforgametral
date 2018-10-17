@@ -322,4 +322,8 @@ bot.on('message', message => {
     if (message.content === 'aide'){
         message.channel.send('Voilà les différentes commandes :\n - TA MERE !\n - Pour les fameuses photos, faire "sendimages" AUTORISE SEULEMENT DANS LE SALON DEDIE !')
     };
+    
+    if (message.content.includes('Ce qui veut dire ?')){
+        message.channel.send('La prochaine fois que tu me demandes ce qui veut dire, jte retrouve ET JE TE NIQUE TA MERE !')
+    };
 });
