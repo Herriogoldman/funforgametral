@@ -240,6 +240,10 @@ bot.on('message', message => {
         message.channel.send('Fi')
     };
     
+    if (message.content === 'Celle'){
+        message.channel.send('Oh !')
+    };
+    
     if (message.content.includes('zinzolé')){
         var verbes = [
             "Cueillir",           
@@ -331,7 +335,7 @@ bot.on('message', message => {
         message.channel.send("La prochaine fois que tu me demandes ce qui veut dire, J'TE RETROUVE ET JE TE NIQUE TA MERE !")
     };
     
-    if (message.content.startsWith('mdr')){
+    if (message.content.startsWith('MDR')){
         message.channel.send('Trop drôle !')
     };
     
@@ -342,6 +346,14 @@ bot.on('message', message => {
     
     if (message.content.includes('Loïc')){
         message.channel.send('Loic pas logique, ya pas de g !')
+    };
+    
+    if (message.content.includes('Thomas')){
+        message.channel.send('Thommage !')
+    };
+    
+    if (message.content.includes('Ludovic')){
+        message.channel.send('LudoBITE')
     };
     
     if (message.content === 'Chibre'){
