@@ -197,12 +197,12 @@ bot.on('message', message => {
         message.reply('Salut mec, ça va tu passes une bonne journée ?')
     };
     
-    if (message.content === 'Ca va et toi ?'){
-        message.reply('Bah tranquille')
+    if (message.content === 'Ca va le bot ?'){
+        message.reply("Ah bah pas ouf, en ce moment y'a vraiment plus de saisons !")
     };
     
-    if (message.content === 'Ça va et toi ?'){
-        message.reply('Bah tranquille')
+    if (message.content === 'Ça va le bot ?'){
+        message.reply("Ah bah pas ouf, en ce moment y'a vraiment plus de saisons !")
     };
     
     if (message.content === '12'){
