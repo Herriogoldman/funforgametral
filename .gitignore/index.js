@@ -177,14 +177,19 @@ bot.on('message', message => {
 
         var bien_embed = new Discord.RichEmbed()
         .setImage(oui)
+        .setTitle('Tiens tes nudes')
         message.channel.send(bien_embed)
     };
     
-    if (message.content.startsWith('Bonjour le bot !')){
+    if (message.content === 'Bonjour le bot !'){
         message.reply('Salut mec, ça va tu passes une bonne journée ?')
     };
     
     if (message.content === 'Ca va et toi ?'){
+        message.reply('Bah tranquille')
+    };
+    
+    if (message.content === 'Ça va et toi ?'){
         message.reply('Bah tranquille')
     };
     
@@ -235,7 +240,7 @@ bot.on('message', message => {
             "Réduire",                                	                                             	
             "Réparer",                                                                                                         
             "Elargir",
-            "Mettre en place  	",           
+            "Mettre en place",           
             "Choisir" ,            	         
             "Mettre en relation",     
             "Saisir",                                         
