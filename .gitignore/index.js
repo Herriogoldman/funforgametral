@@ -340,5 +340,7 @@ bot.on('message', message => {
         message.channel.send('Abscisses !')        
     };
     
-
+    if (message.content.includes('Loïc')){
+        message.channel.send('Loic pas logique, ya pas de g !')
+    };
 });
