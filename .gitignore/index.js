@@ -320,7 +320,7 @@ bot.on('message', message => {
     };
     
     if (message.content === 'aide'){
-        message.channel.send('Voilà les différentes commandes :\n - TA MERE !\n - Pour les fameuses photos, faire "sendimages" AUTORISE SEULEMENT DANS LE SALON DEDIE !')
+        message.channel.send('Voilà les différentes commandes :\n - TA MERE !\n - Le bot pourrait étonnement vous répondre si vous lui adressez ce gentil message "Bonjour le bot !" (oubliez pas de lui demander comment il se porte)\n - 12, Y et mdr ne sont pas a zinzolé, Ah ! Dommage ! Et oui !\n - Il se pourrait que "Ce qui" et "veux dire" rassemblés mettent en colère le bot !\n - Chibre ?\n - Les prénoms peuvent parfois être utilisés à mauvais essiens\n \n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIE) !')
     };
     
     if (message.content.includes('Ce qui veut dire ?')){
