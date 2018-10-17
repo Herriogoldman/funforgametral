@@ -375,4 +375,8 @@ bot.on('message', message => {
     if (message.content.includes('TA MERE')){
         message.reply('Elle a quoi ma mère batard ?')
     };
+    
+    if (message.content === 'Bisous'){
+        message.channel.send('Bisous poutou \ud83d\ude17')
+    };
 });
