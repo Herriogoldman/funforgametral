@@ -177,7 +177,7 @@ bot.on('message', message => {
 
         var bien_embed = new Discord.RichEmbed()
         .setImage(oui)
-        .setTitle('Tiens tes nudes')
+        .setTitle('Tiens tes nudes \ud83d\ude09')
         message.channel.send(bien_embed)
     };
     
