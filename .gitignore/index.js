@@ -340,7 +340,7 @@ bot.on('message', message => {
         message.channel.send('Abscisses !')        
     };
     
-    if (message.content.includes('Loïc')){
+    if (message.content.includes('')){
         message.channel.send('Loïc pas logique, ya pas de g !')
     };
 });
