@@ -367,7 +367,7 @@ bot.on('message', message => {
         var chibre = [
             "250 kg de chibre, ça te fait pas peur ?",
             "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
-            "Le matin je pense au chibre, le midi c'est chibre, le soir chibre, même la nuit quand je dors,c'est chibre",
+            "Le matin je pense au chibre, le midi c'est chibre, le soir chibre, même la nuit quand je dors, c'est chibre",
             "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
             "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
             "Parfois j'pense à rien, parfois j'pense au chibre",
