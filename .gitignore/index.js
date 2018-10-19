@@ -353,9 +353,13 @@ bot.on('message', message => {
         message.channel.send('Thommage !')
     };
     
-    if (message.content.includes('Ludo')){
+    if (message.content.includes('Ludo ')){
         message.channel.send('VIC')
     };
+    
+    if (message.content.includes('Ronan')){
+        message.channel.send('RHOO NAN, pas un croche-pattes !')
+
     
     if (message.content === 'Chibre'){
         var chibre = [
