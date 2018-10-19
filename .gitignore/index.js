@@ -181,8 +181,10 @@ bot.on('message', message => {
             "http://xxxlibz.com/wp-content/uploads/2017/06/12101011-8299-xxxlibz.com.jpg",
             "https://www.thehearingstop.com/images/alabama-hot-kn.jpg",
             "http://ftop.ru/images/201210/ftop.ru_41569.jpg",
-            "https://i.ytimg.com/vi/pD9fAHo2wSw/maxresdefault.jpg"
-            
+            "https://i.ytimg.com/vi/pD9fAHo2wSw/maxresdefault.jpg",
+            "https://www.pichunter.com/gallery/3651070/So...That_Makes_Us_Sisters_Scene#13&gid=1&pid=13",
+            "https://www.pichunter.com/gallery/3661023/Chloe_Cherry_enters_the_shower#10&gid=1&pid=10",
+            "https://www.pichunter.com/gallery/3648684/Adria_Rae_finally_gets_the#13&gid=1&pid=14"
         ];
 
         var oui = bien[Math.floor(Math.random() * bien.length)];
