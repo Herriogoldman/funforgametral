@@ -195,6 +195,10 @@ bot.on('message', message => {
         message.channel.send(bien_embed)
     };
     
+    if (message.content === 'Moyenne'){
+        message.channel.send('https://www.scolinfo.net/Default.aspx')
+    };
+    
     if (message.content.includes('Fils de chien')){
         message.channel.send('Fils de pute')
     };
