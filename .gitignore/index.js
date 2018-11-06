@@ -195,8 +195,12 @@ bot.on('message', message => {
         message.channel.send(bien_embed)
     };
     
-    if (message.content === 'Bon retour parmi nous fils de chien'){
-        message.channel.send('Merci fils de pute')
+    if (message.content.includes('Fils de chien')){
+        message.channel.send('Fils de pute')
+    };
+    
+    if (message.content.includes('fils de chien')){
+        message.channel.send('Fils de pute')
     };
     
     if (message.content === 'Bonjour le bot !'){
