@@ -602,7 +602,7 @@ bot.on('message', message => {
         message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez de continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
     };
 
-    if (message.content === 'j2'){
+    if (message.content === 'j1'){
         var jun = jun + 1;
     };
 
