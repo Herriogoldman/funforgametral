@@ -397,4 +397,41 @@ bot.on('message', message => {
     if (message.content === 'Bisous'){
         message.channel.send('Bisous poutou \ud83d\ude17')
     };
+    
+    if (message.content === '&Debut du game'){
+        message.channel.send('Debut du jeu, combien de joueurs ?')
+        if (message.content === '2'){
+            message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "Go image" pour jouer.')
+            while (message.content !== '&Fin du game'){
+                var j1 == 0;
+                var j2 == 0;
+                if (message.content === 'Go image'){
+                    var bien_embed = new Discord.RichEmbed()
+                    .setImage(oui)
+                    .setTitle('Joueur 1')
+                    message.channel.send(bien_embed)
+                    
+                    var bien_embed = new Discord.RichEmbed()
+                    .setImage(oui)
+                    .setTitle('Joueur 2')
+                    message.channel.send(bien_embed)
+                    
+                    message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez de continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
+                    
+                    var j1 == 0;
+                    var j2 == 0;
+                    
+                    if (message.content === 'j1'){
+                        var j1 += 1;
+                    };
+                    
+                    if (message.content === 'j2'){
+                        var j2 += 1;
+                    };
+                };
+            };
+        };
+            
+        message.channel.send('Fin du game ! Voici les scores : Joueur 1 :' + j1 'Joueur 2 :' + j2 'Bien joué au gagnant !')
+    };    
 });
