@@ -604,13 +604,9 @@ bot.on('message', message => {
 
     if (message.content === 'j1'){
         var jun = jun + 1;
-    };
-
-    if (message.content === 'j2'){
+    } else if (message.content === 'j2'){
         var jdeux = jdeux + 1;
-    };
-
-    if (message.content === '&Fin du game'){
+    } else if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun ,'Joueur 2 :' + jdeux ,'Bien joué au gagnant !')
     };
 
