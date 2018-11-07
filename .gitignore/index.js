@@ -601,11 +601,12 @@ bot.on('message', message => {
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
         var jun = Number(0);
         var jdeux = Number(0);
+        var un = Number(1);
     } else if (message.content === 'j1'){
-        var jun = Number(jun + 1);
+        var jun = Number(jun + un);
         message.channel.send('Cool')
     } else if (message.content === 'j2'){
-        var jdeux = Number(jdeux + 1);
+        var jdeux = Number(jdeux + un);
         message.channel.send('Cool')
     } else if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
