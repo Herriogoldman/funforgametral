@@ -399,8 +399,8 @@ bot.on('message', message => {
     };
     
     if (message.content === '&Debut du game'){
-        var j1 == 0;
-        var j2 == 0;
+        var j1 = 0;
+        var j2 = 0;
 
         message.channel.send('Debut du jeu, combien de joueurs ?')
         
