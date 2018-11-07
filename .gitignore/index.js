@@ -399,15 +399,14 @@ bot.on('message', message => {
     };
     
     if (message.content === '&Debut du game'){
-        var j1 = 0;
-        var j2 = 0;
-
-        message.channel.send('Debut du jeu, combien de joueurs ?')
+    var j1 = 0;
+    var j2 = 0;
+    message.channel.send('Debut du jeu, combien de joueurs ?')
         
         if (message.content === '2'){
-            
+
             var bien = [
-            
+
                 "http://img.over-blog-kiwi.com/0/62/06/01/20140701/ob_03acc5_les-plus-belles-femmes-nues-de-l-ete-4.jpg",
                 "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
                 "https://www.tout-bon.com/newpics/40106.jpg",
@@ -584,36 +583,37 @@ bot.on('message', message => {
             ];
 
             var oui = bien[Math.floor(Math.random() * bien.length)];
-            
+
             message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "Go image" pour jouer.')
             while (message.content !== '&Fin du game'){
                 if (message.content === 'Go image'){
-                    
+
                     var bien_embed = new Discord.RichEmbed()
                     .setImage(oui)
                     .setTitle('Joueur 1')
                     message.channel.send(bien_embed)
-                    
+
                     var bien_embed = new Discord.RichEmbed()
                     .setImage(oui)
                     .setTitle('Joueur 2')
                     message.channel.send(bien_embed)
-                    
+
                     message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez de continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
-                    
-                    var j1 == 0;
-                    var j2 == 0;
-                    
+
+                    var j1 = 0;
+                    var j2 = 0;
+
                     if (message.content === 'j1'){
-                        var j1 += 1;
+                        var j1 = j1 + 1;
                     };
-                    
+
                     if (message.content === 'j2'){
-                        var j2 += 1;
+                        var j2 = j1 + 1;
                     };
                 };
             };
         };
-        message.channel.send('Fin du game ! Voici les scores : Joueur 1 :' + j1 'Joueur 2 :' + j2 'Bien joué au gagnant !')
-    };   
+        message.channel.send('Fin du game ! Voici les scores : Joueur 1 :' + j1 ,'Joueur 2 :' + j2 ,'Bien joué au gagnant !')
+    };
+    
 });
