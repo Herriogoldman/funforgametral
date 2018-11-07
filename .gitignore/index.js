@@ -405,7 +405,7 @@ bot.on('message', message => {
     };
 
     if (message.content === '&2'){
-
+        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image" pour jouer.')
         var bien2 = [
 
             "http://img.over-blog-kiwi.com/0/62/06/01/20140701/ob_03acc5_les-plus-belles-femmes-nues-de-l-ete-4.jpg",
@@ -585,7 +585,7 @@ bot.on('message', message => {
 
         var oui2 = bien[Math.floor(Math.random() * bien.length)];
 
-        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image" pour jouer.')
+        
     };
 
     if (message.content === '&Go image'){
