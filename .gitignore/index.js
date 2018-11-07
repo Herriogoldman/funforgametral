@@ -599,14 +599,14 @@ bot.on('message', message => {
     
     if (message.content === '&Debut du game'){    
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
-        var jun = Number(0);
-        var jdeux = Number(0);
-        var un = Number(1);
+        var jun = 1;
+        var jdeux = 1;
+        var un = 1;
     } else if (message.content === 'j1'){
-        jun = Number(jun + un);
+        jun = parseInt(jun) + parseInt(un);
         message.channel.send('Cool')
     } else if (message.content === 'j2'){
-        jdeux = Number(jdeux + un);
+        jdeux = parseInt(jdeux) + parseInt(un);
         message.channel.send('Cool')
     } else if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
