@@ -8,6 +8,9 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
+var jun;
+var jdeux;
+
 bot.on('message', message => {  
     if (message.content.startsWith ("sendimages")){
         var bien = [
