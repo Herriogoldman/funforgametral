@@ -605,17 +605,17 @@ bot.on('message', message => {
     if (message.content === 'j1'){
         jun == jun + 1;
         message.channel.send('Cool')
-    };
         
     if (message.content === 'j2'){
         jdeux == jdeux + 1;
         message.channel.send('Cool')
-    };
         
     if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
         message.channel.send('                                Joueur 2 :' + jdeux)
         message.channel.send('Bien joué au gagnant !')
+    };
+    };
     };
     };
 });
