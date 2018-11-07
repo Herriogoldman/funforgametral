@@ -405,8 +405,11 @@ bot.on('message', message => {
     };
 
     if (message.content === '&2'){
-        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image" pour jouer.')
-        var bien2 = [
+        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image" pour jouer.')        
+    };
+
+    if (message.content === '&Go image'){
+                var bien2 = [
 
             "http://img.over-blog-kiwi.com/0/62/06/01/20140701/ob_03acc5_les-plus-belles-femmes-nues-de-l-ete-4.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
@@ -584,12 +587,7 @@ bot.on('message', message => {
         ];
 
         var oui2 = bien[Math.floor(Math.random() * bien.length)];
-
         
-    };
-
-    if (message.content === '&Go image'){
-
         var bien2_embed = new Discord.RichEmbed()
         .setImage(oui2)
         .setTitle('Joueur 1')
@@ -601,9 +599,6 @@ bot.on('message', message => {
         message.channel.send(bien3_embed)
 
         message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez de continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
-
-        var j1 = 0;
-        var j2 = 0;
     };
 
     if (message.content === 'j1'){
