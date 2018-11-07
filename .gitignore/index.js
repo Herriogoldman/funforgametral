@@ -398,10 +398,10 @@ bot.on('message', message => {
         message.channel.send('Bisous poutou \ud83d\ude17')
     };
     
-    if (message.content === '&Debut du game'){
-    var j1 = 0;
-    var j2 = 0;
-    message.channel.send('Debut du jeu, combien de joueurs ?')
+    if (message.content === '&Debut du game'){    
+        message.channel.send('Debut du jeu, combien de joueurs ?')  
+        var j1 = 0;
+        var j2 = 0;
         
         if (message.content === '2'){
 
