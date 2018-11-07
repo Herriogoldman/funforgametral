@@ -603,10 +603,10 @@ bot.on('message', message => {
         var jdeux =new Number(0);
         var un =new Number(1);
     } else if (message.content === 'j1'){
-        var jun = Number(jun + un);
+        jun = Number(jun + un);
         message.channel.send('Cool')
     } else if (message.content === 'j2'){
-        var jdeux = Number(jdeux + un);
+        jdeux = Number(jdeux + un);
         message.channel.send('Cool')
     } else if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
