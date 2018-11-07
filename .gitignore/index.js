@@ -587,6 +587,7 @@ bot.on('message', message => {
         ];
 
         var ouid = biend[Math.floor(Math.random() * biend.length)];
+        var ouit = biend[Math.floor(Math.random() * biend.lenght)];
         
         var biend_embed = new Discord.RichEmbed()
         .setImage(ouid)
@@ -594,7 +595,7 @@ bot.on('message', message => {
         message.channel.send(biend_embed)
 
         var biend_embed = new Discord.RichEmbed()
-        .setImage(ouid)
+        .setImage(ouit)
         .setTitle('Joueur 2')
         message.channel.send(biend_embed)
 
