@@ -400,8 +400,8 @@ bot.on('message', message => {
     
     if (message.content === '&Debut du game'){    
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
-        var jun = new Number (0);
-        var jdeux = new Number (0);
+        var jun = Number(0);
+        var jdeux = Number(0);
     };
 
     if (message.content === '&2'){
@@ -604,12 +604,12 @@ bot.on('message', message => {
 
     if (message.content === 'j1'){
         var jun = Number(jun + 1);
+        message.channel.send('Cool')
     } else if (message.content === 'j2'){
         var jdeux = Number(jdeux + 1);
+        message.channel.send('Cool')
     } else if (message.content === '&Fin du game'){
         message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun ,'Joueur 2 :' + jdeux ,'Bien joué au gagnant !')
-        var jun = new Number (0);
-        var jdeux = new Number (0);
     };
 
 });
