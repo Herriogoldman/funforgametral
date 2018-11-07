@@ -601,16 +601,19 @@ bot.on('message', message => {
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
         var jun = 0;
         var jdeux = 0;
-    } else if (message.content === 'j1'){
-        jun = jun + 1;
-        message.channel.send('Cool')
-    } else if (message.content === 'j2'){
-        jdeux = jdeux + 1;
-        message.channel.send('Cool')
-    } else if (message.content === '&Fin du game'){
-        message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
-        message.channel.send('                                Joueur 2 :' + jdeux)
-        message.channel.send('Bien joué au gagnant !')
+        if (message.content === 'j1'){
+            jun = jun + 1;
+            message.channel.send('Cool')
+        };
+        if (message.content === 'j2'){
+            jdeux = jdeux + 1;
+            message.channel.send('Cool')
+        };
+        if (message.content === '&Fin du game'){
+            message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
+            message.channel.send('                                Joueur 2 :' + jdeux)
+            message.channel.send('Bien joué au gagnant !')
+        };
     };
 
 });
