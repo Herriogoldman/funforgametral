@@ -608,7 +608,9 @@ bot.on('message', message => {
         var jdeux = Number(jdeux + 1);
         message.channel.send('Cool')
     } else if (message.content === '&Fin du game'){
-        message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun ,'Joueur 2 :' + jdeux ,'Bien joué au gagnant !')
+        message.channel.send('Fin du jeu ! Voici les scores : Joueur 1 :' + jun)
+        message.channel.send('                                Joueur 2 :' + jdeux)
+        message.channel.send('Bien joué au gagnant !')
     };
 
 });
