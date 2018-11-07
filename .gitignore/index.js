@@ -601,8 +601,12 @@ bot.on('message', message => {
 
         message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez de continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
     };
-
-    if (message.content === 'j1'){
+    
+    if (message.content === '&Debut du game'){    
+        message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
+        var jun = Number(0);
+        var jdeux = Number(0);
+    } else if (message.content === 'j1'){
         var jun = Number(jun + 1);
         message.channel.send('Cool')
     } else if (message.content === 'j2'){
