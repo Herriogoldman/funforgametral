@@ -8,9 +8,6 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
-var jun = 0;
-var jdeux = 0;
-
 bot.on('message', message => {  
     if (message.content.startsWith ("sendimages")){
         var bien = [
@@ -607,11 +604,11 @@ bot.on('message', message => {
     };
     
     if (message.content === 'j1'){
-        jun = jun + 1;
+        jun == jun + 1;
         message.channel.send('Cool')
     };
     if (message.content === 'j2'){
-        jdeux = jdeux + 1;
+        jdeux == jdeux + 1;
         message.channel.send('Cool')
     };
     if (message.content === '&Fin du game'){
