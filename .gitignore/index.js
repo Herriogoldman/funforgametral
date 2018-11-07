@@ -398,11 +398,6 @@ bot.on('message', message => {
         message.channel.send('Bisous poutou \ud83d\ude17')
     };
     
-    if (message.content === '&Debut du game'){    
-        message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')  
-        var jun = Number(0);
-        var jdeux = Number(0);
-    };
 
     if (message.content === '&2'){
         message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image" pour jouer.')        
