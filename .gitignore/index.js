@@ -598,19 +598,21 @@ bot.on('message', message => {
     };
     
     function f() {
-        if (message.content === '&Debut du game'){
-            message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
-            var j1 = 0;
-        };
-        if (message.content === "j1"){
-            j1 = j1 + 1;
-        };
-        if (message.content === '&Fin du game'){
-            message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
-        };    
+        var j1
     };
-        if (message.content === '&3'){
-        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 3" pour jouer.')        
+    if (message.content === '&Debut du game'){
+        message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
+        f = 0;
+    };
+    if (message.content === "j1"){
+        j1 = j1 + 1;
+    };
+    if (message.content === '&Fin du game'){
+        message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
+    };    
+
+    if (message.content === '&3'){
+    message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 3" pour jouer.')        
     };
 
     if (message.content === '&Go image 3'){
