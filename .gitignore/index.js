@@ -596,17 +596,21 @@ bot.on('message', message => {
 
         message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
     };
+    function bite(){
+        var j1 = 0;
+    };
     
-    var j1 = 0;
     if (message.content === '&Debut du game'){
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
     };
     if (message.content === "j1"){
-        var j1 = j1 + 1;
+        bite(){
+        j1 = j1 + 1;
+        };
     };
     if (message.content === '&Fin du game'){
+        bite();
         message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
-        j1 = 0;
     };    
 
     if (message.content === '&3'){
