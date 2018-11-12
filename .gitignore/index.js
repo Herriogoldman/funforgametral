@@ -10,7 +10,7 @@ bot.on('ready', () => {
 bot.login(process.env.TOKEN);
 
 bot.on('message', message => {  
-    var j1;
+    var j1 = 0;
     if (message.content.startsWith ("sendimages")){
         var bien = [
             
