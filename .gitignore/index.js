@@ -602,7 +602,7 @@ bot.on('message', message => {
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
     };
     if (message.content === "j1"){
-        var j1 = j1 + 1;
+        j1 = j1 + 1;
         message.channel.send(j1)
     };
     if (message.content === '&Fin du game'){
