@@ -605,6 +605,7 @@ bot.on('message', message => {
         j1 = j1 + 1;
     };
     if (message.content === '&Fin du game'){
+        j1 = 12
         message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
     };    
     
