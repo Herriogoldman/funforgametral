@@ -599,8 +599,10 @@ bot.on('message', message => {
     
     if (message.content === '&Debut du game'){
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
+        var j1 = 0;
+    } if else (message.content === "j1"){
+        j1 = j1 + 1;
     };
-    
     if (message.content === '&Fin du game'){
         message.channel.send("Fin du jeu. Bien joué au vainqueur (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
     };    
