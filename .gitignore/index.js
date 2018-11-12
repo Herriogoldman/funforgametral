@@ -604,7 +604,7 @@ bot.on('message', message => {
         j1 = j1 + 1;
     };
     if (message.content === '&Fin du game'){
-        message.channel.send("Fin du jeu. Bien joué au vainqueur (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
+        message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
     };    
     
         if (message.content === '&3'){
