@@ -399,6 +399,10 @@ bot.on('message', message => {
         message.channel.send('Bisous poutou \ud83d\ude17')
     };
     
+    if (message.content === 'Waw'){
+        message.channel.send("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2uPLoA0N6ZI0m2L2EfyMCZVjnKgbGa3-Yv4WMUmW8DuYARKb")
+    };
+    
 
     if (message.content === '&2'){
         message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 2" pour jouer.')        
