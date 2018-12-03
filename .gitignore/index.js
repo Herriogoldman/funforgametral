@@ -438,7 +438,7 @@ bot.on('message', message => {
         };
     };
     
-    mafonction()
+    mafonction();
         
     if (message.content === '&Fin du game'){
         message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
