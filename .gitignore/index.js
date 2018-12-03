@@ -433,7 +433,7 @@ bot.on('message', message => {
     function mafonction() {     
         var j1 = 0
         if (message.content === "j1"){
-            j1 = j1 + 1;
+            global j1 = j1 + 1;
             message.channel.send(j1)
         };
     };
