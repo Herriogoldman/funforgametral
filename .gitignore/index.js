@@ -430,15 +430,7 @@ bot.on('message', message => {
     if (message.content === '&Debut du game'){
         message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
     };
-    function mafonction() {     
-        var j1 = 0
-        if (message.content === "j1"){
-            global j1 = j1 + 1;
-            message.channel.send(j1)
-        };
-    };
     
-    mafonction();
         
     if (message.content === '&Fin du game'){
         message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
