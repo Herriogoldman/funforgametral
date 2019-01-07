@@ -1,4 +1,6 @@
 const Discord = require('discord.js');
+const j1 = require('J1')
+const j2 = require('J2')
 
 var bot = new Discord.Client();
 
@@ -435,7 +437,11 @@ bot.on('message', message => {
     if (message.content === '&Fin du game'){
         message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
     };    
-
+    
+    if (message.content === 'j1'){
+        message.channel.send(j1)
+    };
+    
     if (message.content === '&3'){
     message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 3" pour jouer.')        
     };
