@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-
+const Joueur1 = require('funforgametral/.gitignore/j1')
+const Joueur2 = require('funforgametral/.gitignore/j2')
 var bot = new Discord.Client();
 
 bot.on('ready', () => {
