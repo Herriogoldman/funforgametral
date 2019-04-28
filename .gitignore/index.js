@@ -277,7 +277,7 @@ bot.on('message', message => {
     };
     
     if (message.content === 'aide'){
-        message.channel.send('Voilà les différentes commandes :\n - MDR ne doit pas être zinzolé, Ah ! Dommage !\n - Il se pourrait que "Ce qui" et "veut dire ?" rassemblés mettent en colère le bot ! Ça et les insultes liées aux génitrices !\n - Chibre ?\n - Pour les fameuses photos, faire "sendimages" (AUTORISE SEULEMENT DANS LE SALON DEDIÉ) !')
+        message.channel.send('Voilà les différentes commandes :\n - MDR ne doit pas être zinzolé, Ah ! Dommage !\n - Il se pourrait que "Ce qui" et "veut dire ?" rassemblés mettent en colère le bot ! Ça et les insultes liées aux génitrices !\n - Chibre ?\n - Pour les fameuses photos, faire "sendimages" (AUTORISÉ SEULEMENT DANS LE SALON DEDIÉ) !')
     };
     
     if (message.content.includes('Ce qui veut dire ?')){
