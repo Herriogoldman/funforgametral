@@ -200,10 +200,6 @@ bot.on('message', message => {
         message.channel.send('https://www.scolinfo.net/Default.aspx')
     };
     
-    if (message.content === '12'){
-        message.channel.send('E-GREC !!!')
-    };
-    
 
     if (message.content.includes('zinzolé')){
         var verbes = [
@@ -322,104 +318,6 @@ bot.on('message', message => {
     
     if (message.content === 'Bisous'){
         message.channel.send('Bisous poutou \ud83d\ude17')
-    };
-    
-    if (message.content === 'Waw'){
-        message.channel.send("https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTS2uPLoA0N6ZI0m2L2EfyMCZVjnKgbGa3-Yv4WMUmW8DuYARKb")
-    };
-    
-
-    if (message.content === '&2'){
-        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 2" pour jouer.')        
-    };
-
-    if (message.content === '&Go image 2'){
-              
-        var ouid = biend[Math.floor(Math.random() * biend.length)];
-        var ouit = biend[Math.floor(Math.random() * biend.length)];
-        
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouid)
-        .setTitle('Joueur 1')
-        message.channel.send(biend_embed)
-
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouit)
-        .setTitle('Joueur 2')
-        message.channel.send(biend_embed)
-
-        message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1 ou j2). Vous pouvez continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
-    };
-    
-   
-    if (message.content === '&Debut du game'){
-        message.channel.send('Debut du jeu, combien de joueurs ? (Rajouter "&" devant le chiffre et sans espace)')
-    };
-    
-        
-    if (message.content === '&Fin du game'){
-        message.channel.send("Fin du jeu. Bien joué au vainqueur " + j1 + " (Là le bot est censé afficher qui est le vainqueur mais j'ai galéré 2h pour rien trouver au final dsl)")
-    };    
-    
-    
-    if (message.content === '&3'){
-    message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 3" pour jouer.')        
-    };
-
-    if (message.content === '&Go image 3'){             
-
-        var ouid = biend[Math.floor(Math.random() * biend.length)];
-        var ouit = biend[Math.floor(Math.random() * biend.length)];
-        var ouiq = biend[Math.floor(Math.random() * biend.length)];
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouid)
-        .setTitle('Joueur 1')
-        message.channel.send(biend_embed)
-
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouit)
-        .setTitle('Joueur 2')
-        message.channel.send(biend_embed)
-        
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouiq)
-        .setTitle('Joueur 3')
-        message.channel.send(biend_embed)
-
-        message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1, j2...). Vous pouvez continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
-    };
-    
-        if (message.content === '&4'){
-        message.channel.send('Très bien, définissez un chiffre différent entre 1 et 2 pour chacun de vous. Faites la commande "&Go image 4" pour jouer.')        
-    };
-
-    if (message.content === '&Go image 4'){            
-
-        var ouid = biend[Math.floor(Math.random() * biend.length)];
-        var ouit = biend[Math.floor(Math.random() * biend.length)];
-        var ouiq = biend[Math.floor(Math.random() * biend.length)];
-        var ouic = biend[Math.floor(Math.random() * biend.length)];
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouid)
-        .setTitle('Joueur 1')
-        message.channel.send(biend_embed)
-
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouit)
-        .setTitle('Joueur 2')
-        message.channel.send(biend_embed)
-        
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouiq)
-        .setTitle('Joueur 3')
-        message.channel.send(biend_embed)
-        
-        var biend_embed = new Discord.RichEmbed()
-        .setImage(ouic)
-        .setTitle('Joueur 4')
-        message.channel.send(biend_embed)
-        
-        message.channel.send("Vous pouvez maintenant votez pour l'image que vous préferez en envoyant le chiffre du joueur (j1, j2...). Vous pouvez continuez à jouer autant de temps que vous le souhaitez. Dès que vous voulez que le jeu se finnisse faites '&Fin du game'")
     };
     
 });
