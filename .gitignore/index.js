@@ -336,6 +336,7 @@ bot.on('message', message => {
         var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
         var ah_embed = new Discord.RichEmbed()
         .setImage(ah)
+        message.delete()
         message.channel.send(ah_embed)
     };
     
