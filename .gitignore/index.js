@@ -8,6 +8,15 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
+bot.on('message',function(message){
+    if (
+        includesRealy(message,'y') ||
+        includesRealy(message,'e-grec')
+    ){
+        message.channel.send('12 !!!')
+    }
+};
+
 bot.on('message', message => {  
     var biend = [
 
@@ -200,64 +209,16 @@ bot.on('message', message => {
         message.channel.send('https://www.scolinfo.net/Default.aspx')
     };
     
-    if (message.content.includes('Fils de chien')){
-        message.channel.send('Fils de pute')
-    };
-    
-    if (message.content.includes('fils de chien')){
-        message.channel.send('Fils de pute')
-    };
-    
-    if (message.content === 'Bonjour le bot !'){
-        message.reply('Salut mec, ça va tu passes une bonne journée ?')
-    };
-    
-    if (message.content === 'Ca va le bot ?'){
-        message.reply("Ah bah pas ouf, en ce moment y'a vraiment plus de saisons !")
-    };
-    
-    if (message.content === 'Ça va le bot ?'){
-        message.reply("Ah bah pas ouf, en ce moment y'a vraiment plus de saisons !")
-    };
-    
     if (message.content === '12'){
         message.channel.send('E-GREC !!!')
     };
     
-    if (message.content === 'y'){
-        message.channel.send('12 !!!')
-    };
-    
-    if (message.content === 'Y'){
-        message.channel.send('12 !!!')
-    };
-    
-    if (message.content === 'e-grec'){
-        message.channel.send('12 !!!')
-    };
-    
-    if (message.content === 'E-grec'){
-        message.channel.send('12 !!!')
-    };
-    
-    if (message.content === 'E-GREC'){
-        message.channel.send('12 !!!')
-    };
-    
-    if (message.content === 'oui'){
-        message.channel.send('fi')
-    };
-    
-    if (message.content === 'OUI'){
-        message.channel.send('FI')
-    };
-    
-    if (message.content === 'Oui'){
-        message.channel.send('Fi')
-    };
-    
-    if (message.content === 'Celle'){
-        message.channel.send('Oh !')
+    function includesRealy(msg,str){
+        return(
+            msg.content.includes(str) ||
+            msg.content.includes(str.toUpperCase()) ||
+            msg.content.includes(str.toLowerCase())
+        )
     };
     
     if (message.content.includes('zinzolé')){
