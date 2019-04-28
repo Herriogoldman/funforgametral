@@ -356,27 +356,6 @@ bot.on('message', message => {
         message.channel.send('Trop drôle !')
     };
     
-    if (message.content.includes('Albin')){
-        message.channel.send("Albdeux, Albtrois, Albquattre, Albcinq, Albsix")
-        message.channel.send('Ordonnées !')        
-    };
-    
-    if (message.content.includes('Loïc')){
-        message.channel.send('Loic pas logique, ya pas de g !')
-    };
-    
-    if (message.content.includes('Thomas')){
-        message.channel.send('Thommage !')
-    };
-    
-    if (message.content.includes('Ludo ')){
-        message.channel.send('VIC')
-    };
-    
-    if (message.content.includes('Ronan')){
-        message.channel.send('RHOO NAN, pas un croche-pattes !')
-    };
-    
     if (message.content === 'Chibre'){
         var chibre = [
             "250 kg de chibre, ça te fait pas peur ?",
