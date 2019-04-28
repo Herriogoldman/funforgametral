@@ -337,7 +337,7 @@ bot.on('message', message => {
         var ah_embed = new Discord.RichEmbed()
         .setImage(ah)
         message.delete()
-        message.channel.send(ah_embed)
+        message.reply(ah_embed)
     };
     
     if (message.content === 'aide'){
