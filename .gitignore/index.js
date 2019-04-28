@@ -8,6 +8,15 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
+function includesRealy(msg,str){
+    return(
+        msg.content.includes(str) ||
+        msg.content.includes(str.toUpperCase()) ||
+        msg.content.includes(str.toLowerCase())
+    )
+};
+    
+
 bot.on('message',function(message){
     if (
         includesRealy(message,'y') ||
@@ -213,14 +222,7 @@ bot.on('message', message => {
         message.channel.send('E-GREC !!!')
     };
     
-    function includesRealy(msg,str){
-        return(
-            msg.content.includes(str) ||
-            msg.content.includes(str.toUpperCase()) ||
-            msg.content.includes(str.toLowerCase())
-        )
-    };
-    
+
     if (message.content.includes('zinzolé')){
         var verbes = [
             "Cueillir",           
