@@ -19,8 +19,8 @@ function includesRealy(msg,str){
 
 bot.on('message',function(message){
     if (
-        includesRealy(message,'y') ||
-        includesRealy(message,'e-grec')
+       includesRealy(message,'y') ||
+       includesRealy(message,'e-grec')
     ){
         message.channel.send('12 !!!')
     }
