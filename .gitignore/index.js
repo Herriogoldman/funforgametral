@@ -195,11 +195,6 @@ bot.on('message', message => {
         .setTitle('Tiens tes nudes \ud83d\ude09')
         message.channel.send(bien_embed)
     };
-    
-    if (message.content === 'Moyenne'){
-        message.channel.send('https://www.scolinfo.net/Default.aspx')
-    };
-    
 
     if (message.content.includes('zinzolé')){
         var verbes = [
@@ -270,7 +265,7 @@ bot.on('message', message => {
     };
     
     if (message.content === 'Dommage'){
-        message.channel.send("A ça !")
+        message.channel.send("À ça !")
     };
     
     if (message.content === 'Ah !'){
