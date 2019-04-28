@@ -8,24 +8,6 @@ bot.on('ready', () => {
 
 bot.login(process.env.TOKEN);
 
-function includesRealy(msg,str){
-    return(
-        msg.content.includes(str) ||
-        msg.content.includes(str.toUpperCase()) ||
-        msg.content.includes(str.toLowerCase())
-    )
-};
-    
-
-bot.on('message',function(message){
-    if (
-       includesRealy(message,'y') ||
-       includesRealy(message,'e-grec')
-    ){
-        message.channel.send('12 !!!')
-    }
-};
-
 bot.on('message', message => {  
     var biend = [
 
