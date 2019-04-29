@@ -2,10 +2,6 @@ const Discord = require('discord.js');
 
 var bot = new Discord.Client();
 
-bot.on('ready', () => {
-    console.log("Bot Ready !");
-});
-
 bot.login(process.env.TOKEN);
 
 bot.on('message', message => {  
@@ -315,4 +311,7 @@ bot.on('message', message => {
         message.channel.send('Bisous poutou \ud83d\ude17')
     };
     
+    if (message.content === 'Photo'){
+        message.channel.send(C:\Users\loicl.DESKTOP-V0JC8LF\Documents\Overwatch\ScreenShots\Overwatch\test)
+    };
 });
