@@ -312,6 +312,6 @@ bot.on('message', message => {
     };
     
     if (message.content === 'Photo'){
-        message.channel.send(C:\Users\loicl.DESKTOP-V0JC8LF\Documents\Overwatch\ScreenShots\Overwatch\test)
+        message.channel.send(file="C:\Users\loicl.DESKTOP-V0JC8LF\Documents\Overwatch\ScreenShots\Overwatch\test")
     };
 });
