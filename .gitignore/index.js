@@ -1,4 +1,9 @@
 const Discord = require('discord.js');
+const low = require('lowdb')
+const FileSync = require('lowdb/adapters/FileSync')
+
+const adapter = new FileSync('database.json');
+const db = low(adapter);
 
 var bot = new Discord.Client();
 
@@ -309,9 +314,5 @@ bot.on('message', message => {
     
     if (message.content === 'Bisous'){
         message.channel.send('Bisous poutou \ud83d\ude17')
-    };
-    
-    if (message.content === 'Photo'){
-        message.channel.send(file="C:\Users\loicl.DESKTOP-V0JC8LF\Documents\Overwatch\ScreenShots\Overwatch\test")
     };
 });
