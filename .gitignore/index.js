@@ -3,7 +3,7 @@ import asyncio
 from random import*
 from discord.ext import commands
 client = discord.Client()
-TOKEN = client.login(proccess.env.TOKEN2)
+client.login(proccess.env.TOKEN2)
 
 @client.event
 async def on_ready():
@@ -238,8 +238,4 @@ async def on_message(message):
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
 
     
-
-
-
-client.run(TOKEN)
     
