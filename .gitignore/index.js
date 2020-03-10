@@ -3,7 +3,7 @@ import asyncio
 from random import*
 from discord.ext import commands
 client = discord.Client()
-client.login(proccess.env.TOKEN2)
+client.login(proccess.env.TOKEN)
 
 @client.event
 async def on_ready():
