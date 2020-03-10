@@ -237,5 +237,5 @@ async def on_message(message):
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
 
-    client.run(os.environ['TOKEN2'])
+    client.run(os.environ['TOKEN'])
     
