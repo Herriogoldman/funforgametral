@@ -1,4 +1,5 @@
 import discord
+import os
 import asyncio
 from random import*
 from discord.ext import commands
