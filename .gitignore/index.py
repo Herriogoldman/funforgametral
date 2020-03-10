@@ -204,28 +204,28 @@ async def on_message(message):
     if message.content.startswith('Joueurs :'):
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
-        f=open('nbjoueurs.txt','w')
+        f=open('https://github.com/Herriogoldman/funforgametral/.gitignore/'+nbjoueurs+'.txt','w')
         f.write(nbjoueurs)
         f.close()
         for i in range(int(nbjoueurs)+1):
-            open('score'+str(i)+'.txt','w').write('0')
-    nbjoueurs=int(open('nbjoueurs.txt','r').readline())
+            open('https://github.com/Herriogoldman/funforgametral/.gitignore/score'+str(i)+'.txt','w').write('0')
+    nbjoueurs=int(open('https://github.com/Herriogoldman/funforgametral/.gitignore/'+nbjoueurs+'.txt','r').readline())
     for i in range(nbjoueurs+1):
         if message.content=='!'+str(i):  
-            f=open('score'+str(i)+'.txt','r')
+            f=open('https://github.com/Herriogoldman/funforgametral/.gitignore/score'+str(i)+'.txt','r')
             score=round(float(f.readline()))
             f.close()
             score+=1
-            f=open('score'+str(i)+'.txt','w')
+            f=open('https://github.com/Herriogoldman/funforgametral/.gitignore/score'+str(i)+'.txt','w')
             f.write(str(score))
             f.close()
         if message.content=='Score '+str(i):
-            await message.channel.send(open('score'+str(i)+'.txt','r').readline())
+            await message.channel.send(open('https://github.com/Herriogoldman/funforgametral/.gitignore/score'+str(i)+'.txt','r').readline())
 
     if message.content=='Jeu fini':
         a=0
         for i in range(nbjoueurs+1):
-            score=int(open('score'+str(i)+'.txt','r').readline())
+            score=int(open('https://github.com/Herriogoldman/funforgametral/.gitignore/score'+str(i)+'.txt','r').readline())
             if score>a:
                 a=score
                 joueur=i
