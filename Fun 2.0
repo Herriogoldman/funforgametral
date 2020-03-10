@@ -14,4 +14,4 @@ async def on_message(message):
         await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
 
 
-bot.run(TOKEN)
+bot.login(TOKEN)
