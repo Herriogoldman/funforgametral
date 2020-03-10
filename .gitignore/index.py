@@ -230,7 +230,7 @@ async def on_message(message):
                 a=score
                 joueur=i
                 scorefinal=score
-            elif score==a:
+            elif score==a and a!=0:
                 joueur2=i
         if joueur2:
             await message.channel.send('Bravo aux joueurs '+str(joueur)+' et '+str(joueur2)+' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
