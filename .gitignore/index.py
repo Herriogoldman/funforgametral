@@ -224,6 +224,7 @@ async def on_message(message):
 
     if message.content=='Jeu fini':
         a=0
+        egalite=False
         for i in range(nbjoueurs+1):
             score=int(open('score'+str(i)+'.txt','r').readline())
             if score>a:
@@ -232,7 +233,8 @@ async def on_message(message):
                 scorefinal=score
             elif score==a and a!=0:
                 joueur2=i
-        if joueur2:
+                egalite=True
+        if egalite:
             await message.channel.send('Bravo aux joueurs '+str(joueur)+' et '+str(joueur2)+' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
