@@ -1,12 +1,14 @@
-const Discord = require('discord.js');
+import discord
+import asyncio
+from random import*
+from discord.ext import commands
+client = discord.Client()
 
-var bot = new Discord.Client();
+@client.event
+async def on_ready():
+    print("Bot en ligne")
 
-bot.login(process.env.TOKEN);
-
-bot.on('message', message => {  
-    var biend = [
-
+biend = [
             "http://img.over-blog-kiwi.com/0/62/06/01/20140701/ob_03acc5_les-plus-belles-femmes-nues-de-l-ete-4.jpg",
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
             "https://www.tout-bon.com/newpics/40106.jpg",
@@ -179,135 +181,60 @@ bot.on('message', message => {
             "https://i.ytimg.com/vi/pD9fAHo2wSw/maxresdefault.jpg",
             "https://www.pichunter.com/gallery/3651070/So...That_Makes_Us_Sisters_Scene#13&gid=1&pid=13",
             "https://www.pichunter.com/gallery/3661023/Chloe_Cherry_enters_the_shower#10&gid=1&pid=10",
-            "https://www.pichunter.com/gallery/3648684/Adria_Rae_finally_gets_the#13&gid=1&pid=14"
-        ];
-    
-    if (message.content.startsWith ("sendimages")){
-       
-        var oui = biend[Math.floor(Math.random() * biend.length)];
+            "https://www.pichunter.com/gallery/3648684/Adria_Rae_finally_gets_the#13&gid=1&pid=14"]
 
-        var bien_embed = new Discord.RichEmbed()
-        .setImage(oui)
-        .setTitle('Tiens tes nudes \ud83d\ude09')
-        message.channel.send(bien_embed)
-    };
 
-    if (message.content.includes('zinzolé')){
-        var verbes = [
-            "Cueillir",           
-            "Gérer",	           
-            "Acheter",                                  	          	                     	                   	                                                       	                                          	                     	                   	
-            "Recruter",
-            "Arranger",            	           	                                
-            "Juger"	,
-            "Réduire",                                	                                             	
-            "Réparer",                                                                                                         
-            "Elargir",
-            "Mettre en place",           
-            "Choisir" ,            	         
-            "Mettre en relation",     
-            "Saisir",                                         
-            "Schématiser",
-            "Collectionner"  ,           
-            "Montrer",	
-            "Séduire" ,                
-            "Étudier",
-            "Sélectionner" ,                 
-            "Négocier",
-            "Soutenir",
-            "Examiner",      
-            "Tenir",                                            	                                       
-            "Fabriquer",	                      
-            "Conseiller",	
-            "Faire"	,            
-            "Utiliser",            	
-            "Faire avancer",	           
-            "Valider"   ,        
-            "Contrôler"	,
-            "Faire découvrir",	
-            "Piloter",           
-            "Convaincre",
-            "Faire mémoriser",	           
-            "Vendre",
-            "Coordonner",
-            "Fidéliser"	,          
-            "Visualiser"  ,           
-            "Former"	,
-            "Préparer",
-            "Violer",
-            "Baiser",
-            "Sucer",
-            "Lecher",
-            "Monter",
-            "Sauter",
-            "Démonter",
-            "Charger",
-            "Planter",
-            "Fourrer",
-            "Soulever",
-            "Niquer",
-            "Enculer",
-            "Empaler",
-            "Piquer",
-            "Défoncer",
-            "Péter",
-            "Exploser",
-            "Pilonner",
-            "Vider"
-
-        ];       
-        var ok = verbes[Math.floor(Math.random() * verbes.length)];
-        message.channel.send("Ici le verbe Zinzoler = " + ok)
-    };
-    
-    if (message.content === 'Dommage'){
-        message.channel.send("À ça !")
-    };
-    
-    if (message.content === 'Ah !'){
-        var ah = "https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"
-        var ah_embed = new Discord.RichEmbed()
-        .setImage(ah)
-        message.delete()
-        message.reply(ah_embed)
-    };
-    
-    if (message.content === 'aide'){
-        message.channel.send('Voilà les différentes commandes :\n - MDR ne doit pas être zinzolé, Ah ! Dommage !\n - Il se pourrait que "Ce qui" et "veut dire ?" rassemblés mettent en colère le bot ! Ça et les insultes liées aux génitrices !\n - Chibre ?\n - Pour les fameuses photos, faire "sendimages" (AUTORISÉ SEULEMENT DANS LE SALON DEDIÉ) !\n - Bisous')
-    };
-    
-    if (message.content.includes('Ce qui veut dire ?')){
-        message.channel.send("La prochaine fois que tu me demandes ce qui veut dire, J'TE RETROUVE ET JE TE NIQUE TA MERE !")
-    };
-    
-    if (message.content.includes('ce qui veut dire ?')){
-        message.channel.send("La prochaine fois que tu me demandes ce qui veut dire, J'TE RETROUVE ET JE TE NIQUE TA MERE !")
-    };
-    
-    if (message.content.startsWith('MDR')){
-        message.channel.send('Trop drôle !')
-    };
-    
-    if (message.content === 'Chibre'){
-        var chibre = [
-            "250 kg de chibre, ça te fait pas peur ?",
-            "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
-            "Le matin je pense au chibre, le midi c'est chibre, le soir chibre, même la nuit quand je dors, c'est chibre",
-            "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
-            "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
-            "Parfois j'pense à rien, parfois j'pense au chibre",
-            "Attend une seconde... chibre"
-        ];
+@client.event
+async def on_message(message):
+    if(message.content=="Dis nous tout Fun 2.0"):
+        await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
         
-        var chibre2 = chibre[Math.floor(Math.random() * chibre.length)];
-        message.channel.send(chibre2)
-    };
+    if (message.content=="sendimages"):
+        i=randint(0,len(biend))
+        oui = biend[i]
+        bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
+        bien_embed.set_image(url=oui)
+        await message.channel.send(embed=bien_embed)
+
+    if message.content=='Début du jeu':
+        await message.channel.send('Commençons le jeu')
+        await message.channel.send('Combien de joueurs ?')
+
+    if message.content.startswith('Joueurs :'):
+        nbjoueurs=message.content[-1]
+        await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
+        f=open('nbjoueurs.txt','w')
+        f.write(nbjoueurs)
+        f.close()
+        for i in range(int(nbjoueurs)+1):
+            open('score'+str(i)+'.txt','w').write('0')
+    nbjoueurs=int(open('nbjoueurs.txt','r').readline())
+    for i in range(nbjoueurs+1):
+        if message.content=='!'+str(i):  
+            f=open('score'+str(i)+'.txt','r')
+            score=round(float(f.readline()))
+            f.close()
+            score+=1
+            f=open('score'+str(i)+'.txt','w')
+            f.write(str(score))
+            f.close()
+        if message.content=='Score '+str(i):
+            await message.channel.send(open('score'+str(i)+'.txt','r').readline())
+
+    if message.content=='Jeu fini':
+        a=0
+        for i in range(nbjoueurs+1):
+            score=int(open('score'+str(i)+'.txt','r').readline())
+            if score>a:
+                a=score
+                joueur=i
+                scorefinal=score
+            elif score==a:
+                joueur2=i
+        if joueur2:
+            await message.channel.send('Bravo aux joueurs '+str(joueur)+' et '+str(joueur2)+' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+        else:
+            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+
+    client.run(os.environ['TOKEN2'])
     
-    if (message.content.includes('TA MERE')){
-        message.reply('Elle a quoi ma mère batard ?')
-    };
-    
-    if (message.content === 'Bisous'){
-        message.channel.send('Bisous poutou \ud83d\ude17')
-    };
-});
