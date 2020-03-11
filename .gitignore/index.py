@@ -297,7 +297,7 @@ async def on_message(message):
             await message.channel.send(open('score'+str(i)+'.txt','r').readline())
 
     if message.content=='Jeu fini':
-        a=0
+        a=-1
         egalite=False
         for i in range(nbjoueurs+1):
             score=int(open('score'+str(i)+'.txt','r').readline())
