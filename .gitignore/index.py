@@ -253,8 +253,7 @@ chibre = [
             "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
             "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
             "Parfois j'pense à rien, parfois j'pense au chibre",
-            "Attend une seconde... chibre"
-        ]
+            "Attend une seconde... chibre"]
 
 @client.event
 async def on_message(message):
@@ -310,7 +309,7 @@ async def on_message(message):
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
             
-    if message.content.includes('zinzolé'):
+    if 'zinzolé' in message.content:
         aleatoire=randint(0,len(verbes))
         verbe=verbes[aleatoire]
         await message.channel.send("Ici le verbe Zinzoler = "+verbe)
