@@ -184,6 +184,77 @@ biend = [
             "https://www.pichunter.com/gallery/3661023/Chloe_Cherry_enters_the_shower#10&gid=1&pid=10",
             "https://www.pichunter.com/gallery/3648684/Adria_Rae_finally_gets_the#13&gid=1&pid=14"]
 
+verbes = [
+            "Cueillir",           
+            "Gérer",	           
+            "Acheter",                                  	          	                     	                   	                                                       	                                          	                     	                   	
+            "Recruter",
+            "Arranger",            	           	                                
+            "Juger"	,
+            "Réduire",                                	                                             	
+            "Réparer",                                                                                                         
+            "Elargir",
+            "Mettre en place",           
+            "Choisir" ,            	         
+            "Mettre en relation",     
+            "Saisir",                                         
+            "Schématiser",
+            "Collectionner"  ,           
+            "Montrer",	
+            "Séduire" ,                
+            "Étudier",
+            "Sélectionner" ,                 
+            "Négocier",
+            "Soutenir",
+            "Examiner",      
+            "Tenir",                                            	                                       
+            "Fabriquer",	                      
+            "Conseiller",	
+            "Faire"	,            
+            "Utiliser",            	
+            "Faire avancer",	           
+            "Valider"   ,        
+            "Contrôler"	,
+            "Faire découvrir",	
+            "Piloter",           
+            "Convaincre",
+            "Faire mémoriser",	           
+            "Vendre",
+            "Coordonner",
+            "Fidéliser"	,          
+            "Visualiser"  ,           
+            "Former"	,
+            "Préparer",
+            "Violer",
+            "Baiser",
+            "Sucer",
+            "Lecher",
+            "Monter",
+            "Sauter",
+            "Démonter",
+            "Charger",
+            "Planter",
+            "Fourrer",
+            "Soulever",
+            "Niquer",
+            "Enculer",
+            "Empaler",
+            "Piquer",
+            "Défoncer",
+            "Péter",
+            "Exploser",
+            "Pilonner",
+            "Vider"]
+
+chibre = [
+            "250 kg de chibre, ça te fait pas peur ?",
+            "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
+            "Le matin je pense au chibre, le midi c'est chibre, le soir chibre, même la nuit quand je dors, c'est chibre",
+            "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
+            "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
+            "Parfois j'pense à rien, parfois j'pense au chibre",
+            "Attend une seconde... chibre"
+        ]
 
 @client.event
 async def on_message(message):
@@ -239,5 +310,26 @@ async def on_message(message):
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
             
+    if message.content.includes('zinzolé'):
+        aleatoire=randint(0,len(verbes))
+        verbe=verbes[aleatoire]
+        await message.channel.send("Ici le verbe Zinzoler = "+verbe)
+
+    if lower(message.content)=='Dommage':
+        await message.channel.send('A ça !')
+
+    if lower(message.content)=='ah !':
+        embed=discord.Embed(set_image(url="https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"))
+        await message.channel.send(embed=embed)
+
+    if lower(message.content)=='chibre':
+        i = randint(0,len(chibre))
+        chibre2=chibre[i]
+        await message.channel.send(chibre2)
+
+    if upper(message.content.includes)('TA MERE'):
+        await message.reply('Elle a quoi ma mère batard ?')    
+            
+        
 client.run(os.environ['TOKEN'])
     
