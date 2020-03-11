@@ -305,7 +305,7 @@ async def on_message(message):
                 a=score
                 joueur=i
                 scorefinal=score
-            elif score==a and a!=0:
+            elif score==a:
                 joueur2=i
                 egalite=True
         if egalite:
