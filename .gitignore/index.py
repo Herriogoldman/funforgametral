@@ -4,7 +4,6 @@ import asyncio
 from random import*
 from discord.ext import commands
 client = discord.Client()
-
 @client.event
 async def on_ready():
     print("Bot en ligne")
@@ -259,6 +258,9 @@ open('nbjoueurs.txt','w').write('0')
 
 @client.event
 async def on_message(message):
+    if message.author==client.user:
+        return
+    
     if(message.content=="Dis nous tout Fun 2.0"):
         await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
         
@@ -311,25 +313,26 @@ async def on_message(message):
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
             
-    if 'zinzolé' in message.content:
+    if 'zinzolé' in message.content.lower():
         aleatoire=randint(0,len(verbes))
         verbe=verbes[aleatoire]
         await message.channel.send("Ici le verbe Zinzoler = "+verbe)
 
-    if lower(message.content)=='Dommage':
+    if message.content.lower()=='dommage':
         await message.channel.send('A ça !')
 
-    if lower(message.content)=='ah !':
-        embed=discord.Embed(set_image(url="https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180"))
+    if message.content.lower()=='ah !':
+        embed=discord.Embed()
+        embed.set_image(url="https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180")
         await message.channel.send(embed=embed)
 
-    if lower(message.content)=='chibre':
+    if 'chibre' in message.content.lower():
         i = randint(0,len(chibre))
         chibre2=chibre[i]
         await message.channel.send(chibre2)
 
-    if upper(message.content.includes)('TA MERE'):
-        await message.reply('Elle a quoi ma mère batard ?')    
+    if 'ta mère' in message.content.lower():
+        await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
             
         
 client.run(os.environ['TOKEN'])
