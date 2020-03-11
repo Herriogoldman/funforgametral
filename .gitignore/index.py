@@ -255,6 +255,8 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
+open('nbjoueurs.txt','w').write('0')
+
 @client.event
 async def on_message(message):
     if(message.content=="Dis nous tout Fun 2.0"):
