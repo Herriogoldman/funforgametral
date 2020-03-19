@@ -305,7 +305,7 @@ async def on_message(message):
         open(str(message.author)+'.txt','a').write(message.content.lower()+' ')
     if message.content=='dossier':
         await message.channel.send(open(str(message.author)+'.txt','r').read())
-    if message.content=='dossier ' + str(user_id):
+    if message.content=='user':
         await message.channel.send(str(user_id))
 
     if message.content.startswith("Combien de fois j'ai dit le mot :"):
