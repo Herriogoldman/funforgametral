@@ -326,7 +326,7 @@ async def on_message(message):
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
 
-    if message.startswith("sendimages"):
+    if message.content.startswith("sendimages"):
         a=int(message.content[-1])
         oui = biend[a]
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
