@@ -182,6 +182,9 @@ biend = [
             "https://www.pichunter.com/gallery/3651070/So...That_Makes_Us_Sisters_Scene#13&gid=1&pid=13",
             "https://www.pichunter.com/gallery/3661023/Chloe_Cherry_enters_the_shower#10&gid=1&pid=10",
             "https://www.pichunter.com/gallery/3648684/Adria_Rae_finally_gets_the#13&gid=1&pid=14"]
+a=[]
+for i in range(0,len(biend)):
+    a+=[i]
 
 verbes = [
             "Cueillir",           
