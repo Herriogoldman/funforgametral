@@ -322,14 +322,15 @@ async def on_message(message):
     if(message.content=="Dis nous tout Fun 2.0"):
         await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
         
-    if (message.content=="sendimages"):
+    if message.content.startswith("sendimages"):
         i=randint(0,len(biend))
         oui = biend[i]
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
 
-    if (message.content=="sendimages" + str(a)):
+    if (message.content=="sendimages"):
+        a=int(message.content[-1])
         oui = biend[a]
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
         bien_embed.set_image(url=oui)
