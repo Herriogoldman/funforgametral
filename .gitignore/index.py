@@ -356,6 +356,7 @@ async def on_message(message):
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     sondage = False
     if message.content.startswith("Sondage :"):
+        message.channel.send(liste_emoji)
         sondage = True
     
     if sondage:
