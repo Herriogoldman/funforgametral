@@ -359,6 +359,6 @@ async def on_message(message):
         for i in liste_message:
             if i in liste_emoji:
                 await message.add_reaction(i)
-        await message.channel.send(liste_message)
+        
 client.run(os.environ['TOKEN'])
     
