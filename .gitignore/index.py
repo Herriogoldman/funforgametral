@@ -357,13 +357,13 @@ async def on_message(message):
     sondage = False
     if message.content.startswith("Sondage :"):
         sondage = True
-        await message.add_reaction("✅")
+        await message.add_reaction("✅🚫")
         await message.add_reaction("🚫")
       
     
     if sondage:
-        for i in liste_emoji:
-            if i in message.content:
-                await message.add_reaction(i)
+        for i in range(len(liste_emoji)):
+            if liste_emoji[i] in message.content:
+                await message.add_reaction(liste_emoji[i])
 client.run(os.environ['TOKEN'])
     
