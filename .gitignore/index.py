@@ -200,7 +200,7 @@ chibre = [
             "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
-
+liste_emoji = [":zero:",":one:",":two:",":three:",":four:",":five:",":six:",":seven:",":eight:",":nine:"]
 open('nbjoueurs.txt','w').write('0')
 
 def rec_mot(fichier,mot_cherché):
@@ -351,6 +351,11 @@ async def on_message(message):
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
     if message.content.startswith("Sondage :"):
+        msg=message.content
+        for i in liste_emoji:
+            if i in msg:
+                await message.add_reaction(i)
+            
         await message.add_reaction("✅")
         await message.add_reaction("🚫")
         
