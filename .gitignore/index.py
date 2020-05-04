@@ -8,7 +8,7 @@ client = discord.Client()
 async def on_ready():
     print("Bot en ligne")
     
- 
+emoj="😀 😁 😂 🤣 😃 😄 😅 😆 😉 😊 😋 😎 😍 😘 🥰 😗 😙 😚 ☺️ 🙂 🤗 🤩 🤔 🤨 😐 😑 😶 🙄 😏 😣 😥 😮 🤐 😯 😪 😫 😴 😌 😛 😜 😝 🤤 😒 😓 😔 😕 🙃 🤑 😲 ☹️ 🙁 😖 😞 😟 😤 😢 😭 😦 😧 😨 😩 🤯 😬 😰 😱 🥵 🥶 😳 🤪 😵 😡 😠 🤬 😷 🤒 🤕 🤢 🤮 🤧 😇 🤠 🤡 🥳 🥴 🥺 🤥 🤫 🤭 🧐 🤓 😈 👿 👹 👺 💀 👻 👽 🤖 💩 😺 😸 😹 😻 😼 😽 🙀 😿 😾" 
     
 biend = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
@@ -351,11 +351,16 @@ async def on_message(message):
 
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
-    
+    sondage = False
     if message.content.startswith("Sondage :"):
+        sondage = True
         await message.add_reaction("✅")
         await message.add_reaction("🚫")
         await message.channel.send(message.content)
-        
+    
+    if sondage:
+        for i in emoj:
+            if i in message.content:
+                await message.add_reaction(i)
 client.run(os.environ['TOKEN'])
     
