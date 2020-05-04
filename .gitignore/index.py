@@ -352,14 +352,18 @@ async def on_message(message):
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
+    sondage=False
+    
     if message.content.startswith("Sondage :"):
-        msg=message.content
+        global sondage
+        sondage=True
+        await message.add_reaction("✅")
+        await message.add_reaction("🚫")
+     
+    if sondage:
         for i in liste_emoji:
             if i in msg:
                 await message.add_reaction(i)
-            
-        await message.add_reaction("✅")
-        await message.add_reaction("🚫")
         
 client.run(os.environ['TOKEN'])
     
