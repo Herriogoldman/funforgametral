@@ -354,9 +354,9 @@ async def on_message(message):
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
-    if message.content=="Un avis le bot ?":
+    if message.content=="Un avis Fun ?":
         i=randint(0,len(emote))
-        message.channel.send(emote[i])
+        await message.channel.send(emote[i])
         
     sondage = False
     if message.content.startswith("Sondage :"):    
