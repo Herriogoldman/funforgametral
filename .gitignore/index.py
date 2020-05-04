@@ -354,7 +354,7 @@ async def on_message(message):
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
-    if message.content=="Un avis Fun ?":
+    if message.content=="Un avis le bot ?":
         i=randint(0,len(emote))
         message.channel.send(emote[i])
         
@@ -368,9 +368,6 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
                 
-    if message.content=="T'en penses quoi Fun ?":
-        i=randint(0,len(emote))
-        message.channel.send(emote[i])
         
 client.run(os.environ['TOKEN'])
     
