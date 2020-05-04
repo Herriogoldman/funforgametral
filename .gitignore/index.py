@@ -357,9 +357,6 @@ async def on_message(message):
     sondage = False
     if message.content.startswith("Sondage :"):
         sondage = True
-        await message.add_reaction("✅🚫")
-        await message.add_reaction("🚫")
-      
     
     if sondage:
         for i in range(len(liste_emoji)):
