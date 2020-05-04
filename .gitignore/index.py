@@ -200,6 +200,7 @@ chibre = [
             "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
+
 liste_emoji = [":zero:",":one:",":two:",":three:",":four:",":five:",":six:",":seven:",":eight:",":nine:"]
 open('nbjoueurs.txt','w').write('0')
 
@@ -356,7 +357,7 @@ async def on_message(message):
             if i in msg:
                 await message.add_reaction(i)
             
-        await message.add_reaction("✅")
+        await message.add_reaction(":white_check_mark:")
         await message.add_reaction("🚫")
         
 client.run(os.environ['TOKEN'])
