@@ -355,6 +355,7 @@ async def on_message(message):
     if message.content.startswith("Sondage :"):
         await message.add_reaction("✅")
         await message.add_reaction("🚫")
+        await message.channel.send(message.content)
         
 client.run(os.environ['TOKEN'])
     
