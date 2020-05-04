@@ -8,7 +8,7 @@ client = discord.Client()
 async def on_ready():
     print("Bot en ligne")
 async run(message):
-    message.channel.send('Bot redémarré')
+    await message.channel.send('Bot redémarré')
     
 biend = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
