@@ -356,7 +356,7 @@ async def on_message(message):
         sondage = True
         await message.add_reaction("✅")
         await message.add_reaction("🚫")
-        await message.channel.send(message.content)
+      
     
     if sondage:
         for i in liste_emoji:
