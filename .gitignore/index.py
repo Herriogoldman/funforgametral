@@ -7,7 +7,7 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print("Bot en ligne")
-
+    
 biend = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
             "https://www.tout-bon.com/newpics/40106.jpg",
@@ -351,8 +351,8 @@ async def on_message(message):
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
     if message.content.startswith("Sondage :"):
-        await message.react("✅")
-        await message.react("🚫")
+        await message.add_reaction("✅")
+        await message.add_reaction("🚫")
         
 client.run(os.environ['TOKEN'])
     
