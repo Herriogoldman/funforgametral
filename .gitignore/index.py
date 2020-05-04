@@ -7,6 +7,8 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print("Bot en ligne")
+async run(message):
+    message.channel.send('Bot redémarré')
     
 biend = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
@@ -355,7 +357,7 @@ async def on_message(message):
         msg=message.content
         for i in liste_emoji:
             if i in msg:
-                await message.add_reaction(i)
+                await message.add_reaction(str(i))
             
         await message.add_reaction(":white_check_mark:")
         await message.add_reaction("🚫")
