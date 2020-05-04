@@ -358,8 +358,9 @@ async def on_message(message):
         sondage = True
     
     if sondage:
-        for i in range(len(liste_emoji)):
-            if liste_emoji[i] in message.content:
-                await message.add_reaction(liste_emoji[i])
+        liste_message=message.content.split(" ")
+        for i in range(len(liste_message)):
+            if liste_message[i] in liste_emoji:
+                await message.add_reaction(liste_message[i])
 client.run(os.environ['TOKEN'])
     
