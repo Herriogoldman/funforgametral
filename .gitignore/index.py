@@ -351,8 +351,8 @@ async def on_message(message):
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
     if message.content.startswith("Sondage :"):
-        await client.add_reaction(message,"✅")
-        await client.add_reaction(message,"🚫")
+        await message.react("✅")
+        await message.react("🚫")
         
 client.run(os.environ['TOKEN'])
     
