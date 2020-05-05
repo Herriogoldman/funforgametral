@@ -370,13 +370,9 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
     
-    if message.content.startswith("Ma proposition :"):
-        liste_message=message.content.split(" ")
-        msg=""
-        for i in range (3,len(liste_message)):
-            msg+=liste_message[i]+" "
+    if message.channel == DMChannel:
         channel=client.get_channel(462231061842100225)
-        await channel.send(msg)        
+        await channel.send(message.content)        
     
 client.run(os.environ['TOKEN'])
     
