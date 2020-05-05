@@ -275,11 +275,11 @@ async def on_raw_reaction_add(payload):
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='✅':
         a=True
-        channel=client.get_channel(462231061842100225)
+        channel=client.get_channel(687014490793050114)
         await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
         await channel.send(embed=bien_embed)
         
-    channel=client.get_channel(462231061842100225)
+    channel=client.get_channel(687014490793050114)
     for i in range(0,nb):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
         if payload.message_id==idmsg and payload.emoji.name=='👍':
@@ -305,7 +305,7 @@ async def on_message(message):
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
     bien_embed.set_image(url=oui)   
     
-    channel=client.get_channel(462231061842100225)
+    channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
         await debut.add_reaction('😎')
@@ -319,7 +319,7 @@ async def on_message(message):
         if len(messagepv)==nb:
             random.shuffle(messagepv)
             for i in range(0,len(messagepv)):
-                channel=client.get_channel(462231061842100225)
+                channel=client.get_channel(687014490793050114)
                 propal=discord.Embed(title='Proposition '+str(i),description=messagepv[i])
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
