@@ -370,8 +370,8 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
     
-    if message.content == 'DMChannel':
-        await message.channel.send(discord.ChannelType.private)
+    if message.channel.type==discord.ChannelType.private:
+        await message.channel.send('gg mon pote après tout ce temps')
         channel=client.get_channel(462231061842100225)
         
                 
