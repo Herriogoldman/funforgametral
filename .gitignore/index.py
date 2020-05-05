@@ -255,11 +255,11 @@ b=False
 nb=0
 messagepv=[]
 react=0
-
+mebres=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a
+    global nb, react, a,membres
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -269,30 +269,29 @@ async def on_raw_reaction_add(payload):
         return
     
     debutid=int(open('debut.txt','r').readline())
-    if payload.message_id==debutid and payload.emoji.name=='😂':
-        channel=client.get_channel(687014490793050114)
-        await channel.send(payload.member)
+    if payload.message_id==debutid and payload.emoji.name=='😎':
+        membres.append(payload.member)
         open('score'+str(payload.member)+'.txt','w').write('0')
         nb+=1
-    if payload.message_id==debutid and payload.emoji.name=='👎':
+    if payload.message_id==debutid and payload.emoji.name=='✅':
         a=True
         channel=client.get_channel(687014490793050114)
         await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
         await channel.send(embed=bien_embed)
         
     channel=client.get_channel(687014490793050114)
-    for i in range(0,int(nb)):
+    for i in range(0,nb):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
         if payload.message_id==idmsg and payload.emoji.name=='👍':
-            f=open('score'+str(i)+'.txt','r')
+            f=open('score'+str(payload.member)+'.txt','r')
             score=round(float(f.readline()))
             f.close()
             score+=1
-            f=open('score'+str(i)+'.txt','w')
+            f=open('score'+str(payload.member)+'.txt','w')
             f.write(str(score))
             f.close()
             react+=1
-            if react==int(nb):
+            if react==nb:
                 react=0
                 await channel.send(embed=bien_embed)
             
@@ -309,15 +308,15 @@ async def on_message(message):
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
-        await debut.add_reaction('😂')
-        await debut.add_reaction('👎')
+        await debut.add_reaction('😎')
+        await debut.add_reaction('✅')
         f=open('debut.txt','w')
         f.write(str(debut.id))
         f.close()
                         
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
-        if len(messagepv)==int(nb):
+        if len(messagepv)==nb:
             for i in range(0,len(messagepv)):
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(messagepv[i])
@@ -332,14 +331,14 @@ async def on_message(message):
         liste=[]
         cor=-1
         egalite=False
-        for i in range(0,int(nb)):
-            score=int(open('score'+str(i)+'.txt','r').readline())
+        for i in range(0,nb):
+            score=int(open('score'+str(membres[i])+'.txt','r').readline())
             if score>cor:
                 cor=score
-                joueur=i
+                joueur=membres[i]
                 scorefinal=score
             elif score==cor:
-                liste.append(i)
+                liste.append(membres[i])
                 egalite=True
                 
         if egalite:
