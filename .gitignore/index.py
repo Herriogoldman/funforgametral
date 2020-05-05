@@ -374,7 +374,7 @@ async def on_message(message):
         for i in range (3,len(liste_message)):
             msg+=liste_message[i]+" "
         await message.channel.send(msg)
-        await client.delete_message(message)
+        await delete_message(message)
         
 client.run(os.environ['TOKEN'])
     
