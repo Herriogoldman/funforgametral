@@ -287,9 +287,13 @@ async def on_message(message):
         await message.channel.send(embed=bien_embed)
         
     if message.content=='Début du jeu' and message.author==user.id(351051955059163139):
+        
         await message.channel.send('Commençons le jeu')
         await message.channel.send('Combien de joueurs ?')
 
+    if message.content=='auteur':
+        await message.channel.send(message.author)
+    
     if message.content.startswith('Joueurs :'):
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
