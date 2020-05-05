@@ -259,7 +259,7 @@ react=0
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react
+    global nb, react, a
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -270,6 +270,8 @@ async def on_raw_reaction_add(payload):
     
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😂':
+        channel=client.get_channel(687014490793050114)
+        await channel.send(payload.user_id)
         open('score'+str(payload.user_id)+'.txt','w').write('0')
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='👎':
