@@ -245,7 +245,9 @@ def tout_mot(fichier):
 liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun 2.0",
                 'début du jeu','joueurs :','jeu fini','zinzolé','dommage','ah !']
 
-
+c=False
+a=False
+b=False
 @client.event
 async def on_message(message):
     if message.author==client.user:
@@ -271,12 +273,13 @@ async def on_message(message):
     
     if(message.content=="Dis nous tout Fun 2.0"):
         await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
-        
+
+    i=randint(0,len(biend))
+    oui = biend[i]
+    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+    bien_embed.set_image(url=oui)    
+    
     if (message.content=="sendimages"):
-        i=randint(0,len(biend))
-        oui = biend[i]
-        bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-        bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
 
     if message.content.startswith("sendimages"):
@@ -287,12 +290,13 @@ async def on_message(message):
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
-        
+    c=False    
     if message.content=='Début du jeu':        
         await message.channel.send('Commençons le jeu')
         await message.channel.send('Combien de joueurs ?')
+        c=True
    
-    if message.content.startswith('Joueurs :'):
+    if message.content.startswith('Joueurs :')and c:
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
         f=open('nbjoueurs.txt','w')
@@ -314,6 +318,7 @@ async def on_message(message):
             await message.channel.send(open('score'+str(i)+'.txt','r').readline())
             
     if message.content=='Jeu fini':
+        c=False
         liste=[]
         a=-1
         egalite=False
@@ -369,9 +374,25 @@ async def on_message(message):
         for i in liste_message:
             if i in liste_emoji:
                 await message.add_reaction(i)
+                
+    channel=client.get_channel(687014490793050114)
+    if message.channel.type=='Légende party':
+        await channel.send("Combien de joueurs les bros ?")
+        b=True
+    if message.content.startswith('Joueurs :') and b:
+        nbjoueurs=message.content[-1]
+        await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
+        f=open('nbjoueurs.txt','w')
+        f.write(nbjoueurs)
+        f.close()
+        for i in range(int(nbjoueurs)+1):
+            open('score'+str(i)+'.txt','w').write('0')
+        a=True
+        await message.channel.send(embed=bien_embed)
+        
     
-    if message.channel.type==discord.ChannelType.private:     
-        channel=client.get_channel(462231061842100225)
+            
+    if message.channel.type==discord.ChannelType.private and a:     
         await channel.send(message.content)
         
                 
