@@ -322,15 +322,15 @@ async def on_message(message):
     if message.content=='Party over':
         a=False
         liste=[]
-        a=-1
+        cor=-1
         egalite=False
         for i in range(0,nb):
             score=int(open('score'+str(i)+'.txt','r').readline())
-            if score>a:
-                a=score
+            if score>cor:
+                cor=score
                 joueur=i
                 scorefinal=score
-            elif score==a:
+            elif score==cor:
                 liste.append(i)
                 egalite=True
                 
