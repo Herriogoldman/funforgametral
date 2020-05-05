@@ -260,7 +260,7 @@ messagepv=[]
 react=0
 @client.event
 async def on_reaction_add(reaction,user):
-    global nb, a
+    global nb, a, bien_embed
     if user==client.user:
         return
     if reaction=='👍' and a:
@@ -272,7 +272,7 @@ async def on_reaction_add(reaction,user):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv
+    global a,b,c,nb,messagepv,bien_embed
         
     
     channel=client.get_channel(687014490793050114)
