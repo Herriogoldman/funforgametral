@@ -259,7 +259,6 @@ nb=0
 messagepv=[]
 react=0
 @client.event
-
 async def on_reaction_add(reaction,user):
     global nb, a
     if user==client.user:
@@ -271,7 +270,7 @@ async def on_reaction_add(reaction,user):
             await message.channel.send(embed=bien_embed)
             
             
-
+@client.event
 async def on_message(message):
     global a,b,c,nb,messagepv
         
