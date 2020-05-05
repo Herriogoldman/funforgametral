@@ -278,7 +278,7 @@ async def on_message(message):
                     
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
-        if len(messagepv)=nb:
+        if len(messagepv)==nb:
             for i in messagepv:
                 await channel.send(i)
                 await message.add_reaction('👍')
