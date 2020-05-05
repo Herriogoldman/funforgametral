@@ -369,12 +369,12 @@ async def on_message(message):
                 await message.add_reaction(i)
     
     if message.content.startswith("Ma proposition :"):
+        await message.delete()
         liste_message=message.content.split(" ")
         msg=""
         for i in range (3,len(liste_message)):
             msg+=liste_message[i]+" "
-        await message.channel.send(msg)
-        await message.delete()
+        await message.channel.send(msg)        
         
 client.run(os.environ['TOKEN'])
     
