@@ -268,6 +268,14 @@ async def on_raw_reaction_add(payload):
     if payload.user_id==client.user.id:
         return
     
+    if payload.message_id==debutid and payload.emoji.name=='😎':
+        open('score'+payload.user+'.txt','w').write('0')
+        nb+=1
+    
+    if payload.message_id==debutid and payload.emoji.name=='✅':
+        await message.channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
+        channel=client.get_channel(687014490793050114)
+        await channel.send(embed=bien_embed)
     channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
@@ -287,7 +295,7 @@ async def on_raw_reaction_add(payload):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv
+    global a,b,c,nb,messagepv,debutid
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -296,7 +304,10 @@ async def on_message(message):
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
-        await channel.send("Combien de joueurs les bros ?")
+        debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
+        await debut.add_reaction('😎')
+        await debut.add_reaction('✅')
+        debutid=debut.id
         b=True
     if message.content.startswith('Joueurs :') and b:
         b=False
@@ -340,7 +351,7 @@ async def on_message(message):
                 complement_message+=', '+str(liste[i])
             await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
         else:
-            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points.')
  
     
     
