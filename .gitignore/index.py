@@ -248,8 +248,10 @@ liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun
 c=False
 a=False
 b=False
+
 @client.event
 async def on_message(message):
+    global a,b,c
     if message.author==client.user:
         return
     oui=True
@@ -291,12 +293,12 @@ async def on_message(message):
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
         
-    if message.content=='Début du jeu': 
+    if message.content=='Début du jeu':   
         await message.channel.send('Commençons le jeu')
         await message.channel.send('Combien de joueurs ?')
         c=True
    
-    if message.content.startswith('Joueurs :')and c:
+    if (message.content.startswith('Joueurs :')) and c:
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
         f=open('nbjoueurs.txt','w')
