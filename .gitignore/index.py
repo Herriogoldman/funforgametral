@@ -268,9 +268,9 @@ async def on_raw_reaction_add(payload):
     
     channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
-        idmsg=open('msg'+str(i)+'.txt','r').readline()
+        idmsg=int(open('msg'+str(i)+'.txt','r').readline())
         await channel.send(idmsg)
-        if payload.message.id==int(idmsg) and payload.emoji=='👍':
+        if payload.message.id==idmsg and payload.emoji.name=='👍':
             react+=1
             if react==int(nb):
                 react=0
@@ -307,6 +307,7 @@ async def on_message(message):
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(msg.id)
+                f.readline()
                 f.close()
             messagepv=[]
                 
