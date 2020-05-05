@@ -374,7 +374,7 @@ async def on_message(message):
         for i in range (3,len(liste_message)):
             msg+=liste_message[i]+" "
         channel=client.get_channel(462231061842100225)
-        await message.channel.send(msg)        
+        await channel.send(msg)        
     
 client.run(os.environ['TOKEN'])
     
