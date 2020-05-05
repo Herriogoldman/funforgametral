@@ -275,10 +275,11 @@ async def on_raw_reaction_add(payload):
         open('score'+str(payload.member)+'.txt','w').write('0')
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='👎':
-        channel=client.get_channel(687014490793050114)
-        await channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
-        await channel.send(embed=bien_embed)
         a=True
+        channel=client.get_channel(687014490793050114)
+        await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
+        await channel.send(embed=bien_embed)
+        
     channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
