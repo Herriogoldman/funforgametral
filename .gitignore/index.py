@@ -256,14 +256,14 @@ nb=0
 messagepv=[]
 react=0
 @client.event
-
-i=randint(0,len(biend))
-oui = biend[i]
-bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-bien_embed.set_image(url=oui)   
-
 async def on_reaction_add(reaction,user):
-    global nb, a, bien_embed, react
+    global nb, a, react
+    
+    i=randint(0,len(biend))
+    oui = biend[i]
+    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+    bien_embed.set_image(url=oui)
+    
     if user==client.user:
         return
     if reaction=='👍' and a:
@@ -275,7 +275,7 @@ async def on_reaction_add(reaction,user):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,bien_embed
+    global a,b,c,nb,messagepv
     
     i=randint(0,len(biend))
     oui = biend[i]
