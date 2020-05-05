@@ -136,10 +136,7 @@ biend = [
             "https://lh3.googleusercontent.com/proxy/4xWQpdDmXoxnjn78DI-L_recaxoMPi98wqH5-hbLJvdCW7aXdnYbNHNFMxUuRkidk2KB8Tpm7yBfkX3_sp9m9zNTB4kSytK0",
             "https://teengirlserotica.com/eroticax/wp-content/uploads/sites/5/nggallery/melody-marks/melody-marks1.jpg"]
 
-i=randint(0,len(biend))
-oui = biend[i]
-bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-bien_embed.set_image(url=oui)   
+
 
 
 verbes = [
@@ -259,6 +256,12 @@ nb=0
 messagepv=[]
 react=0
 @client.event
+
+i=randint(0,len(biend))
+oui = biend[i]
+bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+bien_embed.set_image(url=oui)   
+
 async def on_reaction_add(reaction,user):
     global nb, a, bien_embed, react
     if user==client.user:
@@ -273,7 +276,11 @@ async def on_reaction_add(reaction,user):
 @client.event
 async def on_message(message):
     global a,b,c,nb,messagepv,bien_embed
-        
+    
+    i=randint(0,len(biend))
+    oui = biend[i]
+    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+    bien_embed.set_image(url=oui)   
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
