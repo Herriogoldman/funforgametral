@@ -254,7 +254,7 @@ messagespv=[]
 
 @client.event
 async def on_message(message):
-    global a,b,c,nb
+    global a,b,c,nb,messagepv
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
