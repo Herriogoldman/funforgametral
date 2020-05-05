@@ -278,6 +278,7 @@ async def on_message(message):
                     
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
+        await message.channel.send(messagepv)
         if len(messagepv)==nb:
             for i in messagepv:
                 await channel.send(i)
