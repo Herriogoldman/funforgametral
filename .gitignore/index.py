@@ -266,7 +266,7 @@ async def on_raw_reaction_add(payload):
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
     bien_embed.set_image(url=oui)
     
-    if payload.user_id==client.user:
+    if payload.user_id==client.user.id:
         return
     
     channel=client.get_channel(687014490793050114)
@@ -274,7 +274,7 @@ async def on_raw_reaction_add(payload):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
         if payload.message_id==idmsg and payload.emoji.name=='👍':
             await channel.send(payload.user_id)
-            await channel.send(client.user)
+            await channel.send(client.user.id)
             f=open('score'+str(i)+'.txt','r')
             score=round(float(f.readline()))
             f.close()
