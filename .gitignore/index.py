@@ -290,7 +290,7 @@ async def on_message(message):
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
-    c=False    
+        
     if message.content=='Début du jeu': 
         global c
         await message.channel.send('Commençons le jeu')
@@ -382,6 +382,7 @@ async def on_message(message):
         await channel.send("Combien de joueurs les bros ?")
         b=True
     if message.content.startswith('Joueurs :') and b:
+        global a
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
         f=open('nbjoueurs.txt','w')
