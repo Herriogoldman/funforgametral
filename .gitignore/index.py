@@ -270,7 +270,7 @@ async def on_raw_reaction_add(payload):
     for i in range(0,int(nb)):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
         await channel.send(idmsg)
-        if payload.message.id==idmsg and payload.emoji.name=='👍':
+        if payload.message_id==idmsg and payload.emoji.name=='👍':
             react+=1
             if react==int(nb):
                 react=0
