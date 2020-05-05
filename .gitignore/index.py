@@ -292,7 +292,6 @@ async def on_message(message):
         await message.channel.send(embed=bien_embed)
         
     if message.content=='Début du jeu': 
-        global c
         await message.channel.send('Commençons le jeu')
         await message.channel.send('Combien de joueurs ?')
         c=True
@@ -378,11 +377,9 @@ async def on_message(message):
                 
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
-        global b
         await channel.send("Combien de joueurs les bros ?")
         b=True
     if message.content.startswith('Joueurs :') and b:
-        global a
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
         f=open('nbjoueurs.txt','w')
