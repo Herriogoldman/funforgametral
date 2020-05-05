@@ -271,8 +271,8 @@ async def on_raw_reaction_add(payload):
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😂':
         channel=client.get_channel(687014490793050114)
-        await channel.send(payload.user_id)
-        open('score'+str(payload.user_id)+'.txt','w').write('0')
+        await channel.send(payload.member)
+        open('score'+str(payload.member)+'.txt','w').write('0')
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='👎':
         channel=client.get_channel(687014490793050114)
@@ -313,11 +313,7 @@ async def on_message(message):
         f=open('debut.txt','w')
         f.write(str(debut.id))
         f.close()
-        
-
-
-
-                    
+                        
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
