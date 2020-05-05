@@ -260,7 +260,7 @@ messagepv=[]
 react=0
 @client.event
 async def on_reaction_add(reaction,user):
-    global nb, a, bien_embed
+    global nb, a, bien_embed, react
     if user==client.user:
         return
     if reaction=='👍' and a:
