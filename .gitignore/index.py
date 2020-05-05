@@ -324,7 +324,7 @@ async def on_message(message):
         liste=[]
         a=-1
         egalite=False
-        for i in range(1,nb+1):
+        for i in range(0,nb):
             score=int(open('score'+str(i)+'.txt','r').readline())
             if score>a:
                 a=score
