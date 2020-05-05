@@ -269,7 +269,7 @@ async def on_reaction_add(reaction,user):
     if user==client.user:
         return
     for i in range(0,int(nb)):
-        idmsg=open('msg'+str(i)+'txt','r').readline()
+        idmsg=open('msg'+str(i)+'.txt','r').readline()
         if reaction.message.id==int(idmsg):
             react+=1
             if react==int(nb):
