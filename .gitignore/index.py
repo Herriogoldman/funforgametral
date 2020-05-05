@@ -259,8 +259,8 @@ react=0
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react
-    
+    global nb, react, a
+    a=True
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
