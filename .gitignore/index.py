@@ -266,7 +266,7 @@ async def on_reaction_add(reaction,user):
     
     if user==client.user:
         return
-    if reaction=='👍' and a:
+    if reaction=='👍':
         react+=1
         if react==nb:
             react=0
