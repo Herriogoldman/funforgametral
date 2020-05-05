@@ -268,13 +268,14 @@ async def on_reaction_add(reaction,user):
     
     if user==client.user:
         return
+    channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
         idmsg=open('msg'+str(i)+'.txt','r').readline()
+        await channel.send(idmsg)
         if reaction.message.id==int(idmsg):
             react+=1
             if react==int(nb):
                 react=0
-                channel=client.get_channel(687014490793050114)
                 await channel.send(embed=bien_embed)
             
             
@@ -306,7 +307,6 @@ async def on_message(message):
             for i in range(0,len(messagepv)):
                 msg = await channel.send(messagepv[i])
                 await msg.add_reaction('👍')
-                await channel.send(msg.id)
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(msg.id)
                 f.close()
