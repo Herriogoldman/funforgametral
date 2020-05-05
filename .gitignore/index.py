@@ -270,7 +270,7 @@ async def on_raw_reaction_add(payload):
     
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😎':
-        membres.append(payload.member)
+        membres.append(str(payload.member))
         open('score'+str(payload.member)+'.txt','w').write('0')
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='✅':
