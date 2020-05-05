@@ -268,7 +268,9 @@ async def on_raw_reaction_add(payload):
     if payload.user_id==client.user.id:
         return
     
-    if payload.message_id==debutid and payload.emoji.name=='😎':
+    debutid=open('debut.txt','r').readline()
+    
+    if payload.message_id==int(debutid) and payload.emoji.name=='😎':
         open('score'+payload.user+'.txt','w').write('0')
         nb+=1
     
@@ -295,7 +297,7 @@ async def on_raw_reaction_add(payload):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,debutid
+    global a,b,c,nb,messagepv
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -307,7 +309,9 @@ async def on_message(message):
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
         await debut.add_reaction('😎')
         await debut.add_reaction('✅')
-        debutid=debut.id
+        f=open('debut.txt','w')
+        f.write(str(debut.id))
+        f.close()
         b=True
     if message.content.startswith('Joueurs :') and b:
         b=False
