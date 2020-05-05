@@ -370,8 +370,8 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
     
-    if message.content== 'DMChannel':
-        await message.channel.send(message.channel)
+    if message.channel.type== DMChannel.type:
+        await message.channel.send(message.channel.type)
         channel=client.get_channel(462231061842100225)
         await channel.send(message.content)        
     
