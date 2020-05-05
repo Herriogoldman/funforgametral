@@ -286,7 +286,7 @@ async def on_message(message):
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
         
-    if message.content=='Début du jeu' and message.author=="Loïc#7389":        
+    if message.content=='Début du jeu' and message.author==User.id("Loïc#7389"):        
         await message.channel.send('Commençons le jeu')
         await message.channel.send('Combien de joueurs ?')
    
