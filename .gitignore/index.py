@@ -266,7 +266,7 @@ async def on_raw_reaction_add(payload):
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
     bien_embed.set_image(url=oui)
     
-    if payload.user.id==client.user:
+    if payload.user_id==client.user:
         return
     
     channel=client.get_channel(687014490793050114)
