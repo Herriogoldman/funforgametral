@@ -269,7 +269,7 @@ async def on_raw_reaction_add(payload):
         return
     
     debutid=int(open('debut.txt','r').readline())
-    if payload.message_id==debutid and payload.emoji.name=='👍':
+    if payload.message_id==debutid and payload.emoji.name=='😂':
         open('score'+str(payload.user_id)+'.txt','w').write('0')
         nb+=1
     if payload.message_id==debutid and payload.emoji.name=='👎':
@@ -306,7 +306,7 @@ async def on_message(message):
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
-        await debut.add_reaction('👍')
+        await debut.add_reaction('😂')
         await debut.add_reaction('👎')
         f=open('debut.txt','w')
         f.write(str(debut.id))
