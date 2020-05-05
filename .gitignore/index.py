@@ -381,7 +381,7 @@ async def on_message(message):
         global b
         await channel.send("Combien de joueurs les bros ?")
         b=True
-    if message.content.startswith('J :') and b:
+    if message.content.startswith('Joueurs :') and b:
         global a
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
