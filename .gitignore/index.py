@@ -250,11 +250,11 @@ a=False
 b=False
 
 nb=0
-messagespv=[]
+messagepv=[]
 
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagespv
+    global a,b,c,nb,messagepv
     
     
     i=randint(0,len(biend))
