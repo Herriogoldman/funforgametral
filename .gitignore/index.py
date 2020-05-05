@@ -303,8 +303,9 @@ async def on_message(message):
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
             for i in range(0,len(messagepv)):
-                msg = await channel.send(i)
+                msg = await channel.send(messagepv[i])
                 await msg.add_reaction('👍')
+                await channel.send(msg.id)
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(msg.id)
                 f.close()
