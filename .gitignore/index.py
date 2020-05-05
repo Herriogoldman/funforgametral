@@ -280,8 +280,8 @@ async def on_message(message):
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
             for i in messagepv:
-                await channel.send(i)
-                await message.add_reaction('👍')
+                msg = await channel.send(i)
+                await msg.add_reaction('👍')
                 
     
     
