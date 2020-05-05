@@ -370,8 +370,8 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
     
-    if message.content=='oui mr':
-        await message.channel.send(private_channels)
+    if message.channel in private_channels:
+        await message.channel.send('ça marche bg')
         channel=client.get_channel(462231061842100225)
         
                 
