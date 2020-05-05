@@ -249,9 +249,37 @@ c=False
 a=False
 b=False
 
+nb=0
+messagespv=[]
+
 @client.event
 async def on_message(message):
-    global a,b,c
+    global a,b,c,nb
+    
+    channel=client.get_channel(687014490793050114)
+    if message.content=='Légende party':
+        await channel.send("Combien de joueurs les bros ?")
+        b=True
+    if message.content.startswith('Joueurs :') and b:
+        b=False
+        nb=message.content[-1]
+        await message.channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
+        for i in range(int(nb)+1):
+            open('score'+str(i)+'.txt','w').write('0')
+        a=True
+        await message.channel.send(embed=bien_embed)
+                    
+    if message.channel.type==discord.ChannelType.private and a:     
+        messagepv.append(message.content)
+        if len(messagepv)=nb:
+            for i in messagepv:
+                await channel.send(i)
+                await message.add_reaction('👍')
+                
+    
+    
+    
+    
     if message.author==client.user:
         return
     oui=True
@@ -299,6 +327,7 @@ async def on_message(message):
         c=True
    
     if (message.content.startswith('Joueurs :')) and c:
+        c=False
         nbjoueurs=message.content[-1]
         await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
         f=open('nbjoueurs.txt','w')
@@ -320,7 +349,6 @@ async def on_message(message):
             await message.channel.send(open('score'+str(i)+'.txt','r').readline())
             
     if message.content=='Jeu fini':
-        c=False
         liste=[]
         a=-1
         egalite=False
@@ -377,25 +405,7 @@ async def on_message(message):
             if i in liste_emoji:
                 await message.add_reaction(i)
                 
-    channel=client.get_channel(687014490793050114)
-    if message.content=='Légende party':
-        await channel.send("Combien de joueurs les bros ?")
-        b=True
-    if message.content.startswith('Joueurs :') and b:
-        nbjoueurs=message.content[-1]
-        await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
-        f=open('nbjoueurs.txt','w')
-        f.write(nbjoueurs)
-        f.close()
-        for i in range(int(nbjoueurs)+1):
-            open('score'+str(i)+'.txt','w').write('0')
-        a=True
-        await message.channel.send(embed=bien_embed)
-        
-    
-            
-    if message.channel.type==discord.ChannelType.private and a:     
-        await channel.send(message.content)
+
         
                 
     
