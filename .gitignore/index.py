@@ -376,7 +376,7 @@ async def on_message(message):
                 await message.add_reaction(i)
                 
     channel=client.get_channel(687014490793050114)
-    if message.channel.type=='Légende party':
+    if message.content=='Légende party':
         await channel.send("Combien de joueurs les bros ?")
         b=True
     if message.content.startswith('Joueurs :') and b:
