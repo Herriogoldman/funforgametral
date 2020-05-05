@@ -136,6 +136,12 @@ biend = [
             "https://lh3.googleusercontent.com/proxy/4xWQpdDmXoxnjn78DI-L_recaxoMPi98wqH5-hbLJvdCW7aXdnYbNHNFMxUuRkidk2KB8Tpm7yBfkX3_sp9m9zNTB4kSytK0",
             "https://teengirlserotica.com/eroticax/wp-content/uploads/sites/5/nggallery/melody-marks/melody-marks1.jpg"]
 
+i=randint(0,len(biend))
+oui = biend[i]
+bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+bien_embed.set_image(url=oui)   
+
+
 verbes = [
             "Cueillir",           
             "Gérer",	           
@@ -251,17 +257,24 @@ b=False
 
 nb=0
 messagepv=[]
-
+react=0
 @client.event
+
+async def on_reaction_add(reaction,user):
+    global nb, a
+    if user==client.user:
+        return
+    if reaction=='👍' and a:
+        react+=1
+        if react==nb:
+            react=0
+            await message.channel.send(embed=bien_embed)
+            
+            
+
 async def on_message(message):
     global a,b,c,nb,messagepv
-    
-    
-    i=randint(0,len(biend))
-    oui = biend[i]
-    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-    bien_embed.set_image(url=oui)    
-    
+        
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
@@ -282,8 +295,8 @@ async def on_message(message):
             for i in messagepv:
                 msg = await channel.send(i)
                 await msg.add_reaction('👍')
+            messagepv=[]
                 
-    
     
     
     
@@ -307,12 +320,7 @@ async def on_message(message):
     
     
     if(message.content=="Dis nous tout Fun 2.0"):
-        await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !")
-
-    i=randint(0,len(biend))
-    oui = biend[i]
-    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-    bien_embed.set_image(url=oui)    
+        await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !") 
     
     if (message.content=="sendimages"):
         await message.channel.send(embed=bien_embed)
