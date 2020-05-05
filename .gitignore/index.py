@@ -308,7 +308,7 @@ async def on_message(message):
         a=True
         await message.channel.send(embed=bien_embed)
                     
-    if message.channel.type==discord.ChannelType.private and a:     
+    if message.channel.type==discord.ChannelType.private:     
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
             for i in range(0,len(messagepv)):
