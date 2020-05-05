@@ -306,7 +306,7 @@ async def on_message(message):
                 msg = await channel.send(messagepv[i])
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
-                f.write(msg.id)
+                f.write(str(msg.id))
                 f.readline()
                 f.close()
             messagepv=[]
