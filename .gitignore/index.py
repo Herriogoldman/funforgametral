@@ -274,7 +274,8 @@ async def on_reaction_add(reaction,user):
             react+=1
             if react==int(nb):
                 react=0
-                await message.channel.send(embed=bien_embed)
+                channel=client.get_channel(687014490793050114)
+                await channel.send(embed=bien_embed)
             
             
 @client.event
