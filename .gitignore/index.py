@@ -372,6 +372,7 @@ async def on_message(message):
     
     if message.content== 'DMChannel':
         await message.channel.send(message.channel.type)
+        await message.channel.send(DMChannel.type)
         channel=client.get_channel(462231061842100225)
                 
     
