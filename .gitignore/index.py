@@ -271,13 +271,16 @@ async def on_raw_reaction_add(payload):
     debutid=open('debut.txt','r').readline()
     
     if payload.message_id==int(debutid) and payload.emoji.name=='😎':
+        channel=client.get_channel(687014490793050114)
+        await channel.send(payload.user)
         open('score'+payload.user+'.txt','w').write('0')
         nb+=1
     
     if payload.message_id==int(debutid) and payload.emoji.name=='✅':
-        await message.channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
         channel=client.get_channel(687014490793050114)
+        await channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
         await channel.send(embed=bien_embed)
+        a=True
     channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
@@ -312,15 +315,10 @@ async def on_message(message):
         f=open('debut.txt','w')
         f.write(str(debut.id))
         f.close()
-        b=True
-    if message.content.startswith('Joueurs :') and b:
-        b=False
-        nb=message.content[-1]
-        await message.channel.send('Ok, il y a '+nb+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")
-        for i in range(int(nb)+1):
-            open('score'+str(i)+'.txt','w').write('0')
-        a=True
-        await message.channel.send(embed=bien_embed)
+        
+
+
+
                     
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
