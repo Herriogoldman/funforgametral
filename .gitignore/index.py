@@ -255,6 +255,8 @@ b=False
 nb=0
 messagepv=[]
 react=0
+
+
 @client.event
 async def on_reaction_add(reaction,user):
     global nb, a, react
@@ -266,11 +268,13 @@ async def on_reaction_add(reaction,user):
     
     if user==client.user:
         return
-    if reaction=='👍':
-        react+=1
-        if react==nb:
-            react=0
-            await message.channel.send(embed=bien_embed)
+    for i in range(0,int(nb))
+        idmsg=open('msg'+str(i)+'txt','r')
+        if reaction.message.id==idmsg:
+            react+=1
+            if react==int(nb):
+                react=0
+                await message.channel.send(embed=bien_embed)
             
             
 @client.event
@@ -298,9 +302,12 @@ async def on_message(message):
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
-            for i in messagepv:
+            for i in range(0,len(messagepv)):
                 msg = await channel.send(i)
                 await msg.add_reaction('👍')
+                f=open('msg'+str(i)+'.txt','w')
+                f.write(msg.id)
+                f.close()
             messagepv=[]
                 
     
