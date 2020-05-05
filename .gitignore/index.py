@@ -259,7 +259,7 @@ react=0
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, a, react
+    global nb, react
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -269,8 +269,14 @@ async def on_raw_reaction_add(payload):
     channel=client.get_channel(687014490793050114)
     for i in range(0,int(nb)):
         idmsg=int(open('msg'+str(i)+'.txt','r').readline())
-        await channel.send(idmsg)
         if payload.message_id==idmsg and payload.emoji.name=='👍':
+            f=open('score'+str(i)+'.txt','r')
+            score=round(float(f.readline()))
+            f.close()
+            score+=1
+            f=open('score'+str(i)+'.txt','w')
+            f.write(str(score))
+            f.close()
             react+=1
             if react==int(nb):
                 react=0
@@ -311,6 +317,29 @@ async def on_message(message):
                 f.close()
             messagepv=[]
                 
+    if message.content=='Party over':
+        a=False
+        liste=[]
+        a=-1
+        egalite=False
+        for i in range(1,nb+1):
+            score=int(open('score'+str(i)+'.txt','r').readline())
+            if score>a:
+                a=score
+                joueur=i
+                scorefinal=score
+            elif score==a:
+                liste.append(i)
+                egalite=True
+                
+        if egalite:
+            complement_message=''
+            for i in range(len(liste)):
+                complement_message+=', '+str(liste[i])
+            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+        else:
+            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+ 
     
     
     
