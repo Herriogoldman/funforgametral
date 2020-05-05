@@ -259,8 +259,7 @@ react=0
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a
-    a=True
+    global nb, react
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -308,15 +307,15 @@ async def on_message(message):
         a=True
         await message.channel.send(embed=bien_embed)
                     
-    if message.channel.type==discord.ChannelType.private:     
+    if message.channel.type==discord.ChannelType.private and a:     
         messagepv.append(message.content)
         if len(messagepv)==int(nb):
             for i in range(0,len(messagepv)):
+                channel=client.get_channel(687014490793050114)
                 msg = await channel.send(messagepv[i])
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(str(msg.id))
-                f.readline()
                 f.close()
             messagepv=[]
                 
