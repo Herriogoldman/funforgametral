@@ -256,6 +256,13 @@ messagespv=[]
 async def on_message(message):
     global a,b,c,nb,messagepv
     
+    
+    i=randint(0,len(biend))
+    oui = biend[i]
+    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+    bien_embed.set_image(url=oui)    
+    
+    
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
         await channel.send("Combien de joueurs les bros ?")
@@ -290,8 +297,6 @@ async def on_message(message):
         open(str(message.author)+'.txt','a').write(message.content.lower()+' ')
     if message.content=='dossier':
         await message.channel.send(open(str(message.author)+'.txt','r').read())
-    if message.content=='user':
-        await message.channel.send(str(user_id))
 
     if message.content.startswith("Combien de fois j'ai dit le mot :"):
         mot=''
