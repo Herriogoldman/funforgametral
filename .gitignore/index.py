@@ -258,7 +258,7 @@ react=0
 
 
 @client.event
-async def on_reaction_add(reaction,user):
+async def on_raw_reaction_add(payload):
     global nb, a, react
     
     i=randint(0,len(biend))
@@ -270,7 +270,7 @@ async def on_reaction_add(reaction,user):
     for i in range(0,int(nb)):
         idmsg=open('msg'+str(i)+'.txt','r').readline()
         await channel.send(idmsg)
-        if reaction.message.id==int(idmsg):
+        if payload.message.id==int(idmsg) and payload.emoji=='👍':
             react+=1
             if react==int(nb):
                 react=0
