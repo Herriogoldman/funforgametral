@@ -272,6 +272,8 @@ async def on_raw_reaction_add(payload):
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😎':
         v=True
+        if payload.member in membres:
+            return
         membres.append(str(payload.member))
         open('score'+str(payload.member)+'.txt','w').write('0')
         channel=client.get_channel(462231061842100225)
@@ -371,6 +373,7 @@ async def on_message(message):
             
                 
     if message.content=='Party over':
+        membres=[]
         a=False
         liste=[]
         cor=-1
