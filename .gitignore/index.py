@@ -287,7 +287,6 @@ async def on_raw_reaction_add(payload):
     for i in range(0,nb):
         f=open('msg'+str(i)+'.txt', 'r').read()
         final=f.split(' ')
-        await channel.send(final)
         idmsg=int(final[0])
         gars=final[1]
         if payload.message_id==idmsg and payload.emoji.name=='👍':
