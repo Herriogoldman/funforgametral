@@ -361,7 +361,7 @@ async def on_message(message):
             i=0
             for key in messagepv.keys():
                 i+=1
-                propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich', colour='0x3498db')
+                propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich', colour=discord.Colour.blue())
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
