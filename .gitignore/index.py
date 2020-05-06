@@ -320,7 +320,7 @@ async def on_raw_reaction_add(payload):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,w,personnes, personnes2
+    global a,b,c,nb,messagepv,w,personnes, personnes2,membres
     
     i=randint(0,len(biend))
     oui = biend[i]
