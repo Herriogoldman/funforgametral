@@ -326,8 +326,7 @@ async def on_message(message):
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
-                f.write(str(msg.id))
-                f.write(str(message.author))
+                f.write(str(msg.id+'\n'+message.author))
                 f.close()
             messagepv=[]
                 
