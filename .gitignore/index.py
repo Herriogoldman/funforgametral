@@ -364,7 +364,7 @@ async def on_message(message):
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
-                f=open('msg'+str(i)+'.txt','w')
+                f=open('msg'+str(i-1)+'.txt','w')
                 f.write(str(msg.id)+" "+str(messagepv.get(key)))
                 f.close() 
                 await channel.send(open('msg'+str(i)+'.txt','r').read())
