@@ -262,7 +262,7 @@ personnes2=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a,membres,v,messagepv,w,personnes
+    global nb, react, a,membres,v,messagepv,w,personnes,personnes2
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -310,16 +310,17 @@ async def on_raw_reaction_add(payload):
             f.close()
             react+=1
             if react==nb:
-                personnes=[]
+                personnes2=[]
                 react=0
                 channel=client.get_channel(687014490793050114)
                 await channel.send(embed=bien_embed)
+                
                 
             
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,w,personnes2
+    global a,b,c,nb,messagepv,w,personnes, personnes2
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -343,7 +344,7 @@ async def on_message(message):
         personnes2.append(str(message.author))
         messagepv[message.content]=str(message.author)
         if len(messagepv)==nb:
-            personnes2=[]
+            personnes=[]
             channel=client.get_channel(687014490793050114)
             liste2=[]
             for f in messagepv.keys():
