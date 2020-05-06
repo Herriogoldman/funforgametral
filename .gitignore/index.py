@@ -324,6 +324,8 @@ async def on_message(message):
                         
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv[message.content]=message.author
+        channel=client.get_channel(687014490793050114)
+        await channel.send(messagepv)
         if len(messagepv)==nb:
             i=0
             liste2=[]
