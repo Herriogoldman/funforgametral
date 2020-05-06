@@ -327,8 +327,6 @@ async def on_message(message):
                         
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv[message.content]=str(message.author)
-        channel=client.get_channel(687014490793050114)
-        await channel.send(messagepv)
         if len(messagepv)==nb:
             channel=client.get_channel(687014490793050114)
             liste2=[]
@@ -368,8 +366,7 @@ async def on_message(message):
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i-1)+'.txt','w')
                 f.write(str(msg.id)+" "+str(messagepv.get(key)))
-                f.close() 
-                await channel.send(open('msg'+str(i)+'.txt','r').read())
+                f.close()
             
                 
     if message.content=='Party over':
