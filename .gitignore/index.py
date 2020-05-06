@@ -257,10 +257,12 @@ nb=0
 messagepv={}
 react=0
 membres=[]
+personnes=[]
+personnes2=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a,membres,v,messagepv,w
+    global nb, react, a,membres,v,messagepv,w,personnes
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -294,6 +296,9 @@ async def on_raw_reaction_add(payload):
         idmsg=int(final[0])
         gars=str(final[1])
         if payload.message_id==idmsg and payload.emoji.name=='👍':
+            if str(payload.member) in personnes:
+                return
+            personnes.append(str(payload.member))
             messagepv={}
             a=True
             f=open('score'+str(gars)+'.txt','r')
@@ -305,14 +310,16 @@ async def on_raw_reaction_add(payload):
             f.close()
             react+=1
             if react==nb:
+                personnes=[]
                 react=0
                 channel=client.get_channel(687014490793050114)
                 await channel.send(embed=bien_embed)
+                
             
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,w
+    global a,b,c,nb,messagepv,w,personnes2
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -330,9 +337,13 @@ async def on_message(message):
         f.write(str(debut.id))
         f.close()
                         
-    if message.channel.type==discord.ChannelType.private and a:     
+    if message.channel.type==discord.ChannelType.private and a:   
+        if str(message.author) in personnes2:
+                return
+        personnes2.append(str(message.author))
         messagepv[message.content]=str(message.author)
         if len(messagepv)==nb:
+            personnes2=[]
             channel=client.get_channel(687014490793050114)
             liste2=[]
             for f in messagepv.keys():
