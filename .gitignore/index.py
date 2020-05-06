@@ -333,6 +333,7 @@ async def on_message(message):
             messagepv=[]
                 
     if message.content=='Party over':
+        nb=0
         a=False
         liste=[]
         cor=-1
