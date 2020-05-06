@@ -329,6 +329,7 @@ async def on_message(message):
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
+        membres=[]
         w=True
         nb=0
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
@@ -387,7 +388,6 @@ async def on_message(message):
             
                 
     if message.content=='Party over':
-        membres=[]
         a=False
         liste=[]
         cor=-1
