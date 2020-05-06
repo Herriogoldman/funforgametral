@@ -260,7 +260,7 @@ membres=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a,membres,v,messagepv
+    global nb, react, a,membres,v,messagepv,w
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -271,16 +271,17 @@ async def on_raw_reaction_add(payload):
     
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😎':
-        v=True
         if str(payload.member) in membres:
             return
+        v=True
         membres.append(str(payload.member))
         open('score'+str(payload.member)+'.txt','w').write('0')
         channel=client.get_channel(687014490793050114)
         nb+=1
 
-    if payload.message_id==debutid and payload.emoji.name=='✅' and v:
+    if payload.message_id==debutid and payload.emoji.name=='✅' and v and w:
         v=False
+        w=False
         a=True
         channel=client.get_channel(687014490793050114)
         await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
@@ -311,7 +312,7 @@ async def on_raw_reaction_add(payload):
             
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv
+    global a,b,c,nb,messagepv,w
     
     i=randint(0,len(biend))
     oui = biend[i]
@@ -320,6 +321,7 @@ async def on_message(message):
     
     channel=client.get_channel(687014490793050114)
     if message.content=='Légende party':
+        w=True
         nb=0
         debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
         await debut.add_reaction('😎')
