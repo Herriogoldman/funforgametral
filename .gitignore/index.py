@@ -326,11 +326,12 @@ async def on_message(message):
         messagepv[message.content]=message.author
         if len(messagepv)==nb:
             i=0
-            liste=[]
+            liste2=[]
             for i in messagepv.keys():
                 liste.append(i+" "+messagepv.get(i))
-            shuffle(liste)
-            for i in liste:
+            shuffle(liste2)
+            messagepv={}
+            for i in liste2:
                 tout=i.split[" "]
                 clé = tout[0]
                 auteur= tout[1]
