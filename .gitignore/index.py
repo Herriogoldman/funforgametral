@@ -367,6 +367,7 @@ async def on_message(message):
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(str(msg.id)+" "+str(messagepv.get(key)))
                 f.close() 
+                await channel.send(open('msg'+str(i)+'.txt','r').read())
             messagepv={}
                 
     if message.content=='Party over':
