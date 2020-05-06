@@ -283,8 +283,9 @@ async def on_raw_reaction_add(payload):
     channel=client.get_channel(687014490793050114)
     for i in range(0,nb):
         await channel.send(open('msg'+str(i)+'.txt', 'r').read())
-        idmsg=int(open('msg'+str(i)+'.txt','r').readline(1))
-        gars=str(open('msg'+str(i)+'.txt','r').readline(2))
+        f=(open('msg'+str(i)+'.txt', 'r').read()).split(" ")
+        idmsg=f[0]
+        gars=f[1]
         if payload.message_id==idmsg and payload.emoji.name=='👍':
             f=open('score'+str(gars)+'.txt','r')
             score=round(float(f.readline()))
@@ -326,9 +327,8 @@ async def on_message(message):
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
-                f=open('msg'+str(i)+'.txt','a')
-                f.write(str(msg.id))
-                f.write(str(message.author))
+                f=open('msg'+str(i)+'.txt','w')
+                f.write(str(msg.id)+" "+str(message.author))
                 f.close()
             messagepv=[]
                 
@@ -338,9 +338,6 @@ async def on_message(message):
         cor=-1
         egalite=False
         for i in range(0,nb):
-            f=open('msg'+str(i)+'.txt', 'w')
-            f.write("")
-            f.close()
             score=int(open('score'+str(membres[i])+'.txt','r').readline())
             if score>cor:
                 cor=score
