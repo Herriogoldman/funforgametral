@@ -252,7 +252,7 @@ liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun
 c=False
 a=False
 b=False
-
+v=False
 nb=0
 messagepv={}
 react=0
@@ -260,7 +260,7 @@ membres=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a,membres
+    global nb, react, a,membres,v
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -268,7 +268,7 @@ async def on_raw_reaction_add(payload):
     
     if payload.user_id==client.user.id:
         return
-    v=False
+    
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😎':
         v=True
