@@ -357,7 +357,7 @@ async def on_message(message):
                     clé += tout2[j]+" "
                 auteur= tout2[-1]
                 messagepv[clé]=auteur
-            await channel.send(messagepv)
+                await channel.send(messagepv)
             for key in messagepv.keys():
                 i+=1
                 propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich')
