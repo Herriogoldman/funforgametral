@@ -300,6 +300,7 @@ async def on_raw_reaction_add(payload):
             react+=1
             if react==nb:
                 react=0
+                channel=client.get_channel(687014490793050114)
                 await channel.send(embed=bien_embed)
             
             
