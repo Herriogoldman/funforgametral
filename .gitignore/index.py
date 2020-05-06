@@ -319,8 +319,8 @@ async def on_message(message):
         if len(messagepv)==nb:
             random.shuffle(messagepv)
             for i in range(0,len(messagepv)):
-                channel=client.get_channel(687014490793050114)
                 propal=discord.Embed(title='Proposition '+str(i),description=messagepv[i],type='rich')
+                channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
