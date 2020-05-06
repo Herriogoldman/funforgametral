@@ -282,13 +282,14 @@ async def on_raw_reaction_add(payload):
         
     channel=client.get_channel(687014490793050114)
     for i in range(0,nb):
-        idmsg=int(open('msg'+str(i)+'.txt','r').readline())
+        idmsg=int(open('msg'+str(i)+'.txt','r').readline(0))
+        gars=str(open('msg'+str(i)+'.txt','r').readline(1))
         if payload.message_id==idmsg and payload.emoji.name=='👍':
-            f=open('score'+str(payload.member)+'.txt','r')
+            f=open('score'+str(gars)+'.txt','r')
             score=round(float(f.readline()))
             f.close()
             score+=1
-            f=open('score'+str(payload.member)+'.txt','w')
+            f=open('score'+str(gars)+'.txt','w')
             f.write(str(score))
             f.close()
             react+=1
@@ -320,12 +321,13 @@ async def on_message(message):
         if len(messagepv)==nb:
             shuffle(messagepv)
             for i in range(0,len(messagepv)):
-                propal=discord.Embed(title="Proposition "+str(i+1),description=messagepv[i], type='rich')
+                propal=discord.Embed(description="Proposition "+str(i+1),title=messagepv[i], type='rich')
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(str(msg.id))
+                f.write(str(message.author))
                 f.close()
             messagepv=[]
                 
@@ -348,7 +350,7 @@ async def on_message(message):
             complement_message=''
             for i in range(len(liste)):
                 complement_message+=', '+str(liste[i])
-            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finissent avec le même score de ' +str(scorefinal)+' points.')
         else:
             await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points.')
  
