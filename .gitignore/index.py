@@ -290,6 +290,7 @@ async def on_raw_reaction_add(payload):
         idmsg=int(final[0])
         gars=final[1]
         if payload.message_id==idmsg and payload.emoji.name=='👍':
+            a=True
             f=open('score'+str(gars)+'.txt','r')
             score=round(float(f.readline()))
             f.close()
