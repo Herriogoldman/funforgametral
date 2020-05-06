@@ -330,13 +330,14 @@ async def on_message(message):
             await channel.send('1')
             i=0
             liste2=[]
-            for i in messagepv.keys():
-                liste2.append(i+" "+messagepv.get(i))
+            for f in messagepv.keys():
+                liste2.append(f+" "+messagepv.get(f))
             shuffle(liste2)
             await channel.send(liste2)
             messagepv={}
             for i in liste2:
-                tout=i.split[" "]
+                tout=str(i)
+                tout.split(" ")
                 clé=''
                 for j in range(len(tout)-1):
                     clé += tout[j]+" "
