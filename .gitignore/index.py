@@ -324,20 +324,23 @@ async def on_message(message):
                         
     if message.channel.type==discord.ChannelType.private and a:     
         messagepv[message.content]=str(message.author)
-        channel=client.get_channel(687014490793050114)
-        await channel.send(messagepv)
+        
         if len(messagepv)==nb:
+            channel=client.get_channel(687014490793050114)
+            await channel.send('1')
             i=0
             liste2=[]
             for i in messagepv.keys():
                 liste2.append(i+" "+messagepv.get(i))
             shuffle(liste2)
+            await channel.send(liste2)
             messagepv={}
             for i in liste2:
                 tout=i.split[" "]
                 clé = tout[0]
                 auteur= tout[1]
                 messagepv[clé]=auteur
+            await channel.send(messagepv)
             for key in messagepv.keys():
                 i+=1
                 propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich')
