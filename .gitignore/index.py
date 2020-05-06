@@ -322,7 +322,7 @@ async def on_message(message):
             for i in range(0,len(messagepv)):
                 propal=discord.Embed(title=messagepv[i],type='rich')
                 channel=client.get_channel(687014490793050114)
-                msg = await channel.send(embed=propal)
+                msg = await channel.send(messagepv[i])
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
                 f.write(str(msg.id))
