@@ -268,13 +268,16 @@ async def on_raw_reaction_add(payload):
     
     if payload.user_id==client.user.id:
         return
-    
+    v=False
     debutid=int(open('debut.txt','r').readline())
     if payload.message_id==debutid and payload.emoji.name=='😎':
+        v=True
         membres.append(str(payload.member))
         open('score'+str(payload.member)+'.txt','w').write('0')
         nb+=1
-    if payload.message_id==debutid and payload.emoji.name=='✅':
+
+    if payload.message_id==debutid and payload.emoji.name=='✅' and v:
+        v=False
         a=True
         channel=client.get_channel(687014490793050114)
         await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
