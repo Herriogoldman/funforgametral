@@ -328,7 +328,6 @@ async def on_message(message):
         if len(messagepv)==nb:
             channel=client.get_channel(687014490793050114)
             await channel.send('1')
-            i=0
             liste2=[]
             for f in messagepv.keys():
                 liste2.append(f+" "+messagepv.get(f))
@@ -358,8 +357,9 @@ async def on_message(message):
                     clé += tout2[j]+" "
                 auteur= tout2[-1]
                 messagepv[clé]=auteur
-                await channel.send(messagepv)
+            i=0
             for key in messagepv.keys():
+                await channel.send('good')
                 i+=1
                 propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich')
                 channel=client.get_channel(687014490793050114)
