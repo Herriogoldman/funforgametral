@@ -326,7 +326,15 @@ async def on_message(message):
         messagepv[message.content]=message.author
         if len(messagepv)==nb:
             i=0
-            shuffle(messagepv)
+            liste=[]
+            for i in messagepv.keys():
+                liste.append(i+" "+messagepv.get(i))
+            shuffle(liste)
+            for i in liste:
+                tout=i.split[" "]
+                clé = tout[0]
+                auteur= tout[1]
+                messagepv[clé]=auteur
             for key in messagepv.keys():
                 i+=1
                 propal=discord.Embed(description="Proposition "+str(i),title=key, type='rich')
