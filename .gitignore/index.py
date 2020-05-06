@@ -328,7 +328,7 @@ async def on_message(message):
             i=0
             liste2=[]
             for i in messagepv.keys():
-                liste.append(i+" "+messagepv.get(i))
+                liste2.append(i+" "+messagepv.get(i))
             shuffle(liste2)
             messagepv={}
             for i in liste2:
@@ -338,7 +338,7 @@ async def on_message(message):
                 messagepv[clé]=auteur
             for key in messagepv.keys():
                 i+=1
-                propal=discord.Embed(description="Proposition "+str(i),title=key, type='rich')
+                propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich')
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
