@@ -355,7 +355,7 @@ async def on_message(message):
                 clé=''
                 for j in range(len(tout2)-1):
                     clé += tout2[j]+" "
-                auteur= [-1]
+                auteur= tout2[-1]
                 messagepv[clé]=auteur
             await channel.send(messagepv)
             for key in messagepv.keys():
