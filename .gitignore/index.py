@@ -337,8 +337,10 @@ async def on_message(message):
             messagepv={}
             for i in liste2:
                 tout=i.split[" "]
-                clé = tout[0]
-                auteur= tout[1]
+                clé=''
+                for j in range(len(tout)-1):
+                    clé += tout[j]+" "
+                auteur= tout[-1]
                 messagepv[clé]=auteur
             await channel.send(messagepv)
             for key in messagepv.keys():
