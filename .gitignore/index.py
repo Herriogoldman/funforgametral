@@ -350,7 +350,7 @@ async def on_message(message):
                         mot=''
                         fini=True
                     else:
-                        mot+=lettre
+                        mot+=tout[lettre]
                     lettre+=1
                 clé=''
                 for j in range(len(tout2)-1):
