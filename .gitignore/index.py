@@ -325,8 +325,9 @@ async def on_message(message):
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
-                f=open('msg'+str(i)+'.txt','w')
-                f.write(str(msg.id+'\n'+message.author))
+                f=open('msg'+str(i)+'.txt','a')
+                f.write(str(msg.id))
+                f.write(str(message.author))
                 f.close()
             messagepv=[]
                 
@@ -336,6 +337,9 @@ async def on_message(message):
         cor=-1
         egalite=False
         for i in range(0,nb):
+            f=open('msg'+str(i)+'.txt', 'w')
+            f.write("")
+            f.close()
             score=int(open('score'+str(membres[i])+'.txt','r').readline())
             if score>cor:
                 cor=score
