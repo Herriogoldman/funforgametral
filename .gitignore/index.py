@@ -254,7 +254,7 @@ a=False
 b=False
 
 nb=0
-messagepv=[]
+messagepv={}
 react=0
 membres=[]
 
@@ -320,18 +320,20 @@ async def on_message(message):
         f.close()
                         
     if message.channel.type==discord.ChannelType.private and a:     
-        messagepv.append(message.content)
+        messagepv[message.content]=message.author
         if len(messagepv)==nb:
+            i=0
             shuffle(messagepv)
-            for i in range(0,len(messagepv)):
-                propal=discord.Embed(description="Proposition "+str(i+1),title=messagepv[i], type='rich')
+            for key in messagepv.keys():
+                i+=1
+                propal=discord.Embed(description="Proposition "+str(i),title=key, type='rich')
                 channel=client.get_channel(687014490793050114)
                 msg = await channel.send(embed=propal)
                 await msg.add_reaction('👍')
                 f=open('msg'+str(i)+'.txt','w')
-                f.write(str(msg.id)+" "+str(message.author))
-                f.close()
-            messagepv=[]
+                f.write(str(msg.id)+" "+str(messagepv.get(key)))
+                f.close() 
+            messagepv={}
                 
     if message.content=='Party over':
         a=False
