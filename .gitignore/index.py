@@ -342,16 +342,17 @@ async def on_message(message):
                 tout2=[]
                 fini=False
                 while not fini:
-                    if tout[lettre]==' ':
-                        tout2.append(mot)
-                        mot=''
-                    elif tout[lettre]=='':
+                    if lettre==len(tout):
                         tout2.append(mot)
                         mot=''
                         fini=True
+                    elif tout[lettre]==' ':
+                        tout2.append(mot)
+                        mot=''
+                        lettre+=1
                     else:
                         mot+=tout[lettre]
-                    lettre+=1
+                        lettre+=1
                 clé=''
                 for j in range(len(tout2)-1):
                     clé += tout2[j]+" "
