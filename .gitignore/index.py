@@ -274,6 +274,8 @@ async def on_raw_reaction_add(payload):
         v=True
         membres.append(str(payload.member))
         open('score'+str(payload.member)+'.txt','w').write('0')
+        channel=client.get_channel(687014490793050114)
+        await channel.send(str(payload.member))
         nb+=1
 
     if payload.message_id==debutid and payload.emoji.name=='✅' and v:
@@ -288,7 +290,8 @@ async def on_raw_reaction_add(payload):
         f=open('msg'+str(i)+'.txt', 'r').read()
         final=f.split(' ')
         idmsg=int(final[0])
-        gars=final[1]
+        gars=str(final[1])
+        await channel.send(gars)
         if payload.message_id==idmsg and payload.emoji.name=='👍':
             messagepv={}
             a=True
