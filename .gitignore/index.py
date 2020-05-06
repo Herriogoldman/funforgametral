@@ -260,7 +260,7 @@ membres=[]
 
 @client.event
 async def on_raw_reaction_add(payload):
-    global nb, react, a,membres,v
+    global nb, react, a,membres,v,messagepv
     i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
@@ -290,6 +290,7 @@ async def on_raw_reaction_add(payload):
         idmsg=int(final[0])
         gars=final[1]
         if payload.message_id==idmsg and payload.emoji.name=='👍':
+            messagepv={}
             a=True
             f=open('score'+str(gars)+'.txt','r')
             score=round(float(f.readline()))
@@ -369,7 +370,6 @@ async def on_message(message):
                 f.write(str(msg.id)+" "+str(messagepv.get(key)))
                 f.close() 
                 await channel.send(open('msg'+str(i)+'.txt','r').read())
-            messagepv={}
             
                 
     if message.content=='Party over':
