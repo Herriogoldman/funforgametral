@@ -532,7 +532,6 @@ async def on_message(message):
                 await message.add_reaction(i)
 
     if message.content == 'Dis nous tout Fun':
-        await client.delete_message(message)
         await message.channel.send("Je suis de retour mais attention ! Je n'ai aucune nouvelle fonctionnalité... Loïc à juste enfin compris pourquoi je marchais plus ce trouduc... La bise.")
 
                 
