@@ -4,7 +4,8 @@ import asyncio
 import random
 from random import*
 from discord.ext import commands
-client = discord.Client()
+intents = discord.Intents.all()
+client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     print("Bot en ligne")
