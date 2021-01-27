@@ -530,6 +530,11 @@ async def on_message(message):
         for i in liste_message:
             if i in liste_emoji:
                 await message.add_reaction(i)
+
+    if message.content == 'Dis nous tout Fun':
+        message.delete()
+        await message.channel.send("Je suis de retour mais attention ! Je n'ai aucune nouvelle fonctionnalité juste Loïc à enfin compris pourquoi je marchais plus ce trouduc... La bise.")
+
                 
 
         
