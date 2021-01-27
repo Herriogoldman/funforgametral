@@ -532,15 +532,9 @@ async def on_message(message):
 
     if message.content == 'Dis nous tout Fun':
         await message.channel.send("Je suis de retour mais attention ! Je n'ai aucune nouvelle fonctionnalité... Loïc à juste enfin compris pourquoi je marchais plus ce trouduc... La bise.")
+   
 
-                
-@client.event
-async def on_typing(channel,user,when):
-    channel2 = client.get_channel(686624031931367501)
-    await channel2.send("Tu vas écrire quoi là mon frérot ?")
 
-        
-                
-    
+
 client.run(os.environ['TOKEN'])
     
