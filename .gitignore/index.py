@@ -535,7 +535,7 @@ async def on_message(message):
                 
 @client.event
 async def on_typing(channel,user,when):
-    await user.send("Tu vas écrire quoi là mon frérot ?")
+    await channel.send("Tu vas écrire quoi là mon frérot ?")
 
         
                 
