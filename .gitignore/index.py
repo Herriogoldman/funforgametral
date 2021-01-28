@@ -537,7 +537,7 @@ async def on_message(message):
 async def on_member_update(before,after):
     if (before.activity != after.activity):
         channel = dicord.utils.get(after.guild.channels, name = "zonetest")
-        await channel.send(str(after.name) + "a commencé" + str(member.activity))
+        await channel.send(str(after.name) + "a commencé" + str(after.activity))
 
 
 
