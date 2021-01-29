@@ -212,7 +212,6 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
-open('nbjoueurs.txt','w').write('0')
 
 def rec_mot(fichier,mot_cherché):
     f=open(fichier,'r') #On ouvre le fichier
