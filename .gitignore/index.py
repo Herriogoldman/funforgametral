@@ -1,14 +1,15 @@
 import discord
-import os
-import asyncio
-import typing
-import random
-from random import*
-from discord.ext import commands
-client = discord.Client()
+default_intents = discord.Intents.default()
+default_intents.members = True
+default_intents.presences = True
+default_intents.typing = False
+default_intents.reactions = True
+client = discord.Client(intents=default_intents)
+couleur={"Loïc#7389":0xe74c3c,"Raionkasai#8668":0x3498db,"Masterbin35#5542":0xe67e22, "Thomas(Dest)#8382":0x9b59b6}
+
+
 @client.event
 async def on_ready():
-    print("Bot en ligne")
     channel=client.get_channel(687014490793050114)
     await channel.send('Je suis en ligne') 
     
@@ -414,6 +415,24 @@ async def on_message(message):
     
     if message.author==client.user:
         return
+    if message.content.startswith('!dm'):
+        contenu = message.content.split(" ")
+        print(contenu)
+        name = contenu[1]
+        mess =''
+        for i in range(len(contenu)):
+            if i > 1:
+                mess=mess + contenu[i] + " "
+        membre = discord.utils.get(message.guild.members, name=name)
+        try :
+            await membre.send(mess)
+        except AttributeError:
+            await discord.utils.get(message.guild.members, name = 'Loïc').send("L'utilisateur n'existe pas")
+        except discord.errors.Forbidden :
+            await message.channel.send("L'utilisateur a fermé ses dms")
+    if message.channel.type == discord.ChannelType.private :
+        anonyme = discord.Embed(title = "Message d'un anonyme", description = message.content)
+        await client.get_channel(376778036642578442).send(embed= anonyme)
     oui=True
     for i in liste_commande:
         if i in message.content.lower():
@@ -533,13 +552,91 @@ async def on_message(message):
     if message.content == 'Dis nous tout Fun':
         await message.channel.send("Je suis de retour mais attention ! Je n'ai aucune nouvelle fonctionnalité... Loïc à juste enfin compris pourquoi je marchais plus ce trouduc... La bise.")
    
+message_activite = {}
+jeu_en_cours = {}
+
 @client.event
 async def on_member_update(before,after):
-    if (before.activity != after.activity):
-        channel = dicord.utils.get(after.guild.channels, name = "zonetest")
-        await channel.send(str(after.name) + "a commencé" + str(after.activity))
+    if after.bot:
+        return
+    print(str(after.name) +" joue à " +str(after.activity))
+    if before.activity != after.activity and after.activity!=None:
+        if after.activity.type == discord.ActivityType.playing :
+            mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
+            await mess.add_reaction('👍')
+            await mess.add_reaction('👎') 
+            global id 
+            id = mess.id
+    elif after.activity==None:
+            channel2=client.get_channel(415217594505625600)
+            a=False
+            for joueur,jeu in jeu_en_cours.items():
+                print(joueur, jeu)
+                if jeu == str(before.activity.name) and joueur!=str(after.name):
+                    await channel2.get_partial_message(message_activite.get(joueur)).delete()
+                    del message_activite[str(after.name)]
+                    del message_activite[str(joueur)]
+                    del jeu_en_cours[str(after.name)]
+                    emb = discord.Embed(title= joueur + ' est en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(discord.utils.get(channel2.guild.members, name=joueur))])
+                    emb.set_image(url=discord.utils.get(channel2.guild.members, name=joueur).avatar_url)
+                    mess2=await client.get_channel(415217594505625600).send(embed = emb)
+                    message_activite[joueur]=mess2.id
+                    a=False
+                    return
+                else:
+                    a= True
+
+            if a :
+                await channel2.get_partial_message(message_activite.get(str(after.name))).delete()
+                del message_activite[str(after.name)]
+                del jeu_en_cours[str(after.name)]
+
+
+@client.event
+async def on_reaction_add(reaction, user):
+    if user==client.user:
+        return
+    if reaction.message.id == id :
+        if reaction.emoji=='👍':
+                a=False
+                await reaction.message.delete()
+                print(len(jeu_en_cours))
+                if len(jeu_en_cours) !=0:
+                    print(jeu_en_cours)
+                    for joueur,jeu in jeu_en_cours.items():
+                        print(joueur, jeu)
+                        if jeu == str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) :
+                            jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
+                            channel2=client.get_channel(415217594505625600)
+                            await channel2.get_partial_message(message_activite.get(joueur)).delete()
+                            mess2=await channel2.send(embed=discord.Embed(title= joueur+ " et " + str(user.name) + ' sont en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec eux, demande leur 😉', colour=couleur[str(discord.utils.get(channel2.guild.members, name=joueur))]))
+                            del message_activite[joueur]
+                            message_activite[joueur]=mess2.id
+                            message_activite[str(user.name)]=mess2.id
+                            a=False
+                            return
+                        else :
+                            a=True
+                    if a:
+                        jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
+                        emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
+                        emb.set_image(url=user.avatar_url)
+                        mess2=await client.get_channel(415217594505625600).send(embed = emb)
+                        message_activite[str(user.name)]=mess2.id
+                else:
+                    jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
+                    emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
+                    emb.set_image(url=user.avatar_url)
+                    mess2=await client.get_channel(415217594505625600).send(embed = emb)
+                    message_activite[str(user.name)]=mess2.id
+        if reaction.emoji=='👎':
+            await reaction.message.delete()
+
+
+@client.event
+async def on_typing(channel,user,when):
+    await user.send("Fais gaffe à ce que t'écris mon gars")
 
 
 
 client.run(os.environ['TOKEN'])
-    
