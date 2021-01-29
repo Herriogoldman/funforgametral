@@ -1,5 +1,5 @@
 import discord
-import random
+from random import*
 default_intents = discord.Intents.default()
 default_intents.members = True
 default_intents.presences = True
