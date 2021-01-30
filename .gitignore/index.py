@@ -1,5 +1,4 @@
 import discord
-import os
 from random import*
 default_intents = discord.Intents.all()
 default_intents.typing = False
