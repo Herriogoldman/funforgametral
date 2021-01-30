@@ -320,14 +320,6 @@ async def on_member_update(before,after):
             await mess.add_reaction('👎') 
             id = mess.id
 
-    elif before.activity.name != after.activity.name:
-        if after.activity.type == discord.ActivityType.playing :
-            print(str(after.name) +" joue à " +str(after.activity.name) + " : "+str(after.activity.state))
-            mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
-            await mess.add_reaction('👍')
-            await mess.add_reaction('👎')  
-            id = mess.id
-            
     elif after.activity==None:
         print(str(after.name) +" ne joue plus")    
         a=False
@@ -354,6 +346,16 @@ async def on_member_update(before,after):
                 del jeu_en_cours[str(after.name)]
             except discord.errors.HTTPException:
                 return
+
+    elif before.activity.name != after.activity.name:
+        if after.activity.type == discord.ActivityType.playing :
+            print(str(after.name) +" joue à " +str(after.activity.name) + " : "+str(after.activity.state))
+            mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
+            await mess.add_reaction('👍')
+            await mess.add_reaction('👎')  
+            id = mess.id
+            
+
 
 
 # REACTION AJOUTE SUR UN MESSAGE
