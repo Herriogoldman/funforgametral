@@ -1,10 +1,6 @@
 import discord
 import os
-import asyncio
-import typing
-import random
 from random import*
-from discord.ext import commands
 default_intents = discord.Intents.default()
 default_intents.members = True
 default_intents.presences = True
