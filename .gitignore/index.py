@@ -227,8 +227,8 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    
-    message_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich').set_image(url=images[randint(0,len(images)-1)])  
+    i=randint(0,len(images)-1)
+    message_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich').set_image(url=images[i])  
 
     if message.author==client.user:
         return
