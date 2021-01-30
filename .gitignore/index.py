@@ -313,7 +313,7 @@ async def on_member_update(before,after):
                 del message_activite[str(joueur)]
                 del jeu_en_cours[str(after.name)]
                 emb = discord.Embed(title= joueur + ' est en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(discord.utils.get(pourparler.guild.members, name=joueur))])
-                emb.set_image(url=discord.utils.get(pourparler.guild.members, name=joueur).avatar_url_as(size=16))
+                emb.set_image(url=discord.utils.get(pourparler.guild.members, name=joueur).avatar_url_as(size=144))
                 mess2=await pourparler.send(embed = emb)
                 message_activite[joueur]=mess2.id
                 a=False
@@ -356,13 +356,13 @@ async def on_reaction_add(reaction, user):
                     if a:
                         jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
                         emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
-                        emb.set_image(url=user.avatar_url_as(size=16))
+                        emb.set_image(url=user.avatar_url_as(size=144))
                         mess2=await pourparler.send(embed = emb)
                         message_activite[str(user.name)]=mess2.id
                 else:
                     jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
                     emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
-                    emb.set_image(url=user.avatar_url_as(size=16))
+                    emb.set_image(url=user.avatar_url_as(size=144))
                     mess2=await pourparler.send(embed = emb)
                     message_activite[str(user.name)]=mess2.id
         if reaction.emoji=='👎':
