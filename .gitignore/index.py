@@ -324,7 +324,6 @@ async def on_member_update(before,after):
         print(str(after.name) +" ne joue plus")    
         a=False
         for joueur,jeu in jeu_en_cours.items():
-            print(joueur, jeu)
             if jeu == str(before.activity.name) and joueur!=str(after.name):
                 await pourparler.get_partial_message(message_activite.get(joueur)).delete()
                 del message_activite[str(after.name)]
@@ -368,7 +367,6 @@ async def on_reaction_add(reaction, user):
         if reaction.emoji=='👍':
                 a=False
                 await reaction.message.delete()
-                print(len(jeu_en_cours))
                 if len(jeu_en_cours) !=0:
                     print(jeu_en_cours)
                     for joueur,jeu in jeu_en_cours.items():
