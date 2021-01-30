@@ -3,7 +3,7 @@ import os
 from random import*
 default_intents = discord.Intents.all()
 default_intents.typing = False
-client = discord.Client()
+client = discord.Client(intents = default_intents)
 couleur={"Loïc#7389":0xe74c3c,"Raionkasai#8668":0x3498db,"Masterbin35#5542":0xe67e22, "Thomas(Dest)#8382":0x9b59b6}
 
 
