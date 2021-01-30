@@ -221,7 +221,9 @@ jeu_en_cours = {}
 
 @client.event
 async def on_ready():
+    global pourparler
     print('Je suis en ligne')
+    pourparler=client.get_channel(415217594505625600)
 
 # RECEPTION D'UN MESSAGE
 
@@ -288,37 +290,37 @@ async def on_message(message):
 async def on_member_update(before,after):
     if after.bot:
         return
-    print(str(after.name) +" joue à " +str(after.activity))
     if before.activity != after.activity and after.activity!=None:
         if after.activity.type == discord.ActivityType.playing :
+            print(str(after.name) +" joue à " +str(after.activity))
             mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
             await mess.add_reaction('👍')
             await mess.add_reaction('👎') 
             global id 
             id = mess.id
     elif after.activity==None:
-            channel2=client.get_channel(415217594505625600)
-            a=False
-            for joueur,jeu in jeu_en_cours.items():
-                print(joueur, jeu)
-                if jeu == str(before.activity.name) and joueur!=str(after.name):
-                    await channel2.get_partial_message(message_activite.get(joueur)).delete()
-                    del message_activite[str(after.name)]
-                    del message_activite[str(joueur)]
-                    del jeu_en_cours[str(after.name)]
-                    emb = discord.Embed(title= joueur + ' est en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(discord.utils.get(channel2.guild.members, name=joueur))])
-                    emb.set_image(url=discord.utils.get(channel2.guild.members, name=joueur).avatar_url)
-                    mess2=await client.get_channel(415217594505625600).send(embed = emb)
-                    message_activite[joueur]=mess2.id
-                    a=False
-                    return
-                else:
-                    a= True
-
-            if a :
-                await channel2.get_partial_message(message_activite.get(str(after.name))).delete()
+        print(str(after.name) +" ne joue plus")    
+        a=False
+        for joueur,jeu in jeu_en_cours.items():
+            print(joueur, jeu)
+            if jeu == str(before.activity.name) and joueur!=str(after.name):
+                await pourparler.get_partial_message(message_activite.get(joueur)).delete()
                 del message_activite[str(after.name)]
+                del message_activite[str(joueur)]
                 del jeu_en_cours[str(after.name)]
+                emb = discord.Embed(title= joueur + ' est en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(discord.utils.get(pourparler.guild.members, name=joueur))])
+                emb.set_image(url=discord.utils.get(pourparler.guild.members, name=joueur).avatar_url)
+                mess2=await pourparler.send(embed = emb)
+                message_activite[joueur]=mess2.id
+                a=False
+                return
+            else:
+                a= True
+
+        if a :
+            await pourparler.get_partial_message(message_activite.get(str(after.name))).delete()
+            del message_activite[str(after.name)]
+            del jeu_en_cours[str(after.name)]
 
 
 # REACTION AJOUTE SUR UN MESSAGE
@@ -338,9 +340,8 @@ async def on_reaction_add(reaction, user):
                         print(joueur, jeu)
                         if jeu == str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) :
                             jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
-                            channel2=client.get_channel(415217594505625600)
-                            await channel2.get_partial_message(message_activite.get(joueur)).delete()
-                            mess2=await channel2.send(embed=discord.Embed(title= joueur+ " et " + str(user.name) + ' sont en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec eux, demande leur 😉', colour=couleur[str(discord.utils.get(channel2.guild.members, name=joueur))]))
+                            await pourparler.get_partial_message(message_activite.get(joueur)).delete()
+                            mess2=await pourparler.send(embed=discord.Embed(title= joueur+ " et " + str(user.name) + ' sont en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec eux, demande leur 😉', colour=couleur[str(discord.utils.get(pourparler.guild.members, name=joueur))]))
                             del message_activite[joueur]
                             message_activite[joueur]=mess2.id
                             message_activite[str(user.name)]=mess2.id
@@ -352,13 +353,13 @@ async def on_reaction_add(reaction, user):
                         jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
                         emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
                         emb.set_image(url=user.avatar_url)
-                        mess2=await client.get_channel(415217594505625600).send(embed = emb)
+                        mess2=await pourparler.send(embed = emb)
                         message_activite[str(user.name)]=mess2.id
                 else:
                     jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
                     emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
                     emb.set_image(url=user.avatar_url)
-                    mess2=await client.get_channel(415217594505625600).send(embed = emb)
+                    mess2=await pourparler.send(embed = emb)
                     message_activite[str(user.name)]=mess2.id
         if reaction.emoji=='👎':
             await reaction.message.delete()
