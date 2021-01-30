@@ -279,7 +279,7 @@ async def on_message(message):
         await message.channel.send(embed=message_embed)
             
     if 'zinzolé' in message.content.lower():
-        await message.channel.send("Ici le verbe Zinzoler = "+verbes[randint(0,len(verbes))])
+        await message.channel.send("Ici le verbe Zinzoler = "+verbes[randint(0,len(verbes)-1)])
 
     if message.content.lower()=='dommage':
         await message.channel.send('A ça !')
@@ -289,7 +289,7 @@ async def on_message(message):
         await message.channel.send(embed=denis)
 
     if 'chibre' in message.content.lower():
-        await message.channel.send(chibre[randint(0,len(chibre))])
+        await message.channel.send(chibre[randint(0,len(chibre)-1)])
 
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
