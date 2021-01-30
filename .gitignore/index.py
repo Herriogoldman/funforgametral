@@ -322,9 +322,12 @@ async def on_member_update(before,after):
                 a= True
 
         if a :
-            await pourparler.get_partial_message(message_activite.get(str(after.name))).delete()
-            del message_activite[str(after.name)]
-            del jeu_en_cours[str(after.name)]
+            try:
+                await pourparler.get_partial_message(message_activite.get(str(after.name))).delete()
+                del message_activite[str(after.name)]
+                del jeu_en_cours[str(after.name)]
+            except discord.errors.HTTPException:
+                return
 
 
 # REACTION AJOUTE SUR UN MESSAGE
