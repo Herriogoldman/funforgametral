@@ -1,25 +1,23 @@
 import discord
 import os
 from random import*
-default_intents = discord.Intents.default()
-default_intents.members = True
-default_intents.presences = True
+default_intents = discord.Intents.all()
 default_intents.typing = False
-default_intents.reactions = True
 client = discord.Client(intents=default_intents)
+
+##################################################################################################################################################
+##################################################################################################################################################
+#                                             VARIABLES
+##################################################################################################################################################
+##################################################################################################################################################
+
 couleur={"Loïc#7389":0xe74c3c,"Raionkasai#8668":0x3498db,"Masterbin35#5542":0xe67e22, "Thomas(Dest)#8382":0x9b59b6}
 
-
-@client.event
-async def on_ready():
-    channel=client.get_channel(687014490793050114)
-    await channel.send('Je suis en ligne') 
-    
 liste_emoji=['😀', '😁', '😂', '🤣', '😃', '😄', '😅', '😆', '😉', '😊', '😋', '😎', '😍', '😘', '🥰', '😗', '😙', '😚', '☺️', '🙂', '🤗', '🤩', '🤔', '🤨', '😐', '😑', '😶', '🙄', '😏', '😣', '😥', '😮', '🤐', '😯', '😪', '😫', '😴', '😌', '😛', '😜', '😝', '🤤', '😒', '😓', '😔', '😕', '🙃', '🤑', '😲', '☹️', '🙁', '😖', '😞', '😟', '😤', '😢', '😭', '😦', '😧', '😨', '😩', '🤯', '😬', '😰', '😱', '🥵', '🥶', '😳', '🤪', '😵', '😡', '😠', '🤬', '😷', '🤒', '🤕', '🤢', '🤮', '🤧', '😇', '🤠', '🤡', '🥳', '🥴', '🥺', '🤥', '🤫', '🤭', '🧐', '🤓', '😈', '👿', '👹', '👺', '💀', '👻', '👽', '🤖', '💩', '😺', '😸', '😹', '😻', '😼', '😽', '🙀', '😿', '👶', '👧', '🧒', '👦', '👩', '🧑', '👨', '👵', '🧓', '👴', '👲', '👳\u200d♀️', '👳\u200d♂️', '🧕', '🧔', '👱\u200d♂️', '👱\u200d♀️', '👨\u200d🦰', '👩\u200d🦰', '👨\u200d🦱', '👩\u200d🦱', '👨\u200d🦲', '👩\u200d🦲', '👨\u200d🦳', '👩\u200d🦳', '🦸\u200d♀️', '🦸\u200d♂️', '🦹\u200d♀️', '🦹\u200d♂️', '👮\u200d♀️', '👮\u200d♂️', '👷\u200d♀️', '👷\u200d♂️', '💂\u200d♀️', '💂\u200d♂️', '🕵️\u200d♀️', '🕵️\u200d♂️', '👩\u200d⚕️', '👨\u200d⚕️', '👩\u200d🌾', '👨\u200d🌾', '👩\u200d🍳', '👨\u200d🍳', '👩\u200d🎓', '👨\u200d🎓', '👩\u200d🎤', '👨\u200d🎤', '👩\u200d🏫', '👨\u200d🏫', '👩\u200d🏭', '👨\u200d🏭', '👩\u200d💻', '👨\u200d💻', '👩\u200d💼', '👨\u200d💼', '👩\u200d🔧', '👨\u200d🔧', '👩\u200d🔬', '👨\u200d🔬', '👩\u200d🎨', '👨\u200d🎨', '👩\u200d🚒', '👨\u200d🚒', '👩\u200d✈️', '👨\u200d✈️', '👩\u200d🚀', '👨\u200d🚀', '👩\u200d⚖️', '👨\u200d⚖️', '👰', '🤵', '👸', '🤴', '🤶', '🎅', '🧙\u200d♀️', '🧙\u200d♂️', '🧝\u200d♀️', '🧝\u200d♂️', '🧛\u200d♀️', '🧛\u200d♂️', '🧟\u200d♀️', '🧟\u200d♂️', '🧞\u200d♀️', '🧞\u200d♂️', '🧜\u200d♀️', '🧜\u200d♂️', '🧚\u200d♀️', '🧚\u200d♂️', '👼', '🤰', '🤱', '🙇\u200d♀️', '🙇\u200d♂️', '💁\u200d♀️', '💁\u200d♂️', '🙅\u200d♀️', '🙅\u200d♂️', '🙆\u200d♀️', '🙆\u200d♂️', '🙋\u200d♀️', '🙋\u200d♂️', '🤦\u200d♀️', '🤦\u200d♂️', '🤷\u200d♀️', '🤷\u200d♂️', '🙎\u200d♀️', '🙎\u200d♂️', '🙍\u200d♀️', '🙍\u200d♂️', '💇\u200d♀️', '💇\u200d♂️', '💆\u200d♀️', '💆\u200d♂️', '🧖\u200d♀️', '🧖\u200d♂️', '💅', '🤳', '💃', '🕺', '👯\u200d♀️', '👯\u200d♂️', '🕴', '🚶\u200d♀️', '🚶\u200d♂️', '🏃\u200d♀️', '🏃\u200d♂️', '👫', '👭', '👬', '💑', '👩\u200d❤️\u200d👩', '👨\u200d❤️\u200d👨', '💏', '👩\u200d❤️\u200d💋\u200d👩', '👨\u200d❤️\u200d💋\u200d👨', '👪', '👨\u200d👩\u200d👧', '👨\u200d👩\u200d👧\u200d👦', '👨\u200d👩\u200d👦\u200d👦', '👨\u200d👩\u200d👧\u200d👧', '👩\u200d👩\u200d👦', '👩\u200d👩\u200d👧', '👩\u200d👩\u200d👧\u200d👦', '👩\u200d👩\u200d👦\u200d👦', '👩\u200d👩\u200d👧\u200d👧', '👨\u200d👨\u200d👦', '👨\u200d👨\u200d👧', '👨\u200d👨\u200d👧\u200d👦', '👨\u200d👨\u200d👦\u200d👦', '👨\u200d👨\u200d👧\u200d👧', '👩\u200d👦', '👩\u200d👧', '👩\u200d👧\u200d👦', '👩\u200d👦\u200d👦', '👩\u200d👧\u200d👧', '👨\u200d👦', '👨\u200d👧', '👨\u200d👧\u200d👦', '👨\u200d👦\u200d👦', '👨\u200d👧\u200d👧', '🤲', '👐', '🙌', '👏', '🤝', '👍', '👎', '👊', '✊', '🤛', '🤜', '🤞', '✌️', '🤟', '🤘', '👌', '👈', '👉', '👆', '👇', '☝️', '✋', '🤚', '🖐', '🖖', '👋', '🤙', '💪', '🦵', '🦶', '🖕', '✍️', '🙏', '💍', '💄', '💋', '👄', '👅', '👂', '👃', '👣', '👁', '👀', '🧠', '🦴', '🦷', '🗣', '👤', '🧥', '👚', '👕', '👖', '👔', '👗', '👙', '👘', '👠', '👡', '👢', '👞', '👟', '🥾', '🥿', '🧦', '🧤', '🧣', '🎩', '🧢', '👒', '🎓', '⛑', '👑', '👝', '👛', '👜', '💼', '🎒', '👓', '🕶', '🥽', '🥼', '🌂', '🧵', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🦝', '🐻', '🐼', '🦘', '🦡', '🐨', '🐯', '🦁', '🐮', '🐷', '🐽', '🐸', '🐵', '🙈', '🙉', '🙊', '🐒', '🐔', '🐧', '🐦', '🐤', '🐣', '🐥', '🦆', '🦢', '🦅', '🦉', '🦚', '🦜', '🦇', '🐺', '🐗', '🐴', '🦄', '🐝', '🐛', '🦋', '🐌', '🐚', '🐞', '🐜', '🦗', '🕷', '🕸', '🦂', '🦟', '🦠', '🐢', '🐍', '🦎', '🦖', '🦕', '🐙', '🦑', '🦐', '🦀', '🐡', '🐠', '🐟', '🐬', '🐳', '🐋', '🦈', '🐊', '🐅', '🐆', '🦓', '🦍', '🐘', '🦏', '🦛', '🐪', '🐫', '🦙', '🦒', '🐃', '🐂', '🐄', '🐎', '🐖', '🐏', '🐑', '🐐', '🦌', '🐕', '🐩', '🐈', '🐓', '🦃', '🕊', '🐇', '🐁', '🐀', '🐿', '🦔', '🐾', '🐉', '🐲', '🌵', '🎄', '🌲', '🌳', '🌴', '🌱', '🌿', '☘️', '🍀', '🎍', '🎋', '🍃', '🍂', '🍁', '🍄', '🌾', '💐', '🌷', '🌹', '🥀', '🌺', '🌸', '🌼', '🌻', '🌞', '🌝', '🌛', '🌜', '🌚', '🌕', '🌖', '🌗', '🌘', '🌑', '🌒', '🌓', '🌔', '🌙', '🌎', '🌍', '🌏', '💫', '⭐️', '🌟', '✨', '⚡️', '☄️', '💥', '🔥', '🌪', '🌈', '☀️', '🌤', '⛅️', '🌥', '☁️', '🌦', '🌧', '⛈', '🌩', '🌨', '❄️', '☃️', '⛄️', '🌬', '💨', '💧', '💦', '☔️', '☂️', '🌊', '🍏', '🍎', '🍐', '🍊', '🍋', '🍌', '🍉', '🍇', '🍓', '🍈', '🍒', '🍑', '🍍', '🥭', '🥥', '🥝', '🍅', '🍆', '🥑', '🥦', '🥒', '🥬', '🌶', '🌽', '🥕', '🥔', '🍠', '🥐', '🍞', '🥖', '🥨', '🥯', '🧀', '🥚', '🍳', '🥞', '🥓', '🥩', '🍗', '🍖', '🌭', '🍔', '🍟', '🍕', '🥪', '🥙', '🌮', '🌯', '🥗', '🥘', '🥫', '🍝', '🍜', '🍲', '🍛', '🍣', '🍱', '🥟', '🍤', '🍙', '🍚', '🍘', '🍥', '🥮', '🥠', '🍢', '🍡', '🍧', '🍨', '🍦', '🥧', '🍰', '🎂', '🍮', '🍭', '🍬', '🍫', '🍿', '🧂', '🍩', '🍪', '🌰', '🥜', '🍯', '🥛', '🍼', '☕️', '🍵', '🥤', '🍶', '🍺', '🍻', '🥂', '🍷', '🥃', '🍸', '🍹', '🍾', '🥄', '🍴', '🍽', '🥣', '🥡', '\u26BD', '🏀', '🏈', '⚾️', '🥎', '🏐', '🏉', '🎾', '🥏', '🎱', '🏓', '🏸', '🥅', '🏒', '🏑', '🥍', '🏏', '⛳️', '🏹', '🎣', '🥊', '🥋', '🎽', '⛸', '🥌', '🛷', '🛹', '🎿', '⛷', '🏂', '🏋️\u200d♀️', '🏋🏻\u200d♀️', '🏋🏼\u200d♀️', '🏋🏽\u200d♀️', '🏋🏾\u200d♀️', '🏋🏿\u200d♀️', '🏋️\u200d♂️', '🏋🏻\u200d♂️', '🏋🏼\u200d♂️', '🏋🏽\u200d♂️', '🏋🏾\u200d♂️', '🏋🏿\u200d♂️', '🤼\u200d♀️', '🤼\u200d♂️', '🤸\u200d♀️', '🤸🏻\u200d♀️', '🤸🏼\u200d♀️', '🤸🏽\u200d♀️', '🤸🏾\u200d♀️', '🤸🏿\u200d♀️', '🤸\u200d♂️', '🤸🏻\u200d♂️', '🤸🏼\u200d♂️', '🤸🏽\u200d♂️', '🤸🏾\u200d♂️', '🤸🏿\u200d♂️', '⛹️\u200d♀️', '⛹🏻\u200d♀️', '⛹🏼\u200d♀️', '⛹🏽\u200d♀️', '⛹🏾\u200d♀️', '⛹🏿\u200d♀️', '⛹️\u200d♂️', '⛹🏻\u200d♂️', '⛹🏼\u200d♂️', '⛹🏽\u200d♂️', '⛹🏾\u200d♂️', '⛹🏿\u200d♂️', '🤺', '🤾\u200d♀️', '🤾🏻\u200d♀️', '🤾🏼\u200d♀️', '🤾🏾\u200d♀️', '🤾🏾\u200d♀️', '🤾🏿\u200d♀️', '🤾\u200d♂️', '🤾🏻\u200d♂️', '🤾🏼\u200d♂️', '🤾🏽\u200d♂️', '🤾🏾\u200d♂️', '🤾🏿\u200d♂️', '🏌️\u200d♀️', '🏌🏻\u200d♀️', '🏌🏼\u200d♀️', '🏌🏽\u200d♀️', '🏌🏾\u200d♀️', '🏌🏿\u200d♀️', '🏌️\u200d♂️', '🏌🏻\u200d♂️', '🏌🏼\u200d♂️', '🏌🏽\u200d♂️', '🏌🏾\u200d♂️', '🏌🏿\u200d♂️', '🏇', '🏇🏻', '🏇🏼', '🏇🏽', '🏇🏾', '🏇🏿', '🧘\u200d♀️', '🧘🏻\u200d♀️', '🧘🏼\u200d♀️', '🧘🏽\u200d♀️', '🧘🏾\u200d♀️', '🧘🏿\u200d♀️', '🧘\u200d♂️', '🧘🏻\u200d♂️', '🧘🏼\u200d♂️', '🧘🏽\u200d♂️', '🧘🏾\u200d♂️', '🧘🏿\u200d♂️', '🏄\u200d♀️', '🏄🏻\u200d♀️', '🏄🏼\u200d♀️', '🏄🏽\u200d♀️', '🏄🏾\u200d♀️', '🏄🏿\u200d♀️', '🏄\u200d♂️', '🏄🏻\u200d♂️', '🏄🏼\u200d♂️', '🏄🏽\u200d♂️', '🏄🏾\u200d♂️', '🏄🏿\u200d♂️', '🏊\u200d♀️', '🏊🏻\u200d♀️', '🏊🏼\u200d♀️', '🏊🏽\u200d♀️', '🏊🏾\u200d♀️', '🏊🏿\u200d♀️', '🏊\u200d♂️', '🏊🏻\u200d♂️', '🏊🏼\u200d♂️', '🏊🏽\u200d♂️', '🏊🏾\u200d♂️', '🏊🏿\u200d♂️', '🤽\u200d♀️', '🤽🏻\u200d♀️', '🤽🏼\u200d♀️', '🤽🏽\u200d♀️', '🤽🏾\u200d♀️', '🤽🏿\u200d♀️', '🤽\u200d♂️', '🤽🏻\u200d♂️', '🤽🏼\u200d♂️', '🤽🏽\u200d♂️', '🤽🏾\u200d♂️', '🤽🏿\u200d♂️', '🚣\u200d♀️', '🚣🏻\u200d♀️', '🚣🏼\u200d♀️', '🚣🏽\u200d♀️', '🚣🏾\u200d♀️', '🚣🏿\u200d♀️', '🚣\u200d♂️', '🚣🏻\u200d♂️', '🚣🏼\u200d♂️', '🚣🏽\u200d♂️', '🚣🏾\u200d♂️', '🚣🏿\u200d♂️', '🧗\u200d♀️', '🧗🏻\u200d♀️', '🧗🏼\u200d♀️', '🧗🏽\u200d♀️', '🧗🏾\u200d♀️', '🧗🏿\u200d♀️', '🧗\u200d♂️', '🧗🏻\u200d♂️', '🧗🏼\u200d♂️', '🧗🏽\u200d♂️', '🧗🏾\u200d♂️', '🧗🏿\u200d♂️', '🚵\u200d♀️', '🚵🏻\u200d♀️', '🚵🏼\u200d♀️', '🚵🏽\u200d♀️', '🚵🏾\u200d♀️', '🚵🏿\u200d♀️', '🚵\u200d♂️', '🚵🏻\u200d♂️', '🚵🏼\u200d♂️', '🚵🏽\u200d♂️', '🚵🏾\u200d♂️', '🚵🏿\u200d♂️', '🚴\u200d♀️', '🚴🏻\u200d♀️', '🚴🏼\u200d♀️', '🚴🏽\u200d♀️', '🚴🏾\u200d♀️', '🚴🏿\u200d♀️', '🚴\u200d♂️', '🚴🏻\u200d♂️', '🚴🏼\u200d♂️', '🚴🏽\u200d♂️', '🚴🏾\u200d♂️', '🚴🏿\u200d♂️', '🏆', '🥇', '🥈', '🥉', '🏅', '🎖', '🏵', '🎗', '🎫', '🎟', '🎪', '🤹\u200d♀️', '🤹🏻\u200d♀️', '🤹🏼\u200d♀️', '🤹🏽\u200d♀️', '🤹🏾\u200d♀️', '🤹🏿\u200d♀️', '🤹\u200d♂️', '🤹🏻\u200d♂️', '🤹🏼\u200d♂️', '🤹🏽\u200d♂️', '🤹🏾\u200d♂️', '🤹🏿\u200d♂️', '🎭', '🎨', '🎬', '🎤', '🎧', '🎼', '🎹', '🥁', '🎷', '🎺', '🎸', '🎻', '🎲', '🧩', '♟', '🎯', '🎳', '🎮', '🚗', '🚕', '🚙', '🚌', '🚎', '🏎', '🚓', '🚑', '🚒', '🚐', '🚚', '🚛', '🚜', '🛴', '🚲', '🛵', '🏍', '🚨', '🚔', '🚍', '🚘', '🚖', '🚡', '🚠', '🚟', '🚃', '🚋', '🚞', '🚝', '🚄', '🚅', '🚈', '🚂', '🚆', '🚇', '🚊', '🚉', '✈️', '🛫', '🛬', '🛩', '💺', '🛰', '🚀', '🛸', '🚁', '🛶', '⛵️', '🚤', '🛥', '🛳', '⛴', '🚢', '⚓️', '⛽️', '🚧', '🚦', '🚥', '🚏', '🗺', '🗿', '🗽', '🗼', '🏰', '🏯', '🏟', '🎡', '🎢', '🎠', '⛲️', '⛱', '🏖', '🏝', '🏜', '🌋', '⛰', '🏔', '🗻', '🏕', '⛺️', '🏠', '🏡', '🏘', '🏚', '🏗', '🏭', '🏢', '🏬', '🏣', '🏤', '🏥', '🏦', '🏨', '🏪', '🏫', '🏩', '💒', '🏛', '⛪️', '🕌', '🕍', '🕋', '⛩', '🛤', '🛣', '🗾', '🎑', '🏞', '🌅', '🌄', '🌠', '🎇', '🎆', '🌇', '🌆', '🏙', '🌃', '🌌', '🌉', '⌚️', '📱', '📲', '💻', '⌨️', '🖥', '🖨', '🖱', '🖲', '🕹', '🗜', '💽', '💾', '💿', '📀', '📼', '📷', '📸', '📹', '🎥', '📽', '🎞', '📞', '☎️', '📟', '📠', '📺', '📻', '🎙', '🎚', '🎛', '⏱', '⏲', '⏰', '🕰', '⌛️', '⏳', '📡', '🔋', '🔌', '💡', '🔦', '🕯', '🗑', '🛢', '💸', '💵', '💴', '💶', '💷', '💰', '💳', '🧾', '💎', '⚖️', '🔧', '🔨', '⚒', '🛠', '⛏', '🔩', '⚙️', '⛓', '🔫', '💣', '🔪', '🗡', '⚔️', '🛡', '🚬', '⚰️', '⚱️', '🏺', '🧭', '🧱', '🔮', '🧿', '🧸', '📿', '💈', '⚗️', '🔭', '🧰', '🧲', '🧪', '🧫', '🧬', '🧯', '🔬', '🕳', '💊', '💉', '🌡', '🚽', '🚰', '🚿', '🛁', '🛀', '🛀🏻', '🛀🏼', '🛀🏽', '🛀🏾', '🛀🏿', '🧴', '🧵', '🧶', '🧷', '🧹', '🧺', '🧻', '🧼', '🧽', '🛎', '🔑', '🗝', '🚪', '🛋', '🛏', '🛌', '🖼', '🛍', '🧳', '🛒', '🎁', '🎈', '🎏', '🎀', '🎊', '🎉', '🧨', '🎎', '🏮', '🎐', '🧧', '✉️', '📩', '📨', '📧', '💌', '📥', '📤', '📦', '🏷', '📪', '📫', '📬', '📭', '📮', '📯', '📜', '📃', '📄', '📑', '📊', '📈', '📉', '🗒', '🗓', '📆', '📅', '📇', '🗃', '🗳', '🗄', '📋', '📁', '📂', '🗂', '🗞', '📰', '📓', '📔', '📒', '📕', '📗', '📘', '📙', '📚', '📖', '🔖', '🔗', '📎', '🖇', '📐', '📏', '📌', '📍', '✂️', '🖊', '🖋', '✒️', '🖌', '🖍', '📝', '✏️', '🔍', '🔎', '🔏', '🔐', '🔒', '❤️', '🧡', '💛', '💚', '💙', '💜', '🖤', '💔', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '☮️', '✝️', '☪️', '🕉', '☸️', '✡️', '🔯', '🕎', '☯️', '☦️', '🛐', '⛎', '♈️', '♉️', '♊️', '♋️', '♌️', '♍️', '♎️', '♏️', '♐️', '♑️', '♒️', '♓️', '🆔', '⚛️', '🉑', '☢️', '☣️', '📴', '📳', '🈶', '🈚️', '🈸', '🈺', '🈷️', '✴️', '🆚', '💮', '🉐', '㊙️', '㊗️', '🈴', '🈵', '🈹', '🈲', '🅰️', '🅱️', '🆎', '🆑', '🅾️', '🆘', '❌', '⭕️', '🛑', '⛔️', '📛', '🚫', '💯', '💢', '♨️', '🚷', '🚯', '🚳', '🚱', '🔞', '📵', '🚭', '❗️', '❕', '❓', '❔', '‼️', '⁉️', '🔅', '🔆', '〽️', '⚠️', '🚸', '🔱', '⚜️', '🔰', '♻️', '✅', '🈯️', '💹', '❇️', '✳️', '❎', '🌐', '💠', 'Ⓜ️', '🌀', '💤', '🏧', '🚾', '♿️', '🅿️', '🈳', '🈂️', '🛂', '🛃', '🛄', '🛅', '🚹', '🚺', '🚼', '🚻', '🚮', '🎦', '📶', '🈁', '🔣', 'ℹ️', '🔤', '🔡', '🔠', '🆖', '🆗', '🆙', '🆒', '🆕', '🆓', '0️⃣', '1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟', '🔢', '#️⃣', '*️⃣', '⏏️', '▶️', '⏸', '⏯', '⏹', '⏺', '⏭', '⏮', '⏩', '⏪', '⏫', '⏬', '◀️', '🔼', '🔽', '➡️', '⬅️', '⬆️', '⬇️', '↗️', '↘️', '↙️', '↖️', '↕️', '↔️', '↪️', '↩️', '⤴️', '⤵️', '🔀', '🔁', '🔂', '🔄', '🔃', '🎵', '🎶', '➕', '➖', '➗', '✖️', '♾', '💲', '💱', '™️', '©️', '®️', '〰️', '➰', '➿', '🔚', '🔙', '🔛', '🔝', '🔜', '✔️', '☑️', '🔘', '⚪️', '⚫️', '🔴', '🔵', '🔺', '🔻', '🔸', '🔹', '🔶', '🔷', '🔳', '🔲', '▪️', '▫️', '◾️', '◽️', '◼️', '◻️', '⬛️', '⬜️', '🔈', '🔇', '🔉', '🔊', '🔔', '🔕', '📣', '📢', '👁\u200d🗨', '💬', '💭', '🗯', '♠️', '♣️', '♥️', '♦️', '🃏', '🎴', '🀄️', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚', '🕛', '🕜', '🕝', '🕞', '🕟', '🕠', '🕡', '🕢', '🕣', '🕤', '🕥', '🕦','🏳️', '🏴', '🏁', '🚩', '🏳️\u200d🌈', '🏴\u200d☠️', '🇦🇫', '🇦🇽', '🇦🇱', '🇩🇿', '🇦🇸', '🇦🇩', '🇦🇴', '🇦🇮', '🇦🇶', '🇦🇬', '🇦🇷', '🇦🇲', '🇦🇼', '🇦🇺', '🇦🇹', '🇦🇿', '🇧🇸', '🇧🇭', '🇧🇩', '🇧🇧', '🇧🇾', '🇧🇪', '🇧🇿', '🇧🇯', '🇧🇲', '🇧🇹', '🇧🇴', '🇧🇦', '🇧🇼', '🇧🇷', '🇮🇴', '🇻🇬', '🇧🇳', '🇧🇬', '🇧🇫', '🇧🇮', '🇰🇭', '🇨🇲', '🇨🇦', '🇮🇨', '🇨🇻', '🇧🇶', '🇰🇾', '🇨🇫', '🇹🇩', '🇨🇱', '🇨🇳', '🇨🇽', '🇨🇨', '🇨🇴', '🇰🇲', '🇨🇬', '🇨🇩', '🇨🇰', '🇨🇷', '🇨🇮', '🇭🇷', '🇨🇺', '🇨🇼', '🇨🇾', '🇨🇿', '🇩🇰', '🇩🇯', '🇩🇲', '🇩🇴', '🇪🇨', '🇪🇬', '🇸🇻', '🇬🇶', '🇪🇷', '🇪🇪', '🇪🇹', '🇪🇺', '🇫🇰', '🇫🇴', '🇫🇯', '🇫🇮', '🇫🇷', '🇬🇫', '🇵🇫', '🇹🇫', '🇬🇦', '🇬🇲', '🇬🇪', '🇩🇪', '🇬🇭', '🇬🇮', '🇬🇷', '🇬🇱', '🇬🇩', '🇬🇵', '🇬🇺', '🇬🇹', '🇬🇬', '🇬🇳', '🇬🇼', '🇬🇾', '🇭🇹', '🇭🇳', '🇭🇰', '🇭🇺', '🇮🇸', '🇮🇳', '🇮🇩', '🇮🇷', '🇮🇶', '🇮🇪', '🇮🇲', '🇮🇱', '🇮🇹', '🇯🇲', '🇯🇵', '🎌', '🇯🇪', '🇯🇴', '🇰🇿', '🇰🇪', '🇰🇮', '🇽🇰', '🇰🇼', '🇰🇬', '🇱🇦', '🇱🇻', '🇱🇧', '🇱🇸', '🇱🇷', '🇱🇾', '🇱🇮', '🇱🇹', '🇱🇺', '🇲🇴', '🇲🇰', '🇲🇬', '🇲🇼', '🇲🇾', '🇲🇻', '🇲🇱', '🇲🇹', '🇲🇭', '🇲🇶', '🇲🇷', '🇲🇺', '🇾🇹', '🇲🇽', '🇫🇲', '🇲🇩', '🇲🇨', '🇲🇳', '🇲🇪', '🇲🇸', '🇲🇦', '🇲🇿', '🇲🇲', '🇳🇦', '🇳🇷', '🇳🇵', '🇳🇱', '🇳🇨', '🇳🇿', '🇳🇮', '🇳🇪', '🇳🇬', '🇳🇺', '🇳🇫', '🇰🇵', '🇲🇵', '🇳🇴', '🇴🇲', '🇵🇰', '🇵🇼', '🇵🇸', '🇵🇦', '🇵🇬', '🇵🇾', '🇵🇪', '🇵🇭', '🇵🇳', '🇵🇱', '🇵🇹', '🇵🇷', '🇶🇦', '🇷🇪', '🇷🇴', '🇷🇺', '🇷🇼', '🇼🇸', '🇸🇲', '🇸🇦', '🇸🇳', '🇷🇸', '🇸🇨', '🇸🇱', '🇸🇬', '🇸🇽', '🇸🇰', '🇸🇮', '🇬🇸', '🇸🇧', '🇸🇴', '🇿🇦', '🇰🇷', '🇸🇸', '🇪🇸', '🇱🇰', '🇧🇱', '🇸🇭', '🇰🇳', '🇱🇨', '🇵🇲', '🇻🇨', '🇸🇩', '🇸🇷', '🇸🇿', '🇸🇪', '🇨🇭', '🇸🇾', '🇹🇼', '🇹🇯', '🇹🇿', '🇹🇭', '🇹🇱', '🇹🇬', '🇹🇰', '🇹🇴', '🇹🇹', '🇹🇳', '🇹🇷', '🇹🇲', '🇹🇨', '🇹🇻', '🇻🇮', '🇺🇬', '🇺🇦', '🇦🇪', '🇬🇧', '🏴\U000e0067\U000e0062\U000e0065\U000e006e\U000e0067\U000e007f', '🏴\U000e0067\U000e0062\U000e0073\U000e0063\U000e0074\U000e007f', '🏴\U000e0067\U000e0062\U000e0077\U000e006c\U000e0073\U000e007f', '🇺🇳', '🇺🇸', '🇺🇾', '🇺🇿', '🇻🇺', '🇻🇦', '🇻🇪', '🇻🇳', '🇼🇫', '🇪🇭', '🇾🇪', '🇿🇲']
 
 emote=['<:WTF:576870192705961986>', '<:sourireirl:577145595156758528>', '<:saoul:576876335243460608>', '<:ronangers:369209617168990208>', '<:rireirl:578273002521886739>', '<:regardfou:576873563492188160>', '<:oups:577228350762909723>', '<:OULAH:577153845101330492>', '<:MANGER:576877901308362763>', '<:gneugneu:576886801029922828>', '<:globuleux:577147819551358981>', '<:ennui:576883744980598794>', '<:doute:577160207684075532>', '<:dab:581600000983957504>', '<:choc:577174077932830770>', '<:bide:576869419490213888>']
 
-biend = [
+images = [
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZT0E0MTcJpcLYChSljSd3kagEzqcHgP0cvEzlvcf8olU3nWjStA",
             "https://www.tout-bon.com/newpics/40106.jpg",
             "http://www.hotfemmenue.xyz/wp-content/uploads/2017/03/exhib-de-femme-nue-du-70-chaude-et-salope-736x1024.jpg",
@@ -139,9 +137,6 @@ biend = [
             "https://lh3.googleusercontent.com/proxy/4xWQpdDmXoxnjn78DI-L_recaxoMPi98wqH5-hbLJvdCW7aXdnYbNHNFMxUuRkidk2KB8Tpm7yBfkX3_sp9m9zNTB4kSytK0",
             "https://teengirlserotica.com/eroticax/wp-content/uploads/sites/5/nggallery/melody-marks/melody-marks1.jpg"]
 
-
-
-
 verbes = [
             "Cueillir",           
             "Gérer",	           
@@ -213,213 +208,32 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
-open('nbjoueurs.txt','w').write('0')
+message_activite = {}
+jeu_en_cours = {}
 
-def rec_mot(fichier,mot_cherché):
-    f=open(fichier,'r') #On ouvre le fichier
-    contenu=f.read() #On récupère son contenu
-    res=0
-    mot=''
-    liste=[]
-    for i in contenu:
-        if i == " " or i=='\n':
-            liste.append(mot)
-            mot=""
-        else:
-            mot+=i
-    for i in liste: #La boucle compte le nombre de fois où le caractère donné en paramètre apparait
-        if i==mot_cherché:
-            res+=1
-    return res
+##################################################################################################################################################
+##################################################################################################################################################
+#                                                   EVENTS
+##################################################################################################################################################
+##################################################################################################################################################
 
-def tout_mot(fichier):
-    f=open(fichier,'r')
-    contenu=f.read()
-    liste=[]
-    mot=""
-    res={}
-    for i in contenu:
-        if i == " " or i=='\n':
-            liste.append(mot)
-            mot=""
-        else:
-            mot+=i
-    for i in liste:
-        res[i]=rec_mot(fichier,i)
-    print(res)
-
-liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun 2.0",
-                'début du jeu','joueurs :','jeu fini','zinzolé','dommage','ah !']
-
-c=False
-a=False
-b=False
-v=False
-nb=0
-messagepv={}
-react=0
-membres=[]
-personnes=[]
-personnes2=[]
+# LE BOT EST PRET
 
 @client.event
-async def on_raw_reaction_add(payload):
-    global nb, react, a,membres,v,messagepv,w,personnes,personnes2
-    i=randint(0,len(biend))
-    oui = biend[i]
-    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-    bien_embed.set_image(url=oui)
-    
-    if payload.user_id==client.user.id:
-        return
-    
-    debutid=int(open('debut.txt','r').readline())
-    if payload.message_id==debutid and payload.emoji.name=='😎':
-        if str(payload.member) in membres:
-            return
-        v=True
-        membres.append(str(payload.member))
-        open('score'+str(payload.member)+'.txt','w').write('0')
-        channel=client.get_channel(462231061842100225)
-        nb+=1
+async def on_ready():
+    print('Je suis en ligne')
 
-    if payload.message_id==debutid and payload.emoji.name=='✅' and v and w:
-        v=False
-        w=False
-        a=True
-        channel=client.get_channel(462231061842100225)
-        await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
-        await channel.send(embed=bien_embed)
-        
-    channel=client.get_channel(462231061842100225)
-    for i in range(0,nb):
-        f=open('msg'+str(i)+'.txt', 'r').read()
-        final=f.split(' ')
-        idmsg=int(final[0])
-        gars=str(final[1])
-        if payload.message_id==idmsg and payload.emoji.name=='👍':
-            if str(payload.member) in personnes:
-                return
-            personnes.append(str(payload.member))
-            messagepv={}
-            a=True
-            f=open('score'+str(gars)+'.txt','r')
-            score=round(float(f.readline()))
-            f.close()
-            score+=1
-            f=open('score'+str(gars)+'.txt','w')
-            f.write(str(score))
-            f.close()
-            react+=1
-            if react==nb:
-                personnes2=[]
-                react=0
-                channel=client.get_channel(462231061842100225)
-                await channel.send(embed=bien_embed)
-                
-                
-            
-            
+# RECEPTION D'UN MESSAGE
+
 @client.event
 async def on_message(message):
-    global a,b,c,nb,messagepv,w,personnes, personnes2,membres
     
-    i=randint(0,len(biend))
-    oui = biend[i]
-    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
-    bien_embed.set_image(url=oui)   
-    
-    channel=client.get_channel(462231061842100225)
-    if message.content=='Légende party':
-        membres=[]
-        w=True
-        nb=0
-        debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction pour vous inscrire 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
-        await debut.add_reaction('😎')
-        await debut.add_reaction('✅')
-        f=open('debut.txt','w')
-        f.write(str(debut.id))
-        f.close()
-                        
-    if message.channel.type==discord.ChannelType.private and a:   
-        if str(message.author) in personnes2:
-                return
-        personnes2.append(str(message.author))
-        messagepv[message.content]=str(message.author)
-        if len(messagepv)==nb:
-            personnes=[]
-            channel=client.get_channel(462231061842100225)
-            liste2=[]
-            for f in messagepv.keys():
-                liste2.append(f+" "+messagepv.get(f))
-            shuffle(liste2)
-            messagepv={}
-            for i in liste2:
-                tout=str(i)
-                lettre=0
-                mot=''
-                tout2=[]
-                fini=False
-                while not fini:
-                    if lettre==len(tout):
-                        tout2.append(mot)
-                        mot=''
-                        fini=True
-                    elif tout[lettre]==' ':
-                        tout2.append(mot)
-                        mot=''
-                        lettre+=1
-                    else:
-                        mot+=tout[lettre]
-                        lettre+=1
-                clé=''
-                for j in range(len(tout2)-1):
-                    clé += tout2[j]+" "
-                auteur= tout2[-1]
-                messagepv[clé]=auteur
-            i=0
-            for key in messagepv.keys():
-                i+=1
-                propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich', colour=discord.Colour.blue())
-                channel=client.get_channel(462231061842100225)
-                msg = await channel.send(embed=propal)
-                await msg.add_reaction('👍')
-                f=open('msg'+str(i-1)+'.txt','w')
-                f.write(str(msg.id)+" "+str(messagepv.get(key)))
-                f.close()
-            
-                
-    if message.content=='Party over':
-        a=False
-        liste=[]
-        cor=-1
-        egalite=False
-        for i in range(0,nb):
-            score=int(open('score'+str(membres[i])+'.txt','r').readline())
-            if score>cor:
-                cor=score
-                joueur=membres[i]
-                scorefinal=score
-            elif score==cor:
-                liste.append(membres[i])
-                egalite=True
-                
-        if egalite:
-            complement_message=''
-            for i in range(len(liste)):
-                complement_message+=', '+str(liste[i])
-            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finissent avec le même score de ' +str(scorefinal)+' points.')
-        else:
-            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points.')
- 
-    
-    
-    
+    message_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich').set_image(url=images[randint(0,len(images)-1)])  
+
     if message.author==client.user:
         return
     if message.content.startswith('!dm'):
         contenu = message.content.split(" ")
-        print(contenu)
         name = contenu[1]
         mess =''
         for i in range(len(contenu)):
@@ -432,130 +246,43 @@ async def on_message(message):
             await discord.utils.get(message.guild.members, name = 'Loïc').send("L'utilisateur n'existe pas")
         except discord.errors.Forbidden :
             await message.channel.send("L'utilisateur a fermé ses dms")
-    if message.channel.type == discord.ChannelType.private :
+    if message.channel.type == discord.ChannelType.private:
         anonyme = discord.Embed(title = "Message d'un anonyme", description = message.content)
         await client.get_channel(376778036642578442).send(embed= anonyme)
-    oui=True
-    for i in liste_commande:
-        if i in message.content.lower():
-            oui=False
-    if oui:        
-        open(str(message.author)+'.txt','a').write(message.content.lower()+' ')
-    if message.content=='dossier':
-        await message.channel.send(open(str(message.author)+'.txt','r').read())
-
-    if message.content.startswith("Combien de fois j'ai dit le mot :"):
-        mot=''
-        for i in range(34,len(message.content)):
-            mot+=message.content[i]
-        await message.channel.send('Vous avez dit '+str(rec_mot(str(message.author)+'.txt',mot.lower()))+' fois le mot "'+mot+'"')
      
-    
-    
-    if(message.content=="Dis nous tout Fun 2.0"):
-        await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !") 
-    
     if (message.content=="sendimages"):
-        await message.channel.send(embed=bien_embed)
+        await message.channel.send(embed=message_embed)
 
     if message.content.startswith("sendimages"):
-        a=message.content[-3]
-        b=message.content[-2]
-        c=message.content[-1]
-        oui = biend[int(a+b+c)]
-        bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
-        bien_embed.set_image(url=oui)
-        await message.channel.send(embed=bien_embed)
-        
-    if message.content=='Début du jeu':   
-        await message.channel.send('Commençons le jeu')
-        await message.channel.send('Combien de joueurs ?')
-        c=True
-   
-    if (message.content.startswith('Joueurs :')) and c:
-        c=False
-        nbjoueurs=message.content[-1]
-        await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
-        f=open('nbjoueurs.txt','w')
-        f.write(nbjoueurs)
-        f.close()
-        for i in range(int(nbjoueurs)+1):
-            open('score'+str(i)+'.txt','w').write('0')
-    nbjoueurs=int(open('nbjoueurs.txt','r').readline())
-    for i in range(nbjoueurs+1):
-        if message.content=='!'+str(i):  
-            f=open('score'+str(i)+'.txt','r')
-            score=round(float(f.readline()))
-            f.close()
-            score+=1
-            f=open('score'+str(i)+'.txt','w')
-            f.write(str(score))
-            f.close()
-        if message.content=='Score '+str(i):
-            await message.channel.send(open('score'+str(i)+'.txt','r').readline())
+        message_embed.set_image(url=images[int(message.content[-3]+message.content[-2]+message.content[-1])])
+        await message.channel.send(embed=message_embed)
             
-    if message.content=='Jeu fini':
-        liste=[]
-        a=-1
-        egalite=False
-        for i in range(1,nbjoueurs+1):
-            score=int(open('score'+str(i)+'.txt','r').readline())
-            if score>a:
-                a=score
-                joueur=i
-                scorefinal=score
-            elif score==a:
-                liste.append(i)
-                egalite=True
-                
-        if egalite:
-            complement_message=''
-            for i in range(len(liste)):
-                complement_message+=', '+str(liste[i])
-            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
-        else:
-            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
-          
     if 'zinzolé' in message.content.lower():
-        aleatoire=randint(0,len(verbes))
-        verbe=verbes[aleatoire]
-        await message.channel.send("Ici le verbe Zinzoler = "+verbe)
+        await message.channel.send("Ici le verbe Zinzoler = "+verbes[randint(0,len(verbes))])
 
     if message.content.lower()=='dommage':
         await message.channel.send('A ça !')
 
     if message.content.lower()=='ah !':
-        embed=discord.Embed()
-        embed.set_image(url="https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180")
-        await message.channel.send(embed=embed)
+        denis=discord.Embed().set_image(url="https://lh3.googleusercontent.com/WcSWqqt-Dq-1WhE7z7M0TMTIMVK8JSuq49xRLXYZeTrDkg9kKMGHioqe4XJJYRSMaAa0=s180")
+        await message.channel.send(embed=denis)
 
     if 'chibre' in message.content.lower():
-        i = randint(0,len(chibre))
-        chibre2=chibre[i]
-        await message.channel.send(chibre2)
+        await message.channel.send(chibre[randint(0,len(chibre))])
 
     if 'ta mère' in message.content.lower():
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
     if message.content.startswith("Un avis Fun"):
-        i=randint(0,len(emote))
-        await message.channel.send(emote[i])
+        await message.channel.send(emote[randint(0,len(emote))])
         
-    sondage = False
     if message.content.startswith("Sondage :"):    
-        sondage = True
-    
-    if sondage:
         liste_message=message.content.split(" ")
         for i in liste_message:
             if i in liste_emoji:
                 await message.add_reaction(i)
 
-    if message.content == 'Dis nous tout Fun':
-        await message.channel.send("Je suis de retour mais attention ! Je n'ai aucune nouvelle fonctionnalité... Loïc à juste enfin compris pourquoi je marchais plus ce trouduc... La bise.")
-   
-message_activite = {}
-jeu_en_cours = {}
+# STATUT MEMBRE ACTUALISE
 
 @client.event
 async def on_member_update(before,after):
@@ -593,6 +320,8 @@ async def on_member_update(before,after):
                 del message_activite[str(after.name)]
                 del jeu_en_cours[str(after.name)]
 
+
+# REACTION AJOUTE SUR UN MESSAGE
 
 @client.event
 async def on_reaction_add(reaction, user):
@@ -634,11 +363,11 @@ async def on_reaction_add(reaction, user):
         if reaction.emoji=='👎':
             await reaction.message.delete()
 
+# UN UTILISATEUR ECRIT
 
 @client.event
 async def on_typing(channel,user,when):
     await user.send("Fais gaffe à ce que t'écris mon gars")
-
 
 
 client.run(os.environ['TOKEN'])
