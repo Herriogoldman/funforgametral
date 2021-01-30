@@ -6,7 +6,7 @@ default_intents.members = True
 default_intents.presences = True
 default_intents.typing = False
 default_intents.reactions = True
-client = discord.Client(intents=default_intents)
+client = discord.Client()
 couleur={"Loïc#7389":0xe74c3c,"Raionkasai#8668":0x3498db,"Masterbin35#5542":0xe67e22, "Thomas(Dest)#8382":0x9b59b6}
 
 
