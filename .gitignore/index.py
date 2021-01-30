@@ -320,7 +320,7 @@ async def on_member_update(before,after):
             await mess.add_reaction('👎') 
             id = mess.id
 
-    elif after.activity==None:
+    elif after.activity==None and before.activity!=None:
         print(str(after.name) +" ne joue plus")    
         a=False
         for joueur,jeu in jeu_en_cours.items():
