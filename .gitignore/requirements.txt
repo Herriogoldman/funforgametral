@@ -1,2 +1,4 @@
 git+https://github.com/Rapptz/discord.py.git
-dnspython==2.1.0
+dnspython==1.16.0
+discord
+discord.py ~= 1.6.0
