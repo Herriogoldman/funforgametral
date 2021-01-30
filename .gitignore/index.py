@@ -1,4 +1,5 @@
 import discord
+import os
 from random import*
 default_intents = discord.Intents.default()
 default_intents.members = True
@@ -212,6 +213,7 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
+open('nbjoueurs.txt','w').write('0')
 
 def rec_mot(fichier,mot_cherché):
     f=open(fichier,'r') #On ouvre le fichier
@@ -249,19 +251,169 @@ def tout_mot(fichier):
 liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun 2.0",
                 'début du jeu','joueurs :','jeu fini','zinzolé','dommage','ah !']
 
+c=False
+a=False
+b=False
+v=False
+nb=0
+messagepv={}
+react=0
+membres=[]
+personnes=[]
+personnes2=[]
 
+@client.event
+async def on_raw_reaction_add(payload):
+    global nb, react, a,membres,v,messagepv,w,personnes,personnes2
+    i=randint(0,len(biend))
+    oui = biend[i]
+    bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
+    bien_embed.set_image(url=oui)
+    
+    if payload.user_id==client.user.id:
+        return
+    
+    debutid=int(open('debut.txt','r').readline())
+    if payload.message_id==debutid and payload.emoji.name=='😎':
+        if str(payload.member) in membres:
+            return
+        v=True
+        membres.append(str(payload.member))
+        open('score'+str(payload.member)+'.txt','w').write('0')
+        channel=client.get_channel(462231061842100225)
+        nb+=1
+
+    if payload.message_id==debutid and payload.emoji.name=='✅' and v and w:
+        v=False
+        w=False
+        a=True
+        channel=client.get_channel(462231061842100225)
+        await channel.send('Ok, il y a '+str(nb)+" joueurs ! Je vais mettre des images, vous allez devoir m'envoyer en mp des légendes drôles à ces images, vous n'aurez qu'à voter pour votre préférée grâce à la réaction !")       
+        await channel.send(embed=bien_embed)
+        
+    channel=client.get_channel(462231061842100225)
+    for i in range(0,nb):
+        f=open('msg'+str(i)+'.txt', 'r').read()
+        final=f.split(' ')
+        idmsg=int(final[0])
+        gars=str(final[1])
+        if payload.message_id==idmsg and payload.emoji.name=='👍':
+            if str(payload.member) in personnes:
+                return
+            personnes.append(str(payload.member))
+            messagepv={}
+            a=True
+            f=open('score'+str(gars)+'.txt','r')
+            score=round(float(f.readline()))
+            f.close()
+            score+=1
+            f=open('score'+str(gars)+'.txt','w')
+            f.write(str(score))
+            f.close()
+            react+=1
+            if react==nb:
+                personnes2=[]
+                react=0
+                channel=client.get_channel(462231061842100225)
+                await channel.send(embed=bien_embed)
                 
                 
             
             
 @client.event
 async def on_message(message):
+    global a,b,c,nb,messagepv,w,personnes, personnes2,membres
     
-    i=randint(0,len(biend)-1)
+    i=randint(0,len(biend))
     oui = biend[i]
     bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09 ('+str(i)+')',type='rich')
     bien_embed.set_image(url=oui)   
-
+    
+    channel=client.get_channel(462231061842100225)
+    if message.content=='Légende party':
+        membres=[]
+        w=True
+        nb=0
+        debut=await channel.send("Combien de joueurs les bros ? Cliquez sur la réaction pour vous inscrire 😎. Lorsque tout le monde s'est inscrit, cliquez sur la réaction ✅ (trollez pas, attendez tout le monde svp)")
+        await debut.add_reaction('😎')
+        await debut.add_reaction('✅')
+        f=open('debut.txt','w')
+        f.write(str(debut.id))
+        f.close()
+                        
+    if message.channel.type==discord.ChannelType.private and a:   
+        if str(message.author) in personnes2:
+                return
+        personnes2.append(str(message.author))
+        messagepv[message.content]=str(message.author)
+        if len(messagepv)==nb:
+            personnes=[]
+            channel=client.get_channel(462231061842100225)
+            liste2=[]
+            for f in messagepv.keys():
+                liste2.append(f+" "+messagepv.get(f))
+            shuffle(liste2)
+            messagepv={}
+            for i in liste2:
+                tout=str(i)
+                lettre=0
+                mot=''
+                tout2=[]
+                fini=False
+                while not fini:
+                    if lettre==len(tout):
+                        tout2.append(mot)
+                        mot=''
+                        fini=True
+                    elif tout[lettre]==' ':
+                        tout2.append(mot)
+                        mot=''
+                        lettre+=1
+                    else:
+                        mot+=tout[lettre]
+                        lettre+=1
+                clé=''
+                for j in range(len(tout2)-1):
+                    clé += tout2[j]+" "
+                auteur= tout2[-1]
+                messagepv[clé]=auteur
+            i=0
+            for key in messagepv.keys():
+                i+=1
+                propal=discord.Embed(description="Proposition "+str(i),title=str(key), type='rich', colour=discord.Colour.blue())
+                channel=client.get_channel(462231061842100225)
+                msg = await channel.send(embed=propal)
+                await msg.add_reaction('👍')
+                f=open('msg'+str(i-1)+'.txt','w')
+                f.write(str(msg.id)+" "+str(messagepv.get(key)))
+                f.close()
+            
+                
+    if message.content=='Party over':
+        a=False
+        liste=[]
+        cor=-1
+        egalite=False
+        for i in range(0,nb):
+            score=int(open('score'+str(membres[i])+'.txt','r').readline())
+            if score>cor:
+                cor=score
+                joueur=membres[i]
+                scorefinal=score
+            elif score==cor:
+                liste.append(membres[i])
+                egalite=True
+                
+        if egalite:
+            complement_message=''
+            for i in range(len(liste)):
+                complement_message+=', '+str(liste[i])
+            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finissent avec le même score de ' +str(scorefinal)+' points.')
+        else:
+            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points.')
+ 
+    
+    
     
     if message.author==client.user:
         return
@@ -298,6 +450,11 @@ async def on_message(message):
             mot+=message.content[i]
         await message.channel.send('Vous avez dit '+str(rec_mot(str(message.author)+'.txt',mot.lower()))+' fois le mot "'+mot+'"')
      
+    
+    
+    if(message.content=="Dis nous tout Fun 2.0"):
+        await message.channel.send("Bonjour tout le monde ! Je suis Fun 2.0. En gros je suis comme Fun sauf qu'on va le terminer ensemble ce putain de jeu secret ;). Sur ce, bisous et à bientôt !") 
+    
     if (message.content=="sendimages"):
         await message.channel.send(embed=bien_embed)
 
@@ -309,7 +466,56 @@ async def on_message(message):
         bien_embed = discord.Embed(title='Tiens tes nudes \ud83d\ude09',type='rich')
         bien_embed.set_image(url=oui)
         await message.channel.send(embed=bien_embed)
+        
+    if message.content=='Début du jeu':   
+        await message.channel.send('Commençons le jeu')
+        await message.channel.send('Combien de joueurs ?')
+        c=True
+   
+    if (message.content.startswith('Joueurs :')) and c:
+        c=False
+        nbjoueurs=message.content[-1]
+        await message.channel.send('Ok, il y a '+nbjoueurs+" joueurs ! Donnez un numéro allant de 1 à "+nbjoueurs+' à chaque joueur puis votez pour le gagnant à chaque round grâce à la commande "!<numéro joueur>". Bonne chance !')
+        f=open('nbjoueurs.txt','w')
+        f.write(nbjoueurs)
+        f.close()
+        for i in range(int(nbjoueurs)+1):
+            open('score'+str(i)+'.txt','w').write('0')
+    nbjoueurs=int(open('nbjoueurs.txt','r').readline())
+    for i in range(nbjoueurs+1):
+        if message.content=='!'+str(i):  
+            f=open('score'+str(i)+'.txt','r')
+            score=round(float(f.readline()))
+            f.close()
+            score+=1
+            f=open('score'+str(i)+'.txt','w')
+            f.write(str(score))
+            f.close()
+        if message.content=='Score '+str(i):
+            await message.channel.send(open('score'+str(i)+'.txt','r').readline())
             
+    if message.content=='Jeu fini':
+        liste=[]
+        a=-1
+        egalite=False
+        for i in range(1,nbjoueurs+1):
+            score=int(open('score'+str(i)+'.txt','r').readline())
+            if score>a:
+                a=score
+                joueur=i
+                scorefinal=score
+            elif score==a:
+                liste.append(i)
+                egalite=True
+                
+        if egalite:
+            complement_message=''
+            for i in range(len(liste)):
+                complement_message+=', '+str(liste[i])
+            await message.channel.send('Bravo aux joueurs '+str(joueur)+complement_message+ ' qui finnissent avec le même score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+        else:
+            await message.channel.send('Bravo au joueur '+str(joueur)+' qui finit avec un score de ' +str(scorefinal)+' points. Si les autres veulent voir leurs scores, utilisez la commande "Score <numéro joueur>".')
+          
     if 'zinzolé' in message.content.lower():
         aleatoire=randint(0,len(verbes))
         verbe=verbes[aleatoire]
@@ -432,6 +638,7 @@ async def on_reaction_add(reaction, user):
 @client.event
 async def on_typing(channel,user,when):
     await user.send("Fais gaffe à ce que t'écris mon gars")
+
 
 
 client.run(os.environ['TOKEN'])
