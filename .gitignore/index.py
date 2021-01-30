@@ -290,15 +290,12 @@ async def on_message(message):
 async def on_member_update(before,after):
     if after.bot:
         return
-    print(str(before.activity))
-    print(str(after.activity))
-    print(str(before.name) + " était sur mobile : " + str(before.is_on_mobile()))
-    print(str(before.name) + " est sur mobile : " + str(after.is_on_mobile()))
     if after.is_on_mobile() or before.is_on_mobile() :
         return
     if before.activity != after.activity and after.activity!=None:
         if after.activity.type == discord.ActivityType.playing :
-            print(str(after.name) +" joue à " +str(after.activity))
+            print(before.activity != after.activity)
+            print(str(after.name) +" joue à " +str(after.activity) + " : "+str(after.activity.state))
             mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
             await mess.add_reaction('👍')
             await mess.add_reaction('👎') 
