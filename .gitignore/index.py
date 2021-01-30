@@ -290,6 +290,8 @@ async def on_message(message):
 async def on_member_update(before,after):
     if after.bot:
         return
+    if after.is_on_mobile() :
+        return
     if before.activity != after.activity and after.activity!=None:
         if after.activity.type == discord.ActivityType.playing :
             print(str(after.name) +" joue à " +str(after.activity))
