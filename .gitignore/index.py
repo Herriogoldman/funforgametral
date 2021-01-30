@@ -362,7 +362,7 @@ async def on_reaction_add(reaction, user):
                 else:
                     jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
                     emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
-                    emb.set_image(url=user.avatar_url_as(size=128))
+                    emb.set_image(url=user.avatar_url_as(size=16))
                     mess2=await pourparler.send(embed = emb)
                     message_activite[str(user.name)]=mess2.id
         if reaction.emoji=='👎':
