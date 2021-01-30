@@ -5,6 +5,7 @@ default_intents = discord.Intents.all()
 default_intents.typing = False
 client = discord.Client(intents=default_intents)
 
+
 ##################################################################################################################################################
 ##################################################################################################################################################
 #                                             VARIABLES
@@ -211,6 +212,24 @@ chibre = [
 message_activite = {}
 jeu_en_cours = {}
 
+############################################################################################################################################################
+############################################################################################################################################################
+#                                                       FONCTIONS
+############################################################################################################################################################
+############################################################################################################################################################
+
+async def messageActivite():
+    if after.activity.type == discord.ActivityType.playing :
+        print(str(after.name) +" joue à " +str(after.activity.name) + " : "+str(after.activity.state))
+        mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
+        await mess.add_reaction('👍')
+        await mess.add_reaction('👎') 
+        global id 
+        id = mess.id
+
+
+
+
 ##################################################################################################################################################
 ##################################################################################################################################################
 #                                                   EVENTS
@@ -292,15 +311,12 @@ async def on_member_update(before,after):
         return
     if after.is_on_mobile() or before.is_on_mobile() :
         return
-    if before.activity!=None and after.activity!=None:
-        if before.activity.name != after.activity.name:
-            if after.activity.type == discord.ActivityType.playing :
-                print(str(after.name) +" joue à " +str(after.activity.name) + " : "+str(after.activity.state))
-                mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
-                await mess.add_reaction('👍')
-                await mess.add_reaction('👎') 
-                global id 
-                id = mess.id
+    if before.activity==None and after.activity!=None:
+        await messageActivite()
+
+    elif before.activity.name != after.activity.name:
+        await messageActivite()
+            
     elif after.activity==None:
         print(str(after.name) +" ne joue plus")    
         a=False
