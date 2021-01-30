@@ -290,8 +290,10 @@ async def on_message(message):
 async def on_member_update(before,after):
     if after.bot:
         return
+    print(str(before.activity))
+    print(str(after.activity))
     print(str(before.name) + " était sur mobile : " + str(before.is_on_mobile()))
-    print(str(before.name) + "est sur mobile : " + str(after.is_on_mobile()))
+    print(str(before.name) + " est sur mobile : " + str(after.is_on_mobile()))
     if after.is_on_mobile() or before.is_on_mobile() :
         return
     if before.activity != after.activity and after.activity!=None:
