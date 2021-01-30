@@ -300,7 +300,7 @@ async def on_message(message):
     if message.content.startswith("Sondage :"):    
         liste_message=message.content.split(" ")
         for i in liste_message:
-            if i in liste_emoji:
+            if i in liste_emoji or i in emote:
                 await message.add_reaction(i)
 
 # STATUT MEMBRE ACTUALISE
