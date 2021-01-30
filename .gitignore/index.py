@@ -213,47 +213,6 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
-
-def rec_mot(fichier,mot_cherché):
-    f=open(fichier,'r') #On ouvre le fichier
-    contenu=f.read() #On récupère son contenu
-    res=0
-    mot=''
-    liste=[]
-    for i in contenu:
-        if i == " " or i=='\n':
-            liste.append(mot)
-            mot=""
-        else:
-            mot+=i
-    for i in liste: #La boucle compte le nombre de fois où le caractère donné en paramètre apparait
-        if i==mot_cherché:
-            res+=1
-    return res
-
-def tout_mot(fichier):
-    f=open(fichier,'r')
-    contenu=f.read()
-    liste=[]
-    mot=""
-    res={}
-    for i in contenu:
-        if i == " " or i=='\n':
-            liste.append(mot)
-            mot=""
-        else:
-            mot+=i
-    for i in liste:
-        res[i]=rec_mot(fichier,i)
-    print(res)
-
-liste_commande=['dossier',"combien de fois j'ai dit le mot :","dis nous tout fun 2.0",
-                'début du jeu','joueurs :','jeu fini','zinzolé','dommage','ah !']
-
-
-                
-                
-            
             
 @client.event
 async def on_message(message):
@@ -281,24 +240,11 @@ async def on_message(message):
             await discord.utils.get(message.guild.members, name = 'Loïc').send("L'utilisateur n'existe pas")
         except discord.errors.Forbidden :
             await message.channel.send("L'utilisateur a fermé ses dms")
+
     if message.channel.type == discord.ChannelType.private :
         anonyme = discord.Embed(title = "Message d'un anonyme", description = message.content)
         await client.get_channel(376778036642578442).send(embed= anonyme)
-    oui=True
-    for i in liste_commande:
-        if i in message.content.lower():
-            oui=False
-    if oui:        
-        open(str(message.author)+'.txt','a').write(message.content.lower()+' ')
-    if message.content=='dossier':
-        await message.channel.send(open(str(message.author)+'.txt','r').read())
-
-    if message.content.startswith("Combien de fois j'ai dit le mot :"):
-        mot=''
-        for i in range(34,len(message.content)):
-            mot+=message.content[i]
-        await message.channel.send('Vous avez dit '+str(rec_mot(str(message.author)+'.txt',mot.lower()))+' fois le mot "'+mot+'"')
-     
+    
     if (message.content=="sendimages"):
         await message.channel.send(embed=bien_embed)
 
