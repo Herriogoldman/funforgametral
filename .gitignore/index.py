@@ -1,9 +1,12 @@
 import discord
+import pymongo
 import os
 from random import*
 default_intents = discord.Intents.all()
 default_intents.typing = False
 client = discord.Client(intents=default_intents)
+clientdb = pymongo.MongoClient("mongodb+srv://"+"PSEUDO"+":"+"MDP"+"@cluster0.wkd1h.mongodb.net/"+"NAME"+"?retryWrites=true&w=majority")
+db=clientdb.Funforgametral
 
 
 ##################################################################################################################################################
@@ -209,26 +212,6 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
-message_activite = {}
-jeu_en_cours = {}
-
-############################################################################################################################################################
-############################################################################################################################################################
-#                                                       FONCTIONS
-############################################################################################################################################################
-############################################################################################################################################################
-
-async def messageActivite():
-    if after.activity.type == discord.ActivityType.playing :
-        print(str(after.name) +" joue à " +str(after.activity.name) + " : "+str(after.activity.state))
-        mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
-        await mess.add_reaction('👍')
-        await mess.add_reaction('👎') 
-        global id 
-        id = mess.id
-
-
-
 
 ##################################################################################################################################################
 ##################################################################################################################################################
@@ -295,7 +278,7 @@ async def on_message(message):
         await message.channel.send('{0.author.mention} Elle a quoi ma mère batard ?'.format(message))    
     
     if message.content.startswith("Un avis Fun"):
-        await message.channel.send(emote[randint(0,len(emote))])
+        await message.channel.send(emote[randint(0,len(emote)-1)])
         
     if message.content.startswith("Sondage :"):    
         liste_message=message.content.split(" ")
@@ -323,40 +306,50 @@ async def on_member_update(before,after):
             id = mess.id
 
     elif after.activity==None and before.activity!=None:
-        print(str(after.name) +" ne joue plus")    
-        a=False
-        for joueur,jeu in jeu_en_cours.items():
-            if jeu == str(before.activity.name) and joueur!=str(after.name):
-                await pourparler.get_partial_message(message_activite.get(joueur)).delete()
-                del message_activite[str(after.name)]
-                del message_activite[str(joueur)]
-                del jeu_en_cours[str(after.name)]
-                emb = discord.Embed(title= joueur + ' est en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(discord.utils.get(pourparler.guild.members, name=joueur))])
-                emb.set_image(url=discord.utils.get(pourparler.guild.members, name=joueur).avatar_url_as(size=128))
-                mess2=await pourparler.send(embed = emb)
-                message_activite[joueur]=mess2.id
-                a=False
-                return
-            else:
-                a= True
+        if before.activity.type == discord.ActivityType.playing :
+            print(str(after.name) +" ne joue plus")
+            if db.message_activite.count_documents({"id_joueur":str(after)}) >0:
+                if db.message_activite.count_documents({"jeu":before.activity.name}) == 2:
+                    await pourparler.get_partial_message(db.message_activite.find_one_and_delete({'id_joueur':str(after)}).get('id_message')).delete()
+                    doc =db.message_activite.find_one({"jeu":before.activity.name})
+                    emb = discord.Embed(title= doc.get("nom_joueur") + ' est en train de jouer à ' + doc.get('jeu') + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[doc.get('id_joueur')])
+                    emb.set_image(url=discord.utils.get(pourparler.guild.members, name=doc.get('nom_joueur')).avatar_url_as(size=128))
+                    mess2=await pourparler.send(embed = emb)
+                    db.message_activite.find_one_and_update({'jeu':before.activity.name},{'$set': {'id_message':mess2.id}})
+                    return
 
-        if a :
-            try:
-                await pourparler.get_partial_message(message_activite.get(str(after.name))).delete()
-                del message_activite[str(after.name)]
-                del jeu_en_cours[str(after.name)]
-            except discord.errors.HTTPException:
-                return
+
+                elif db.message_activite.count_documents({"jeu":before.activity.name}) == 1:
+                    try:
+                        await pourparler.get_partial_message(db.message_activite.find_one({'id_joueur':str(after)}).get('id_message')).delete()
+                        db.message_activite.find_one_and_delete({'id_joueur':str(after)})
+                    except AttributeError:
+                        return
 
     elif before.activity.name != after.activity.name:
         if after.activity.type == discord.ActivityType.playing :
             print(str(after.name) +" joue à " +str(after.activity.name))
+            if db.message_activite.count_documents({"id_joueur":str(after)}) >0:
+                if db.message_activite.count_documents({"jeu":before.activity.name}) == 2:
+                    await pourparler.get_partial_message(db.message_activite.find_one_and_delete({'id_joueur':str(after)}).get('id_message')).delete()
+                    doc =db.message_activite.find_one({"jeu":before.activity.name})
+                    emb = discord.Embed(title= doc.get("nom_joueur") + ' est en train de jouer à ' + doc.get('jeu') + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[doc.get('id_joueur')])
+                    emb.set_image(url=discord.utils.get(pourparler.guild.members, name=doc.get('nom_joueur')).avatar_url_as(size=128))
+                    mess2=await pourparler.send(embed = emb)
+                    db.message_activite.find_one_and_update({'jeu':before.activity.name},{'$set': {'id_message':mess2.id}})
+                    return
+
+
+                elif db.message_activite.count_documents({"jeu":before.activity.name}) == 1:
+                    try:
+                        await pourparler.get_partial_message(db.message_activite.find_one_and_delete({'id_joueur':str(after)}).get('id_message')).delete()
+                    except AttributeError:
+                        return
             mess = await after.send("Etes-vous d'accord pour inviter les membres du serveur Gametral à venir jouer à " + str(after.activity.name) + " avec vous ?")
             await mess.add_reaction('👍')
             await mess.add_reaction('👎')  
             id = mess.id
             
-
 
 
 # REACTION AJOUTE SUR UN MESSAGE
@@ -367,35 +360,19 @@ async def on_reaction_add(reaction, user):
         return
     if reaction.message.id == id :
         if reaction.emoji=='👍':
-                a=False
-                await reaction.message.delete()
-                if len(jeu_en_cours) !=0:
-                    print(jeu_en_cours)
-                    for joueur,jeu in jeu_en_cours.items():
-                        print(joueur, jeu)
-                        if jeu == str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) :
-                            jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
-                            await pourparler.get_partial_message(message_activite.get(joueur)).delete()
-                            mess2=await pourparler.send(embed=discord.Embed(title= joueur+ " et " + str(user.name) + ' sont en train de jouer à ' + jeu + " !", description = 'Si ça te tente de jouer avec eux, demande leur 😉', colour=couleur[str(discord.utils.get(pourparler.guild.members, name=joueur))]))
-                            del message_activite[joueur]
-                            message_activite[joueur]=mess2.id
-                            message_activite[str(user.name)]=mess2.id
-                            a=False
-                            return
-                        else :
-                            a=True
-                    if a:
-                        jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
-                        emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
-                        emb.set_image(url=user.avatar_url_as(size=128))
-                        mess2=await pourparler.send(embed = emb)
-                        message_activite[str(user.name)]=mess2.id
-                else:
-                    jeu_en_cours[str(user.name)]=str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)
-                    emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
-                    emb.set_image(url=user.avatar_url_as(size=128))
-                    mess2=await pourparler.send(embed = emb)
-                    message_activite[str(user.name)]=mess2.id
+            await reaction.message.delete()
+            if db.message_activite.count_documents({'jeu':discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name})>0:
+                    await pourparler.get_partial_message(db.message_activite.find_one({'jeu':discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name}).get('id_message')).delete()
+                    doc = db.message_activite.find_one({'jeu':discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name})
+                    mess2=await pourparler.send(embed=discord.Embed(title= doc.get('nom_joueur')+ " et " + user.name + ' sont en train de jouer à ' + doc.get('jeu') + " !", description = 'Si ça te tente de jouer avec eux, demande leur 😉', colour=couleur[str(user)]))
+                    db.message_activite.find_one_and_update({'nom_joueur':doc.get('nom_joueur')},{'$set':{'id_message':mess2.id}})
+                    db.message_activite.insert_one({'id_message': mess2.id,'id_joueur': str(user),'nom_joueur':user.name,'jeu':str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)})
+
+            elif db.message_activite.count_documents({'jeu':discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name})==0:
+                emb = discord.Embed(title= str(user.name) + ' est en train de jouer à ' + str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name) + " !", description = 'Si ça te tente de jouer avec lui, demande lui 😉', colour=couleur[str(user)])
+                emb.set_image(url=user.avatar_url_as(size=128))
+                mess2=await pourparler.send(embed = emb)
+                db.message_activite.insert_one({'id_message':mess2.id,'id_joueur':str(user),'nom_joueur':user.name,'jeu':str(discord.utils.get(discord.utils.get(client.guilds,name='Gametral').members,name=user.name).activity.name)})
         if reaction.emoji=='👎':
             await reaction.message.delete()
 
