@@ -5,7 +5,7 @@ from random import*
 default_intents = discord.Intents.all()
 default_intents.typing = False
 client = discord.Client(intents=default_intents)
-clientdb = pymongo.MongoClient("mongodb+srv://"+"PSEUDO"+":"+"MDP"+"@cluster0.wkd1h.mongodb.net/"+"NAME"+"?retryWrites=true&w=majority")
+clientdb = pymongo.MongoClient("mongodb+srv://"+os.environ['PSEUDO']+":"+os.environ["MDP"]+"@cluster0.wkd1h.mongodb.net/"+os.environ["NAME"]+"?retryWrites=true&w=majority")
 db=clientdb.Funforgametral
 
 
