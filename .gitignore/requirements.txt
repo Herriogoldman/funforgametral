@@ -1,2 +1,4 @@
 discord
 discord.py ~= 1.6.0
+pymongo
+dnspython
