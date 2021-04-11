@@ -210,7 +210,7 @@ chibre = [
             "Parfois j'fais des rêves autour de plusieurs thématiques, et généralement c'est celle du chibre",
             "Chibre, chibre, chibre, chibre, chibre, chibre ,chibre, chibre, chibre, chibre",
             "Parfois j'pense à rien, parfois j'pense au chibre",
-            "Attend une seconde... chibre"]
+            "Attend une seconde, chibre"]
 
 for i in range(len(chibre)) :
             db.Chibre.insert_one({chibre[i]:i})
