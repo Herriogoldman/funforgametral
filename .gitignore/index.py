@@ -203,6 +203,8 @@ verbes = [
             "Pilonner",
             "Vider"]
 
+db.createCollection("Chibre")
+
 chibre = [
             "250 kg de chibre, ça te fait pas peur ?",
             "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
