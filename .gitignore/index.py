@@ -203,7 +203,7 @@ verbes = [
             "Pilonner",
             "Vider"]
 
-db.createCollection("Chibre")
+db.create_collection("Chibre")
 
 chibre = [
             "250 kg de chibre, ça te fait pas peur ?",
