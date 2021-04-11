@@ -203,8 +203,6 @@ verbes = [
             "Pilonner",
             "Vider"]
 
-db.create_collection("Chibre")
-
 chibre = [
             "250 kg de chibre, ça te fait pas peur ?",
             "24/24 7j/7 j'ai qu'un seul objectif, avoir le meilleur chibre de toute la ville",
@@ -214,6 +212,8 @@ chibre = [
             "Parfois j'pense à rien, parfois j'pense au chibre",
             "Attend une seconde... chibre"]
 
+for i in range(len(chibre)) :
+            db.Chibre.insert_one({chibre[i],i})
 
 ##################################################################################################################################################
 ##################################################################################################################################################
